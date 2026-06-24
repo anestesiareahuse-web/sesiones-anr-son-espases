@@ -8,30 +8,77 @@
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#060d09; --bg2:#0b1810; --surface:#0f2016; --surface2:#162b1c; --surface3:#1c3523;
-    --green:#00c878; --green2:#00a862; --green-dim:rgba(0,200,120,.13); --green-glow:rgba(0,200,120,.22);
-    --text:#e8f5ee; --muted:#6b9478; --border:rgba(0,200,120,.11); --border2:rgba(0,200,120,.22);
-    --radius:14px; --red:#e85555;
+    /* ── Son Espases palette ── */
+    --teal:    #1a7a6e;
+    --teal2:   #22a090;
+    --teal3:   #0f5248;
+    --bg:      #071210;
+    --bg2:     #0c1e1b;
+    --surface: #102320;
+    --surface2:#163530;
+    --surface3:#1c4540;
+    --teal-dim:rgba(26,122,110,.15);
+    --teal-glow:rgba(26,122,110,.28);
+    --text:    #dff0ec;
+    --muted:   #6a9b96;
+    --border:  rgba(26,122,110,.18);
+    --border2: rgba(26,122,110,.35);
+    --radius:  14px;
+    --red:     #e85555;
+    /* aliases used throughout */
+    --green:   var(--teal2);
+    --green2:  var(--teal);
+    --green-dim: var(--teal-dim);
+    --green-glow: var(--teal-glow);
   }
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
-  body::before{content:'';position:fixed;top:-180px;left:50%;transform:translateX(-50%);
-    width:560px;height:560px;
-    background:radial-gradient(circle,rgba(0,200,120,.07) 0%,transparent 68%);
-    pointer-events:none;z-index:0}
+
+  /* ── Hero splash ── */
+  .hero{
+    position:relative;width:100%;height:220px;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+    padding-bottom:28px;
+  }
+  .hero-img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
+    filter:brightness(.45) saturate(1.2);
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,
+      rgba(7,18,16,.15) 0%,
+      rgba(7,18,16,.3) 40%,
+      rgba(7,18,16,.85) 100%);
+  }
+  .hero-content{position:relative;z-index:1;text-align:center}
+  /* Son Espases logo recreation */
+  .se-logo{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:6px}
+  .se-logo-top{display:flex;align-items:center;gap:8px}
+  .se-dots{display:grid;grid-template-columns:repeat(3,5px);gap:3px}
+  .se-dot{width:5px;height:5px;border-radius:50%;background:#fff;opacity:.9}
+  .se-dot.sm{width:4px;height:4px;opacity:.6}
+  .se-name{font-size:20px;color:#fff;line-height:1;letter-spacing:.2px}
+  .se-name span{font-weight:300}
+  .se-name strong{font-weight:800}
+  .se-sub{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:1.5px;
+    text-transform:lowercase;border-top:1px solid rgba(255,255,255,.25);
+    padding-top:3px;width:100%;text-align:center}
+  .hero-tagline{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.5px;
+    text-transform:uppercase}
 
   /* ── Header ── */
   header{position:sticky;top:0;z-index:100;
-    background:linear-gradient(180deg,#060d09 60%,transparent);
-    padding:16px 16px 0}
+    background:linear-gradient(180deg,var(--bg) 60%,transparent);
+    padding:14px 14px 0}
   .hdr-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}
   .logo-icon{width:40px;height:40px;border-radius:12px;flex-shrink:0;cursor:pointer;
-    background:linear-gradient(145deg,#0f2a1a,#1a4028);border:1px solid var(--border2);
+    background:linear-gradient(145deg,var(--teal3),var(--teal));border:1px solid var(--border2);
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 0 16px rgba(0,200,120,.18);transition:box-shadow .2s;
+    box-shadow:0 0 16px var(--teal-glow);transition:box-shadow .2s;
     -webkit-tap-highlight-color:transparent;user-select:none}
-  .logo-icon:active{box-shadow:0 0 24px rgba(0,200,120,.4)}
+  .logo-icon:active{box-shadow:0 0 24px rgba(26,122,110,.5)}
   .logo-icon svg{width:22px;height:22px}
   .logo-text{flex:1;min-width:0}
   .logo-title{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -141,9 +188,9 @@
     background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.5) 100%);
     opacity:0;transition:opacity .2s}
   .card:hover .play-ov{opacity:1}
-  .play-circle{width:50px;height:50px;border-radius:50%;background:rgba(0,200,120,.85);
+  .play-circle{width:50px;height:50px;border-radius:50%;background:rgba(26,122,110,.9);
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 0 26px rgba(0,200,120,.55)}
+    box-shadow:0 0 26px rgba(26,122,110,.6)}
   .play-circle svg{width:20px;height:20px;fill:#fff;margin-left:3px}
   .dur{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.75);color:#fff;
     font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.3px}
@@ -265,16 +312,36 @@
 </head>
 <body>
 
+<!-- Hero splash — only visible when on home view -->
+<div class="hero" id="heroSection">
+  <img class="hero-img" src="./assets/hero.jpg" alt="" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="se-logo">
+      <div class="se-logo-top">
+        <div class="se-dots">
+          <div class="se-dot"></div><div class="se-dot"></div><div class="se-dot"></div>
+          <div class="se-dot sm"></div><div class="se-dot"></div><div class="se-dot sm"></div>
+          <div class="se-dot sm"></div><div class="se-dot sm"></div><div class="se-dot sm"></div>
+        </div>
+        <div class="se-name"><span>Son </span><strong>Espases</strong></div>
+      </div>
+      <div class="se-sub">hospital universitari</div>
+    </div>
+    <div class="hero-tagline">Sesiones de Anestesiología y Reanimación</div>
+  </div>
+</div>
+
 <header>
   <div class="hdr-top">
     <div class="logo-icon" id="logoIcon" title="Toca 5 veces para abrir el panel de administración">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M19 8C19 11.31 16.31 14 13 14C9.69 14 7 11.31 7 8" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M7 8V4C7 3.45 7.45 3 8 3H10C10.55 3 11 3.45 11 4V8" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M13 8V4C13 3.45 13.45 3 14 3H16C16.55 3 17 3.45 17 4V8" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M13 14V17C13 19.21 11.21 21 9 21C6.79 21 5 19.21 5 17V15" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="5" cy="14" r="1.5" stroke="#00c878" stroke-width="1.4"/>
-        <circle cx="19" cy="8" r="1.2" fill="#00c878"/>
+        <path d="M19 8C19 11.31 16.31 14 13 14C9.69 14 7 11.31 7 8" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M7 8V4C7 3.45 7.45 3 8 3H10C10.55 3 11 3.45 11 4V8" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M13 8V4C13 3.45 13.45 3 14 3H16C16.55 3 17 3.45 17 4V8" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M13 14V17C13 19.21 11.21 21 9 21C6.79 21 5 19.21 5 17V15" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="5" cy="14" r="1.5" stroke="#22a090" stroke-width="1.4"/>
+        <circle cx="19" cy="8" r="1.2" fill="#22a090"/>
       </svg>
     </div>
     <div class="logo-text">
@@ -433,9 +500,12 @@ const adminStatus=$('adminStatus');
 /* ════════════════════════════════════════════════════════════
    NAVIGATION
    ════════════════════════════════════════════════════════════ */
+const heroEl = document.getElementById('heroSection');
 function showView(v) {
   [vHome,vList,vSearch,vAdmin].forEach(el => el.classList.remove('active'));
   v.classList.add('active');
+  // Hero only visible on home view
+  heroEl.style.display = v === vHome ? '' : 'none';
   const isAdmin = v === vAdmin;
   adminBar.classList.toggle('hidden', !isAdmin || !adminUnlocked);
 }
