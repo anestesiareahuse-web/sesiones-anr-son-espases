@@ -64,9 +64,14 @@
 
   /* ── Category grid ── */
   .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .grid-section-label{grid-column:1/-1;font-size:11px;font-weight:700;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.7px;padding:4px 2px 0;
+    display:flex;align-items:center;gap:8px}
+  .grid-section-label::after{content:'';flex:1;height:1px;background:var(--border)}
   .cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:16px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
-    display:flex;flex-direction:column;gap:6px;-webkit-tap-highlight-color:transparent}
+    padding:14px 12px 14px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
+    display:flex;flex-direction:column;gap:6px;-webkit-tap-highlight-color:transparent;
+    position:relative}
   .cat-card:hover,.cat-card:focus-visible{transform:translateY(-2px);border-color:var(--border2);
     box-shadow:0 6px 20px rgba(0,0,0,.4);outline:none}
   .cat-card:active{transform:scale(.97)}
@@ -76,11 +81,35 @@
   .cat-card.emerg:hover{border-color:rgba(232,85,85,.5)}
   .cat-card.emerg .cat-name{color:#f08080}
   .cat-card.emerg .cat-count{background:rgba(232,85,85,.18);color:#f08080;border-color:rgba(232,85,85,.3)}
+  .cat-card.pinned{border-color:rgba(255,200,50,.25);background:rgba(255,200,50,.04)}
+  .cat-card.pinned .cat-name{color:#f5d76e}
+  .cat-card.pinned .cat-count{background:rgba(255,200,50,.15);color:#f5d76e;border-color:rgba(255,200,50,.3)}
   .cat-name{font-size:14px;font-weight:600;line-height:1.25}
   .cat-count{font-size:12px;font-weight:700;color:var(--green);background:var(--green-dim);
     border:1px solid var(--border2);border-radius:20px;padding:2px 9px;
     align-self:flex-start;white-space:nowrap}
   .cat-card.full .cat-count{font-size:13px}
+  /* star / pin button */
+  .pin-btn{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;
+    background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-size:14px;opacity:.35;transition:opacity .15s,transform .15s;
+    -webkit-tap-highlight-color:transparent;z-index:2}
+  .pin-btn:hover,.pin-btn.on{opacity:1}
+  .pin-btn.on{transform:scale(1.15)}
+  /* search category results */
+  .search-cats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+  .search-cats-label{grid-column:1/-1;font-size:11px;font-weight:700;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.7px;margin-bottom:2px}
+  .search-vids-label{font-size:11px;font-weight:700;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+  .cat-card-mini{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:10px 12px;cursor:pointer;transition:border-color .15s;
+    display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .cat-card-mini:hover{border-color:var(--border2)}
+  .cat-card-mini.emerg{border-color:rgba(232,85,85,.22);background:rgba(232,85,85,.04)}
+  .cat-card-mini .cat-name{font-size:13px;font-weight:600}
+  .cat-card-mini.emerg .cat-name{color:#f08080}
+  .cat-card-mini .cat-count{font-size:11px}
 
   /* ── List view ── */
   .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px}
@@ -441,6 +470,22 @@ function showSkeleton() {
 }
 
 /* ════════════════════════════════════════════════════════════
+   FAVORITES
+   ════════════════════════════════════════════════════════════ */
+const FAVS_KEY = 'anr_favs_v1';
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem(FAVS_KEY)) || []; } catch { return []; }
+}
+function toggleFav(catId, e) {
+  e.stopPropagation();
+  const favs = getFavs();
+  const idx = favs.indexOf(catId);
+  if (idx >= 0) favs.splice(idx, 1); else favs.push(catId);
+  localStorage.setItem(FAVS_KEY, JSON.stringify(favs));
+  buildCatGrid();
+}
+
+/* ════════════════════════════════════════════════════════════
    CATEGORY GRID
    ════════════════════════════════════════════════════════════ */
 function buildCatGrid() {
@@ -451,19 +496,51 @@ function buildCatGrid() {
   }));
   counts['all'] = allVideos.length;
 
+  const favs = getFavs();
   catGrid.innerHTML = '';
+
+  // ── Pinned section ──
+  const pinnedCats = CATS.filter(c => favs.includes(c.id) && (counts[c.id]||0) > 0);
+  if (pinnedCats.length) {
+    const lbl = document.createElement('div');
+    lbl.className = 'grid-section-label';
+    lbl.textContent = 'Mis favoritas';
+    catGrid.appendChild(lbl);
+    pinnedCats.forEach(cat => catGrid.appendChild(makeCard(cat, counts[cat.id]||0, favs, true)));
+    const lbl2 = document.createElement('div');
+    lbl2.className = 'grid-section-label';
+    lbl2.textContent = 'Todas las categorías';
+    catGrid.appendChild(lbl2);
+  }
+
+  // ── All categories ──
   CATS.forEach(cat => {
     const n = counts[cat.id] || 0;
     if (cat.id !== 'all' && n === 0) return;
-    const el = document.createElement('div');
-    el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'');
-    el.tabIndex = 0;
-    el.innerHTML = `<span class="cat-name">${cat.label}</span>
-      <span class="cat-count">${n}</span>`;
-    el.addEventListener('click', () => openCategory(cat.id));
-    el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
-    catGrid.appendChild(el);
+    catGrid.appendChild(makeCard(cat, n, favs, false));
   });
+}
+
+function makeCard(cat, n, favs, inFavsSection) {
+  const isPinned = favs.includes(cat.id);
+  const el = document.createElement('div');
+  const pinnedCls = isPinned && !cat.emerg && !cat.full ? ' pinned' : '';
+  el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'') + pinnedCls;
+  el.tabIndex = 0;
+
+  // Star button (not on "Todos" or "Emergencias")
+  const starBtn = (!cat.full && !cat.emerg)
+    ? `<button class="pin-btn${isPinned?' on':''}" title="${isPinned?'Quitar de favoritas':'Añadir a favoritas'}">${isPinned?'★':'☆'}</button>`
+    : '';
+
+  el.innerHTML = `${starBtn}<span class="cat-name">${cat.label}</span><span class="cat-count">${n}</span>`;
+  el.addEventListener('click', () => openCategory(cat.id));
+  el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
+
+  if (!cat.full && !cat.emerg) {
+    el.querySelector('.pin-btn').addEventListener('click', e => toggleFav(cat.id, e));
+  }
+  return el;
 }
 
 function openCategory(catId) {
@@ -488,16 +565,62 @@ function renderList() {
 }
 
 /* ════════════════════════════════════════════════════════════
+   NORMALIZE (accent-insensitive search)
+   ════════════════════════════════════════════════════════════ */
+function norm(s) {
+  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+}
+
+/* ════════════════════════════════════════════════════════════
    SEARCH
    ════════════════════════════════════════════════════════════ */
 function renderSearch(q) {
-  if (!q) { showView(vHome); return; }
-  const low = q.toLowerCase();
-  const vids = allVideos
-    .filter(v => v.title.toLowerCase().includes(low))
+  if (!q.trim()) { showView(vHome); return; }
+  const nq = norm(q);
+
+  // Matching categories
+  const counts = {};
+  CATS.forEach(c => counts[c.id] = 0);
+  allVideos.forEach(v => (v.categories||[]).forEach(cid => {
+    if (counts[cid] !== undefined) counts[cid]++;
+  }));
+  const matchCats = CATS.filter(c =>
+    c.id !== 'all' && (counts[c.id]||0) > 0 && norm(c.label).includes(nq)
+  );
+
+  // Matching videos
+  const matchVids = allVideos
+    .filter(v => norm(v.title).includes(nq))
     .sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
-  searchInfo.textContent = `${vids.length} resultado${vids.length!==1?'s':''} para "${q}"`;
-  searchGrid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML();
+
+  const total = matchVids.length + matchCats.length;
+  searchInfo.textContent = total
+    ? `${total} resultado${total!==1?'s':''} para "${q}"`
+    : `Sin resultados para "${q}"`;
+
+  let html = '';
+
+  if (matchCats.length) {
+    html += `<div class="search-cats">
+      <div class="search-cats-label">Categorías (${matchCats.length})</div>
+      ${matchCats.map(cat => {
+        const n = counts[cat.id]||0;
+        return `<div class="cat-card-mini${cat.emerg?' emerg':''}" onclick="openCategory('${cat.id}')">
+          <span class="cat-name">${cat.label}</span>
+          <span class="cat-count">${n}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  if (matchVids.length) {
+    if (matchCats.length) html += `<div class="search-vids-label">Vídeos (${matchVids.length})</div>`;
+    html += `<div class="grid">${matchVids.map(cardHTML).join('')}</div>`;
+  } else if (!matchCats.length) {
+    html = emptyHTML();
+  }
+
+  searchGrid.innerHTML = html;
   showView(vSearch);
 }
 
