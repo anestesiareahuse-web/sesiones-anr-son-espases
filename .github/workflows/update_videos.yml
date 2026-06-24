@@ -1,0 +1,38 @@
+name: Update videos.json
+
+on:
+  schedule:
+    # Every day at 03:00 UTC (05:00 Madrid summer / 04:00 winter)
+    - cron: "0 3 * * *"
+  workflow_dispatch:   # allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch videos and regenerate videos.json
+        id: fetch
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python fetch_videos.py
+
+      - name: Commit updated videos.json
+        if: steps.fetch.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add videos.json
+          git commit -m "chore: update videos.json [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push

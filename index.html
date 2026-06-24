@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Sesiones ANR — Son Espases</title>
+  <meta name="theme-color" content="#0f1117" />
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0f1117;
+      --surface:   #1a1d27;
+      --surface2:  #22263a;
+      --accent:    #4f8ef7;
+      --accent2:   #7c5cfc;
+      --text:      #e8eaf2;
+      --muted:     #8b90a8;
+      --border:    rgba(255,255,255,0.07);
+      --radius:    14px;
+      --chip-h:    36px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(180deg, #0f1117 60%, transparent);
+      padding: 16px 16px 0;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .logo-text { min-width: 0; }
+    .logo-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .logo-sub {
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .update-badge {
+      font-size: 10px;
+      color: var(--muted);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Search ── */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      fill: var(--muted);
+      pointer-events: none;
+    }
+    #search {
+      width: 100%;
+      height: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      color: var(--text);
+      font-size: 14px;
+      padding: 0 12px 0 36px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    #search::placeholder { color: var(--muted); }
+    #search:focus { border-color: var(--accent); }
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--surface2);
+      border: none;
+      color: var(--muted);
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+    .search-clear.visible { display: flex; }
+
+    /* ── Category chips ── */
+    .chips-wrap {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 12px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .chips-wrap::-webkit-scrollbar { display: none; }
+    .chips-inner { display: inline-flex; gap: 8px; padding: 0 2px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: var(--chip-h);
+      padding: 0 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .18s;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--text); }
+    .chip.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: transparent;
+      color: #fff;
+    }
+    .chip-count {
+      font-size: 11px;
+      font-weight: 600;
+      opacity: .75;
+    }
+
+    /* ── Main content ── */
+    main { padding: 12px 12px 32px; }
+
+    /* ── Results info ── */
+    .results-info {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding: 0 4px;
+      min-height: 18px;
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 400px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .18s, border-color .18s, box-shadow .18s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card:hover, .card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(79,142,247,.35);
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+      outline: none;
+    }
+    .card:active { transform: scale(.98); }
+    .thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface2);
+      overflow: hidden;
+    }
+    .thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .25s;
+    }
+    .card:hover .thumb-wrap img { transform: scale(1.03); }
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.3);
+      opacity: 0;
+      transition: opacity .18s;
+    }
+    .card:hover .play-btn { opacity: 1; }
+    .play-btn svg { width: 48px; height: 48px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+    .duration-badge {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      background: rgba(0,0,0,.75);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: .3px;
+    }
+    .card-body { padding: 12px; }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-date {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: flex-end;
+    }
+    .tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: var(--surface2);
+      color: var(--accent);
+      border: 1px solid rgba(79,142,247,.2);
+      font-weight: 500;
+    }
+
+    /* ── Empty / Loading states ── */
+    .state-msg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 60px 24px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .state-msg svg { width: 48px; height: 48px; opacity: .4; }
+    .state-msg p { font-size: 14px; line-height: 1.5; }
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--surface2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Skeleton ── */
+    .skeleton {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .skel-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(90deg, var(--surface2) 25%, #2a2f44 50%, var(--surface2) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+    .skel-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .skel-line {
+      height: 12px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--surface2) 25%, #2a2f44 50%, var(--surface2) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+    .skel-line.short { width: 55%; }
+    @keyframes shimmer { to { background-position: -200% 0; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+      </div>
+      <div class="logo-text">
+        <div class="logo-title">Sesiones ANR</div>
+        <div class="logo-sub">H.U. Son Espases · Anestesiología</div>
+      </div>
+    </div>
+    <span class="update-badge" id="updateBadge">—</span>
+  </div>
+
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <input type="search" id="search" placeholder="Buscar sesión…" autocomplete="off" spellcheck="false" />
+    <button class="search-clear" id="searchClear" aria-label="Borrar búsqueda">✕</button>
+  </div>
+
+  <div class="chips-wrap">
+    <div class="chips-inner" id="chips"></div>
+  </div>
+</header>
+
+<main>
+  <div class="results-info" id="resultsInfo"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<script>
+/* ── Category definitions ── */
+const CATEGORIES = [
+  {
+    id: 'all',
+    label: 'Todos',
+    keywords: null,
+  },
+  {
+    id: 'pediatria',
+    label: 'Pediatría',
+    keywords: ['pediatr','pediátr','neonat','infant','niño','niña','recién nacido','neonatal','pediátrico'],
+  },
+  {
+    id: 'toracica',
+    label: 'Cirugía torácica',
+    keywords: ['torác','tórax','toraci','pulmon','lobectom','neumonectom','toracoscop','mediastin','pleural','neumotórax','pleurodesis','pulmón'],
+  },
+  {
+    id: 'cardiaca',
+    label: 'Cirugía cardíaca',
+    keywords: ['cardíac','cardiac','cardiaca','corazón','heart','valvul','valv','bypass','coronar','aorta','cec','extracorpórea','tavi','teer','miocardi','pericardi','arritmia','fibrilación'],
+  },
+  {
+    id: 'neuro',
+    label: 'Neuroanestesia',
+    keywords: ['neuroanest','neurocirugía','neuroquirúrg','cerebral','intracraneal','craneal','cráneo','columna','espinal','medular','raquídeo','neuro','craneotom'],
+  },
+  {
+    id: 'regional',
+    label: 'Anestesia regional',
+    keywords: ['regional','bloqueo','block','plexo','nervio','epidural','raquídea','intradural','subaracnoid','tap block','pecs','fascial','infiltración','haql','quadratus','serratus','paravertebral','erector spinae','esp block','truncal','interescalén','supraclavicular','infraclavicular','axilar','femoral','ciático','safeno','poplíteo','tobillo','espinal'],
+  },
+  {
+    id: 'dolor',
+    label: 'Dolor postoperatorio',
+    keywords: ['dolor','pain','postoperat','analgesia','analgés','opioide','opioid','fentanilo','morfin','ketamin','multimodal','pca','antiinflamator','gabapentin','pregabalina','tramadol','ketorolaco','paracetamol','dexametasona analgesia','dolor agudo','dolor crónico'],
+  },
+  {
+    id: 'viaarea',
+    label: 'Vía aérea',
+    keywords: ['vía aérea','airway','intubación','intubat','laringoscop','mascarilla laríng','supraglót','videolaringoscop','fibroscop','fibroptia','cricotiroid','traqueotom','traqueostom','laringoscopia','difficult airway','vía aérea difícil','extubación'],
+  },
+  {
+    id: 'uci',
+    label: 'Reanimación / UCI',
+    keywords: ['reanimat','uci','uvi','crítico','crítica','intensiv','resucitación','shock','sepsis','ventilación mecánica','rcp','ecmo','svav','svav','hemostasia','hemostatic','daño controlado','politraumat','trauma','emergencia','urgencia','parada cardíaca'],
+  },
+  {
+    id: 'farmaco',
+    label: 'Farmacología',
+    keywords: ['farmacol','fármaco','drug','propofol','sevoflur','desflur','isofluran','desfluran','rocuroni','cisatracuri','sugamadex','neostigmin','dexmedetomidin','midazolam','ketamina','remifentanilo','sufentanilo','alfentanilo','relajante','bloqueante neuromuscular','reversi','halogenad'],
+  },
+  {
+    id: 'casos',
+    label: 'Casos clínicos',
+    keywords: ['caso clínico','caso clini','clinical case','presentación de caso','sesión clínica','a propósito de','un caso de','manejo de un'],
+  },
+  {
+    id: 'gestion',
+    label: 'Gestión y seguridad',
+    keywords: ['seguridad','gestión','protocolo','checklist','error','incidente','calidad','simulación','simulacro','formación','crisis','comunicación','trabajo en equipo','cultura','burnout','resiliencia','docencia','aprendizaje','evaluación'],
+  },
+  {
+    id: 'obstetricia',
+    label: 'Obstetricia',
+    keywords: ['obstetric','obstétric','embarazad','cesárea','parto','matern','perinatal','prenatal','placenta','hemorragia obstétric','uterotónic','eclampsia','preeclampsia'],
+  },
+];
+
+/* ── Categorise a video by title ── */
+function categorise(title) {
+  const t = title.toLowerCase();
+  const cats = [];
+  for (const cat of CATEGORIES) {
+    if (!cat.keywords) continue;
+    if (cat.keywords.some(kw => t.includes(kw.toLowerCase()))) {
+      cats.push(cat.id);
+    }
+  }
+  return cats.length ? cats : ['uncategorised'];
+}
+
+/* ── Helpers ── */
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function youtubeUrl(videoId) {
+  return `https://www.youtube.com/watch?v=${videoId}`;
+}
+
+function thumb(videoId) {
+  return `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+}
+
+/* ── State ── */
+let allVideos = [];
+let activeCategory = 'all';
+let searchQuery = '';
+
+/* ── DOM refs ── */
+const grid = document.getElementById('grid');
+const chips = document.getElementById('chips');
+const searchInput = document.getElementById('search');
+const searchClear = document.getElementById('searchClear');
+const resultsInfo = document.getElementById('resultsInfo');
+const updateBadge = document.getElementById('updateBadge');
+
+/* ── Build chips ── */
+function buildChips(videos) {
+  const counts = { all: videos.length, uncategorised: 0 };
+  for (const cat of CATEGORIES) {
+    if (cat.id === 'all') continue;
+    counts[cat.id] = 0;
+  }
+  for (const v of videos) {
+    for (const cid of v.categories) {
+      if (counts[cid] !== undefined) counts[cid]++;
+      else counts[cid] = 1;
+    }
+  }
+
+  chips.innerHTML = '';
+  const allCats = [...CATEGORIES];
+  if (counts['uncategorised'] > 0) {
+    allCats.push({ id: 'uncategorised', label: 'Sin clasificar', keywords: null });
+  }
+
+  for (const cat of allCats) {
+    const n = counts[cat.id] || 0;
+    if (cat.id !== 'all' && n === 0) continue;
+    const el = document.createElement('button');
+    el.className = 'chip' + (cat.id === activeCategory ? ' active' : '');
+    el.dataset.id = cat.id;
+    el.innerHTML = `${cat.label} <span class="chip-count">${n}</span>`;
+    el.addEventListener('click', () => {
+      activeCategory = cat.id;
+      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.id === activeCategory));
+      render();
+      // scroll chip into view
+      el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+    chips.appendChild(el);
+  }
+}
+
+/* ── Render grid ── */
+function render() {
+  const q = searchQuery.trim().toLowerCase();
+
+  let filtered = allVideos.filter(v => {
+    const inCat = activeCategory === 'all' || v.categories.includes(activeCategory);
+    const inSearch = !q || v.title.toLowerCase().includes(q);
+    return inCat && inSearch;
+  });
+
+  // Sort newest first
+  filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+  if (q) {
+    resultsInfo.textContent = `${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} para "${searchQuery.trim()}"`;
+  } else if (activeCategory !== 'all') {
+    const catLabel = [...CATEGORIES, { id: 'uncategorised', label: 'Sin clasificar' }].find(c => c.id === activeCategory)?.label || activeCategory;
+    resultsInfo.textContent = `${filtered.length} vídeo${filtered.length !== 1 ? 's' : ''} en ${catLabel}`;
+  } else {
+    resultsInfo.textContent = `${filtered.length} vídeo${filtered.length !== 1 ? 's' : ''} en total`;
+  }
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    grid.insertAdjacentHTML('afterend', '');
+    grid.innerHTML = `<div class="state-msg" style="grid-column:1/-1">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm1-5C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8z"/></svg>
+      <p>No se encontraron vídeos.<br>Prueba con otro término o categoría.</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(v => {
+    const tags = v.categories
+      .filter(c => c !== 'uncategorised')
+      .slice(0, 3)
+      .map(c => {
+        const cat = CATEGORIES.find(x => x.id === c);
+        return cat ? `<span class="tag">${cat.label}</span>` : '';
+      }).join('');
+
+    return `<a class="card" href="${youtubeUrl(v.videoId)}" target="_blank" rel="noopener" aria-label="${v.title}">
+      <div class="thumb-wrap">
+        <img src="${thumb(v.videoId)}" alt="" loading="lazy" decoding="async" />
+        <div class="play-btn">
+          <svg viewBox="0 0 68 48" fill="none">
+            <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C0 13.05 0 24 0 24s0 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C68 34.95 68 24 68 24s0-10.95-1.48-16.26z" fill="#FF0000"/>
+            <path d="M45 24 27 14v20" fill="white"/>
+          </svg>
+        </div>
+        ${v.duration ? `<span class="duration-badge">${v.duration}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-title">${escHtml(v.title)}</div>
+        <div class="card-meta">
+          <span class="card-date">${formatDate(v.publishedAt)}</span>
+          <div class="card-tags">${tags}</div>
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ── Skeleton loader ── */
+function showSkeleton(n = 8) {
+  grid.innerHTML = Array.from({ length: n }, () => `
+    <div class="skeleton">
+      <div class="skel-thumb"></div>
+      <div class="skel-body">
+        <div class="skel-line"></div>
+        <div class="skel-line short"></div>
+      </div>
+    </div>`).join('');
+}
+
+/* ── Load data ── */
+async function loadVideos() {
+  showSkeleton();
+  try {
+    const res = await fetch('./videos.json?_=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+
+    // Attach computed categories if not present
+    allVideos = (data.videos || []).map(v => ({
+      ...v,
+      categories: v.categories?.length ? v.categories : categorise(v.title),
+    }));
+
+    if (data.updatedAt) {
+      const d = new Date(data.updatedAt);
+      updateBadge.textContent = d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: '2-digit' });
+    }
+
+    buildChips(allVideos);
+    render();
+  } catch (e) {
+    grid.innerHTML = `<div class="state-msg" style="grid-column:1/-1">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      <p><strong>No se pudo cargar videos.json</strong><br>
+      Ejecuta <code>python fetch_videos.py</code> para generarlo,<br>
+      o espera a que el workflow de GitHub Actions lo actualice.</p>
+    </div>`;
+    resultsInfo.textContent = '';
+    chips.innerHTML = '';
+  }
+}
+
+/* ── Search ── */
+searchInput.addEventListener('input', () => {
+  searchQuery = searchInput.value;
+  searchClear.classList.toggle('visible', searchQuery.length > 0);
+  render();
+});
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchQuery = '';
+  searchClear.classList.remove('visible');
+  searchInput.focus();
+  render();
+});
+
+/* ── Init ── */
+loadVideos();
+</script>
+</body>
+</html>
