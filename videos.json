@@ -1,7 +1,10 @@
 {
-  "updatedAt": "2026-06-24T18:30:55.761990+00:00",
-  "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
-  "videoCount": 99,
+  "updatedAt": "2026-06-24T20:48:44.939121+00:00",
+  "playlistIds": [
+    "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
+    "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4"
+  ],
+  "videoCount": 107,
   "videos": [
     {
       "videoId": "ugguCfQ41yk",
@@ -20,7 +23,7 @@
       "duration": "20:31",
       "categories": [
         "endocrino",
-        "casos"
+        "cirugia_general"
       ]
     },
     {
@@ -40,7 +43,8 @@
       "duration": "15:28",
       "categories": [
         "preoperatorio",
-        "ecografia"
+        "ecografia",
+        "endocrino"
       ]
     },
     {
@@ -81,7 +85,8 @@
         "uci",
         "ecografia",
         "hemodinamica",
-        "emergencias"
+        "emergencias",
+        "infecciosas"
       ]
     },
     {
@@ -91,7 +96,9 @@
       "duration": "18:32",
       "categories": [
         "viaarea",
-        "emergencias"
+        "emergencias",
+        "pediatria",
+        "ventilacion"
       ]
     },
     {
@@ -101,7 +108,9 @@
       "duration": "20:50",
       "categories": [
         "preoperatorio",
-        "ventilacion"
+        "ventilacion",
+        "neurologia",
+        "neuro"
       ]
     },
     {
@@ -142,7 +151,8 @@
       "publishedAt": "2025-10-19T07:20:56Z",
       "duration": "11:58",
       "categories": [
-        "toracica"
+        "toracica",
+        "uci"
       ]
     },
     {
@@ -153,7 +163,8 @@
       "categories": [
         "neuro",
         "dolor",
-        "farmaco"
+        "farmaco",
+        "traumatologia"
       ]
     },
     {
@@ -213,7 +224,7 @@
       "publishedAt": "2025-07-04T10:03:03Z",
       "duration": "52:04",
       "categories": [
-        "neuro"
+        "neurologia"
       ]
     },
     {
@@ -313,7 +324,6 @@
       "publishedAt": "2024-12-12T10:18:01Z",
       "duration": "27:16",
       "categories": [
-        "neuro",
         "uci",
         "neurologia"
       ]
@@ -333,7 +343,6 @@
       "publishedAt": "2024-12-11T17:42:29Z",
       "duration": "31:40",
       "categories": [
-        "gestion",
         "seguridad"
       ]
     },
@@ -381,8 +390,8 @@
       "publishedAt": "2024-06-17T16:48:31Z",
       "duration": "23:13",
       "categories": [
-        "cardiaca",
-        "casos"
+        "casos",
+        "cardiologia"
       ]
     },
     {
@@ -392,7 +401,7 @@
       "duration": "23:59",
       "categories": [
         "toracica",
-        "gestion"
+        "preoperatorio"
       ]
     },
     {
@@ -419,7 +428,8 @@
       "publishedAt": "2024-05-05T10:02:09Z",
       "duration": "56:27",
       "categories": [
-        "preoperatorio"
+        "preoperatorio",
+        "casos"
       ]
     },
     {
@@ -448,7 +458,8 @@
       "publishedAt": "2024-04-15T20:08:29Z",
       "duration": "21:30",
       "categories": [
-        "cardiaca"
+        "cardiaca",
+        "cardiologia"
       ]
     },
     {
@@ -478,7 +489,8 @@
       "duration": "23:41",
       "categories": [
         "pediatria",
-        "cardiaca"
+        "cardiaca",
+        "cardiologia"
       ]
     },
     {
@@ -487,7 +499,9 @@
       "publishedAt": "2024-03-27T20:17:28Z",
       "duration": "16:06",
       "categories": [
-        "uci"
+        "uci",
+        "infecciosas",
+        "emergencias"
       ]
     },
     {
@@ -496,7 +510,8 @@
       "publishedAt": "2024-03-27T19:55:59Z",
       "duration": "21:13",
       "categories": [
-        "gestion"
+        "emergencias",
+        "toracica"
       ]
     },
     {
@@ -505,7 +520,8 @@
       "publishedAt": "2024-03-27T18:39:07Z",
       "duration": "42:48",
       "categories": [
-        "pediatria"
+        "pediatria",
+        "emergencias"
       ]
     },
     {
@@ -514,7 +530,6 @@
       "publishedAt": "2024-03-27T08:36:40Z",
       "duration": "25:33",
       "categories": [
-        "gestion",
         "neurologia"
       ]
     },
@@ -543,7 +558,11 @@
       "publishedAt": "2024-02-29T18:18:29Z",
       "duration": "24:12",
       "categories": [
-        "politrauma"
+        "politrauma",
+        "fluidoterapia",
+        "hematologia",
+        "hemodinamica",
+        "emergencias"
       ]
     },
     {
@@ -552,7 +571,8 @@
       "publishedAt": "2024-02-29T18:15:21Z",
       "duration": "58:34",
       "categories": [
-        "hematologia"
+        "hematologia",
+        "preoperatorio"
       ]
     },
     {
@@ -571,7 +591,8 @@
       "duration": "30:38",
       "categories": [
         "uci",
-        "gestion"
+        "rcp",
+        "emergencias"
       ]
     },
     {
@@ -590,8 +611,8 @@
       "publishedAt": "2023-12-05T13:45:52Z",
       "duration": "35:49",
       "categories": [
-        "gestion",
-        "ventilacion"
+        "ventilacion",
+        "uci"
       ]
     },
     {
@@ -630,7 +651,7 @@
       "duration": "13:35",
       "categories": [
         "pediatria",
-        "uci"
+        "infecciosas"
       ]
     },
     {
@@ -659,10 +680,9 @@
       "publishedAt": "2023-11-01T21:02:39Z",
       "duration": "46:03",
       "categories": [
-        "neuro",
         "regional",
         "dolor",
-        "hematologia"
+        "obstetricia"
       ]
     },
     {
@@ -691,7 +711,6 @@
       "duration": "30:08",
       "categories": [
         "neuro",
-        "uci",
         "emergencias"
       ]
     },
@@ -701,7 +720,6 @@
       "publishedAt": "2023-06-26T09:09:17Z",
       "duration": "33:34",
       "categories": [
-        "toracica",
         "cirugia_general"
       ]
     },
@@ -712,7 +730,8 @@
       "duration": "30:38",
       "categories": [
         "infecciosas",
-        "farmaco"
+        "farmaco",
+        "uci"
       ]
     },
     {
@@ -771,7 +790,8 @@
       "duration": "26:40",
       "categories": [
         "uci",
-        "ecmo"
+        "ecmo",
+        "trasplante"
       ]
     },
     {
@@ -800,7 +820,9 @@
       "publishedAt": "2023-04-13T12:29:47Z",
       "duration": "1:31:56",
       "categories": [
-        "neuro"
+        "neuro",
+        "neurologia",
+        "monitorizacion"
       ]
     },
     {
@@ -819,7 +841,8 @@
       "duration": "1:11:26",
       "categories": [
         "monitorizacion",
-        "farmaco"
+        "farmaco",
+        "neurologia"
       ]
     },
     {
@@ -838,7 +861,8 @@
       "duration": "28:56",
       "categories": [
         "toracica",
-        "ecografia"
+        "ecografia",
+        "uci"
       ]
     },
     {
@@ -847,7 +871,9 @@
       "publishedAt": "2023-03-13T10:26:27Z",
       "duration": "30:15",
       "categories": [
-        "hepatico"
+        "hepatico",
+        "cirugia_general",
+        "trasplante"
       ]
     },
     {
@@ -885,7 +911,9 @@
       "publishedAt": "2023-02-20T23:02:35Z",
       "duration": "24:06",
       "categories": [
-        "regional"
+        "regional",
+        "hematologia",
+        "preoperatorio"
       ]
     },
     {
@@ -895,7 +923,8 @@
       "duration": "31:11",
       "categories": [
         "uci",
-        "farmaco"
+        "farmaco",
+        "infecciosas"
       ]
     },
     {
@@ -904,7 +933,9 @@
       "publishedAt": "2023-01-23T08:28:19Z",
       "duration": "32:10",
       "categories": [
-        "gestion"
+        "monitorizacion",
+        "uci",
+        "ecografia"
       ]
     },
     {
@@ -913,7 +944,8 @@
       "publishedAt": "2023-01-16T12:04:35Z",
       "duration": "30:53",
       "categories": [
-        "pediatria"
+        "pediatria",
+        "hematologia"
       ]
     },
     {
@@ -922,9 +954,7 @@
       "publishedAt": "2023-01-16T11:52:30Z",
       "duration": "39:43",
       "categories": [
-        "preoperatorio",
-        "gestion",
-        "seguridad"
+        "preoperatorio"
       ]
     },
     {
@@ -933,7 +963,8 @@
       "publishedAt": "2023-01-16T11:38:05Z",
       "duration": "39:26",
       "categories": [
-        "gestion"
+        "traumatologia",
+        "neuro"
       ]
     },
     {
@@ -943,7 +974,9 @@
       "duration": "48:34",
       "categories": [
         "toracica",
-        "cardiaca"
+        "cardiaca",
+        "neuro",
+        "uci"
       ]
     },
     {
@@ -965,7 +998,8 @@
       "duration": "42:36",
       "categories": [
         "uci",
-        "emergencias"
+        "emergencias",
+        "infecciosas"
       ]
     },
     {
@@ -976,6 +1010,80 @@
       "categories": [
         "hemodinamica",
         "monitorizacion"
+      ]
+    },
+    {
+      "videoId": "O9Dv4kEdylA",
+      "title": "Evidencia Científica - Curso ECOVAS HUSE 2023",
+      "publishedAt": "2022-12-27T10:38:35Z",
+      "duration": "23:01",
+      "categories": [
+        "uncategorised"
+      ]
+    },
+    {
+      "videoId": "Yi1tEA24XKY",
+      "title": "Acceso Vascular Subclavio - Curso ECOVAS HUSE 2023",
+      "publishedAt": "2022-12-27T10:38:35Z",
+      "duration": "17:55",
+      "categories": [
+        "vascular"
+      ]
+    },
+    {
+      "videoId": "3UDQwINcCgw",
+      "title": "Accesos Vasculares Distales Ecoguiados - Curso ECOVAS HUSE 2023",
+      "publishedAt": "2022-12-27T10:38:35Z",
+      "duration": "25:38",
+      "categories": [
+        "ecografia",
+        "vascular"
+      ]
+    },
+    {
+      "videoId": "t2e4gnZlK7w",
+      "title": "Cateterización Femoral Ecoguiada - Curso ECOVAS HUSE 2023",
+      "publishedAt": "2022-12-27T10:38:35Z",
+      "duration": "20:06",
+      "categories": [
+        "regional",
+        "ecografia"
+      ]
+    },
+    {
+      "videoId": "E222AyBwzuw",
+      "title": "Acceso Yugular Ecoguiado - Curso ECOVAS HUSE 2023",
+      "publishedAt": "2023-01-04T18:01:35Z",
+      "duration": "38:37",
+      "categories": [
+        "ecografia"
+      ]
+    },
+    {
+      "videoId": "TJqcfmkFS8c",
+      "title": "Acceso Venoso Pediátrico - Curso ECOVAS HUSE 2024",
+      "publishedAt": "2023-01-10T22:05:27Z",
+      "duration": "17:54",
+      "categories": [
+        "pediatria"
+      ]
+    },
+    {
+      "videoId": "lV6kqTRoGDQ",
+      "title": "Formación enfermería Clearsight",
+      "publishedAt": "2024-04-09T16:30:51Z",
+      "duration": "10:27",
+      "categories": [
+        "gestion"
+      ]
+    },
+    {
+      "videoId": "9AGG5JzR4MU",
+      "title": "Maquina de anestesia. Dr. Alfonso",
+      "publishedAt": "2024-05-27T19:23:13Z",
+      "duration": "30:04",
+      "categories": [
+        "uncategorised"
       ]
     }
   ]
