@@ -7,7 +7,7 @@
     ],
     "6-i5Hicr_vQ": [
       "endocrino",
-      "cirugia_general"
+      "casos"
     ],
     "DfLcRgMUWNQ": [
       "preoperatorio",
@@ -15,9 +15,7 @@
     ],
     "6lENtxYBqUM": [
       "preoperatorio",
-      "ecografia",
-      "obesidad",
-      "endocrino"
+      "ecografia"
     ],
     "EUZKnTBrGmc": [
       "dolor",
@@ -38,13 +36,11 @@
     ],
     "jNViX_wIl_Y": [
       "viaarea",
-      "emergencias",
-      "pediatria"
+      "emergencias"
     ],
     "983586OYayc": [
       "preoperatorio",
-      "ventilacion",
-      "uci"
+      "ventilacion"
     ],
     "HFVUMETrAPE": [
       "preoperatorio"
@@ -57,17 +53,16 @@
     "Ie80KQV3848": [
       "uci",
       "farmaco",
-      "emergencias"
+      "emergencias",
+      "infecciosas"
     ],
     "ZM223Ux9Nmo": [
-      "toracica",
-      "uci"
+      "toracica"
     ],
     "8Ip0bWHJ9NE": [
       "neuro",
       "dolor",
-      "farmaco",
-      "traumatologia"
+      "farmaco"
     ],
     "0fkX477Asoc": [
       "pediatria",
@@ -76,28 +71,24 @@
     ],
     "vBVM0FuSzPI": [
       "uci",
-      "emergencias",
-      "hematologia"
+      "emergencias"
     ],
     "JKv0pkRCArY": [
-      "pediatria",
-      "cirugia_general"
+      "pediatria"
     ],
     "7ENCqyRr5iU": [
       "toracica",
-      "ventilacion"
+      "ventilacion",
+      "uci"
     ],
     "lfvDG54naxc": [
       "anafilaxia",
       "emergencias"
     ],
     "hSMyEKaZy1g": [
-      "neuro",
-      "uci",
-      "emergencias"
+      "neuro"
     ],
     "UJoZ5m2ea_A": [
-      "gestion",
       "seguridad"
     ],
     "K6y_ZcGdmOE": [
@@ -107,21 +98,25 @@
     ],
     "ZBOWz4pvRqo": [
       "pediatria",
-      "hematologia"
+      "hematologia",
+      "preoperatorio"
     ],
     "ci_M5nufoxk": [
       "uci",
-      "emergencias"
+      "emergencias",
+      "infecciosas"
     ],
     "c1Nq5-R7HUc": [
       "cirugia_general",
-      "gestion"
+      "preoperatorio"
     ],
     "LFiAy0luc5U": [
       "gestion"
     ],
     "iqry-fDYf-E": [
-      "gestion"
+      "emergencias",
+      "hematologia",
+      "hemodinamica"
     ],
     "CdLxroRG-J0": [
       "gestion"
@@ -132,7 +127,8 @@
     ],
     "EX_itbnKDAw": [
       "neuro",
-      "uci"
+      "uci",
+      "neurologia"
     ],
     "YPCKQLN3rFg": [
       "gestion"
