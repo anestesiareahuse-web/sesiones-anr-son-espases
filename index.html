@@ -18,24 +18,22 @@
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    /* ── Son Espases palette ── */
-    --teal:    #008490;   /* color corporativo Son Espases */
-    --teal2:   #00a8b8;   /* teal más vivo para acentos */
-    --teal3:   #005f6b;   /* teal oscuro */
-    --bg:      #0a1a1c;   /* fondo principal — menos negro, más teal */
-    --bg2:     #0e2226;
-    --surface: #122b2f;   /* tarjetas */
-    --surface2:#183438;
-    --surface3:#1e3d42;
-    --teal-dim:rgba(0,132,144,.18);
-    --teal-glow:rgba(0,132,144,.35);
-    --text:    #e0f4f6;
-    --muted:   #6aabb4;
-    --border:  rgba(0,132,144,.22);
-    --border2: rgba(0,132,144,.45);
+    --teal:    #008490;
+    --teal2:   #00b4c8;
+    --teal3:   #006b78;
+    --bg:      rgba(0,40,50,.85);
+    --bg2:     rgba(0,50,62,.90);
+    --surface: rgba(0,110,128,.30);
+    --surface2:rgba(0,90,108,.38);
+    --surface3:rgba(0,70,86,.48);
+    --teal-dim:rgba(0,180,200,.20);
+    --teal-glow:rgba(0,180,200,.42);
+    --text:    #ffffff;
+    --muted:   #90dde8;
+    --border:  rgba(0,180,200,.32);
+    --border2: rgba(0,180,200,.65);
     --radius:  14px;
-    --red:     #e85555;
-    /* aliases */
+    --red:     #ff6b6b;
     --green:   var(--teal2);
     --green2:  var(--teal);
     --green-dim: var(--teal-dim);
@@ -43,7 +41,12 @@
   }
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
+    background:#003040;color:var(--text);min-height:100dvh;overflow-x:hidden}
+  body::before{
+    content:'';position:fixed;inset:0;z-index:-1;
+    background:url('./assets/hero.jpg') center 30%/cover no-repeat;
+    filter:brightness(.35) saturate(1.8);
+  }
 
   /* ── Hero splash ── */
   .hero{
@@ -100,7 +103,8 @@
 
   /* ── Header ── */
   header{position:sticky;top:0;z-index:100;
-    background:linear-gradient(180deg,var(--bg) 60%,transparent);
+    background:linear-gradient(180deg,rgba(0,30,40,.92) 60%,transparent);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     padding:14px 14px 0}
   .hdr-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}
   .logo-icon{width:40px;height:40px;border-radius:12px;flex-shrink:0;cursor:pointer;
@@ -148,7 +152,7 @@
   .cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
     padding:14px 12px 14px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
     display:flex;flex-direction:column;gap:6px;-webkit-tap-highlight-color:transparent;
-    position:relative}
+    position:relative;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
   .cat-card:hover,.cat-card:focus-visible{transform:translateY(-2px);border-color:var(--border2);
     box-shadow:0 6px 20px rgba(0,0,0,.4);outline:none}
   .cat-card:active{transform:scale(.97)}
