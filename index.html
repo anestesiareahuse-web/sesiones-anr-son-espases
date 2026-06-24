@@ -945,55 +945,72 @@ $('tokenSave').addEventListener('click', ()=>{
   pushToGitHub(t);
 });
 
+async function ghGet(token, path) {
+  const res = await fetch(
+    `https://api.github.com/repos/${GH_REPO}/contents/${path}`,
+    { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }}
+  );
+  if (!res.ok) throw new Error(`No se pudo leer ${path} (token válido?)`);
+  return res.json();
+}
+
+async function ghPut(token, path, content, sha, message) {
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+  const res = await fetch(
+    `https://api.github.com/repos/${GH_REPO}/contents/${path}`,
+    {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message, content: encoded, sha })
+    }
+  );
+  if (!res.ok) throw new Error(`Error al subir ${path}: ${res.status}`);
+  return res.json();
+}
+
 async function pushToGitHub(token) {
   const btn = $('btnGithub');
   btn.disabled = true;
-  adminStatus.textContent = 'Conectando con GitHub…';
+  const today = new Date().toISOString().slice(0,10);
+
   try {
-    // Get current file SHA
-    const infoRes = await fetch(
-      `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
-      { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }}
-    );
-    if (!infoRes.ok) throw new Error('No se pudo obtener el archivo actual (token válido?)');
-    const info = await infoRes.json();
+    // ── 1. Guardar manual_categories.json ──────────────────────────
+    adminStatus.textContent = 'Subiendo categorías…';
+    const manualInfo = await ghGet(token, GH_FILE);
+    const manualContent = buildManualJson();
+    await ghPut(token, GH_FILE, manualContent, manualInfo.sha,
+      `admin: update manual_categories.json [${today}]`);
 
-    const content = buildManualJson();
-    const encoded = btoa(unescape(encodeURIComponent(content)));
+    // ── 2. Actualizar videos.json aplicando overrides directamente ─
+    adminStatus.textContent = 'Actualizando videos.json…';
+    const videosInfo = await ghGet(token, 'videos.json');
+    const videosData = JSON.parse(decodeURIComponent(escape(atob(videosInfo.content.replace(/\n/g,'')))));
 
-    adminStatus.textContent = 'Subiendo cambios…';
-    const putRes = await fetch(
-      `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
-      {
-        method: 'PUT',
-        headers: {
-          Authorization: `token ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: `admin: update manual_categories.json [${new Date().toISOString().slice(0,10)}]`,
-          content: encoded,
-          sha: info.sha
-        })
+    // Parse overrides from the manual JSON we just built
+    const manualData = JSON.parse(manualContent);
+    const overrides = manualData.overrides || {};
+
+    // Apply overrides to each video
+    videosData.videos = videosData.videos.map(v => {
+      if (overrides[v.videoId]) {
+        return { ...v, categories: overrides[v.videoId] };
       }
-    );
-    if (!putRes.ok) throw new Error('Error al subir: ' + putRes.status);
+      return v;
+    });
+    videosData.updatedAt = new Date().toISOString();
 
-    // Trigger workflow to regenerate videos.json
-    adminStatus.textContent = 'Lanzando actualización…';
-    await fetch(
-      `https://api.github.com/repos/${GH_REPO}/actions/workflows/update_videos.yml/dispatches`,
-      {
-        method: 'POST',
-        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ref: 'main' })
-      }
-    );
+    const videosContent = JSON.stringify(videosData, null, 2);
+    await ghPut(token, 'videos.json', videosContent, videosInfo.sha,
+      `admin: update videos.json [${today}]`);
 
     adminEdits = {};
-    adminStatus.textContent = '✓ Guardado. La web se actualizará en ~1 min.';
-    setTimeout(()=>adminStatus.textContent='', 5000);
+    adminStatus.textContent = '✓ Guardado. Recarga en unos segundos para ver los cambios.';
+    setTimeout(()=>adminStatus.textContent='', 8000);
+
   } catch(err) {
     adminStatus.textContent = '✗ Error: ' + err.message;
   } finally {
