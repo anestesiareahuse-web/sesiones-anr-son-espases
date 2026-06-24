@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T16:46:46.328221+00:00",
+  "updatedAt": "2026-06-24T16:50:16.257225+00:00",
   "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
   "videoCount": 99,
   "videos": [
@@ -20,7 +20,7 @@
       "duration": "20:31",
       "categories": [
         "endocrino",
-        "cirugia_general"
+        "casos"
       ]
     },
     {
@@ -40,9 +40,7 @@
       "duration": "15:28",
       "categories": [
         "preoperatorio",
-        "ecografia",
-        "obesidad",
-        "endocrino"
+        "ecografia"
       ]
     },
     {
@@ -93,8 +91,7 @@
       "duration": "18:32",
       "categories": [
         "viaarea",
-        "emergencias",
-        "pediatria"
+        "emergencias"
       ]
     },
     {
@@ -104,8 +101,7 @@
       "duration": "20:50",
       "categories": [
         "preoperatorio",
-        "ventilacion",
-        "uci"
+        "ventilacion"
       ]
     },
     {
@@ -136,7 +132,8 @@
       "categories": [
         "uci",
         "farmaco",
-        "emergencias"
+        "emergencias",
+        "infecciosas"
       ]
     },
     {
@@ -145,8 +142,7 @@
       "publishedAt": "2025-10-19T07:20:56Z",
       "duration": "11:58",
       "categories": [
-        "toracica",
-        "uci"
+        "toracica"
       ]
     },
     {
@@ -157,8 +153,7 @@
       "categories": [
         "neuro",
         "dolor",
-        "farmaco",
-        "traumatologia"
+        "farmaco"
       ]
     },
     {
@@ -179,8 +174,7 @@
       "duration": "24:05",
       "categories": [
         "uci",
-        "emergencias",
-        "hematologia"
+        "emergencias"
       ]
     },
     {
@@ -189,8 +183,7 @@
       "publishedAt": "2025-07-13T18:50:37Z",
       "duration": "30:29",
       "categories": [
-        "pediatria",
-        "cirugia_general"
+        "pediatria"
       ]
     },
     {
@@ -200,7 +193,8 @@
       "duration": "49:40",
       "categories": [
         "toracica",
-        "ventilacion"
+        "ventilacion",
+        "uci"
       ]
     },
     {
@@ -219,9 +213,7 @@
       "publishedAt": "2025-07-04T10:03:03Z",
       "duration": "52:04",
       "categories": [
-        "neuro",
-        "uci",
-        "emergencias"
+        "neuro"
       ]
     },
     {
@@ -230,7 +222,6 @@
       "publishedAt": "2025-06-20T14:24:01Z",
       "duration": "1:58",
       "categories": [
-        "gestion",
         "seguridad"
       ]
     },
@@ -252,7 +243,8 @@
       "duration": "30:07",
       "categories": [
         "pediatria",
-        "hematologia"
+        "hematologia",
+        "preoperatorio"
       ]
     },
     {
@@ -262,7 +254,8 @@
       "duration": "25:03",
       "categories": [
         "uci",
-        "emergencias"
+        "emergencias",
+        "infecciosas"
       ]
     },
     {
@@ -272,7 +265,7 @@
       "duration": "22:34",
       "categories": [
         "cirugia_general",
-        "gestion"
+        "preoperatorio"
       ]
     },
     {
@@ -290,7 +283,9 @@
       "publishedAt": "2025-01-14T10:17:59Z",
       "duration": "26:34",
       "categories": [
-        "gestion"
+        "emergencias",
+        "hematologia",
+        "hemodinamica"
       ]
     },
     {
@@ -319,7 +314,8 @@
       "duration": "27:16",
       "categories": [
         "neuro",
-        "uci"
+        "uci",
+        "neurologia"
       ]
     },
     {
