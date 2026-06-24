@@ -1,0 +1,26 @@
+{
+  "name": "Sesiones ANR — Son Espases",
+  "short_name": "Sesiones ANR",
+  "description": "Biblioteca de sesiones formativas del Servicio de Anestesiología, Reanimación y Terapéutica del Dolor del H.U. Son Espases",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a1a1c",
+  "theme_color": "#008490",
+  "lang": "es",
+  "categories": ["medical", "education"],
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
