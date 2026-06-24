@@ -1,74 +1,383 @@
 {
-  "_note": "Clasificación manual. IDs válidos: emergencias, anafilaxia, anciano, cardiaca, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, vascular, ventilacion, viaarea, casos",
+  "_note": "Clasificación manual. Edita las categorías de cada vídeo. IDs válidos: emergencias, anafilaxia, anciano, cardiaca, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, vascular, ventilacion, viaarea, casos",
   "overrides": {
-    "ugguCfQ41yk":  ["uci", "ventilacion"],
-    "6-i5Hicr_vQ":  ["endocrino", "casos"],
-    "DfLcRgMUWNQ":  ["preoperatorio", "viaarea"],
-    "6lENtxYBqUM":  ["preoperatorio", "ecografia"],
-    "EUZKnTBrGmc":  ["dolor", "farmaco", "regional"],
-    "uM_AYVhd7CE":  ["hematologia"],
-    "1-10HF1lKgE":  ["dolor"],
-    "-UQ008nikc0":  ["uci", "ecografia", "hemodinamica", "emergencias"],
-    "jNViX_wIl_Y":  ["viaarea", "emergencias"],
-    "983586OYayc":  ["preoperatorio", "ventilacion"],
-    "HFVUMETrAPE":  ["preoperatorio"],
-    "0_0NMz6RmkM":  ["uci", "rcp", "emergencias"],
-    "Ie80KQV3848":  ["uci", "farmaco", "emergencias"],
-    "ZM223Ux9Nmo":  ["toracica"],
-    "8Ip0bWHJ9NE":  ["neuro", "dolor", "farmaco"],
-    "0fkX477Asoc":  ["pediatria", "neurologia", "dolor"],
-    "vBVM0FuSzPI":  ["uci", "emergencias"],
-    "JKv0pkRCArY":  ["pediatria", "cirugia_general"],
-    "7ENCqyRr5iU":  ["toracica", "ventilacion"],
-    "lfvDG54naxc":  ["anafilaxia", "emergencias"],
-    "hSMyEKaZy1g":  ["neuro", "uci", "emergencias"],
-    "UJoZ5m2ea_A":  ["gestion", "seguridad"],
-    "bK1xhN3C2ZU":  ["gestion", "seguridad"],
-    "aVus-BWOvLM":  ["preoperatorio", "gestion", "seguridad"],
-    "ZD7qr8iu3W0":  ["orl_cmf", "pediatria"],
-    "K6y_ZcGdmOE":  ["hemodinamica", "monitorizacion", "cirugia_general"],
-    "ZBOWz4pvRqo":  ["pediatria", "hematologia"],
-    "ci_M5nufoxk":  ["uci", "emergencias"],
-    "c1Nq5-R7HUc":  ["cirugia_general", "gestion"],
-    "LFiAy0luc5U":  ["gestion"],
-    "CdLxroRG-J0":  ["gestion"],
-    "EX_itbnKDAw":  ["neuro", "uci"],
-    "YPCKQLN3rFg":  ["gestion"],
-    "ho_UijcKCPM":  ["farmaco", "preoperatorio"],
-    "gCgWVIO_IKY":  ["farmaco"],
-    "mqgFSQ_bEG4":  ["hematologia"],
-    "CYYPWPwgg9M":  ["farmaco", "emergencias"],
-    "7aYMl5u_92g":  ["cardiaca", "casos"],
-    "RmXuNiazYdg":  ["toracica", "gestion"],
-    "58zWOjtrFVg":  ["gestion"],
-    "yhl6nS1oKAo":  ["preoperatorio"],
-    "5Fe3104Rm_M":  ["infecciosas", "uci"],
-    "u8W0WSMKa8w":  ["pediatria", "cardiaca"],
-    "kYXfjipp-vI":  ["pediatria"],
-    "0tM9I7XOmEs":  ["toracica", "preoperatorio"],
-    "YzGiP1d_9R0":  ["gestion"],
-    "yNzJA31vT9k":  ["hematologia"],
-    "Lp1m_Tk0Sag":  ["farmaco"],
-    "WApX-9a3joA":  ["uci", "gestion"],
-    "vzQCeXTWnsI":  ["endocrino", "preoperatorio"],
-    "gJ8m_pRyIbQ":  ["farmaco", "dolor"],
-    "W54r3MfZiD4":  ["pediatria", "preoperatorio"],
-    "M7EcF4yHIio":  ["hemodinamica", "monitorizacion"],
-    "FayzqzPGxf8":  ["fluidoterapia"],
-    "IGlDX2UsSLU":  ["neuro", "uci", "emergencias"],
-    "dyg6vTkQjfA":  ["toracica", "cirugia_general"],
-    "uCSLfsbcRG4":  ["infecciosas", "farmaco"],
-    "QsLYHPkP3AA":  ["anciano", "preoperatorio"],
-    "fFzsV4tMe1k":  ["anafilaxia", "emergencias"],
-    "NKlpsOTSDsE":  ["nefrologia", "uci"],
-    "siF_Mqyt6Z4":  ["gestion"],
-    "mdZnjUuxw14":  ["monitorizacion", "farmaco"],
-    "Loclr7GADqc":  ["dolor"],
-    "sTdddg5I5bM":  ["hepatico"],
-    "ClnBwzr7Wpk":  ["vascular"],
-    "i0Srp9IPOeI":  ["infecciosas", "uci"],
-    "AbmIGWYCvJM":  ["ventilacion", "uci"],
-    "ICvnRNE9GQc":  ["uci", "emergencias"],
-    "e30pMVANdlo":  ["hemodinamica", "monitorizacion"]
+    "ugguCfQ41yk": [
+      "uci",
+      "ventilacion"
+    ],
+    "6-i5Hicr_vQ": [
+      "endocrino",
+      "casos"
+    ],
+    "DfLcRgMUWNQ": [
+      "preoperatorio",
+      "viaarea"
+    ],
+    "6lENtxYBqUM": [
+      "preoperatorio",
+      "ecografia"
+    ],
+    "EUZKnTBrGmc": [
+      "dolor",
+      "farmaco",
+      "regional"
+    ],
+    "uM_AYVhd7CE": [
+      "hematologia"
+    ],
+    "1-10HF1lKgE": [
+      "dolor"
+    ],
+    "-UQ008nikc0": [
+      "uci",
+      "ecografia",
+      "hemodinamica",
+      "emergencias"
+    ],
+    "jNViX_wIl_Y": [
+      "viaarea",
+      "emergencias"
+    ],
+    "983586OYayc": [
+      "preoperatorio",
+      "ventilacion"
+    ],
+    "HFVUMETrAPE": [
+      "preoperatorio"
+    ],
+    "0_0NMz6RmkM": [
+      "uci",
+      "rcp",
+      "emergencias"
+    ],
+    "Ie80KQV3848": [
+      "uci",
+      "farmaco",
+      "emergencias"
+    ],
+    "ZM223Ux9Nmo": [
+      "toracica"
+    ],
+    "8Ip0bWHJ9NE": [
+      "neuro",
+      "dolor",
+      "farmaco"
+    ],
+    "0fkX477Asoc": [
+      "pediatria",
+      "neurologia",
+      "dolor"
+    ],
+    "vBVM0FuSzPI": [
+      "uci",
+      "emergencias"
+    ],
+    "JKv0pkRCArY": [
+      "pediatria",
+      "cirugia_general"
+    ],
+    "7ENCqyRr5iU": [
+      "toracica",
+      "ventilacion"
+    ],
+    "lfvDG54naxc": [
+      "anafilaxia",
+      "emergencias"
+    ],
+    "hSMyEKaZy1g": [
+      "neuro",
+      "uci",
+      "emergencias"
+    ],
+    "UJoZ5m2ea_A": [
+      "gestion",
+      "seguridad"
+    ],
+    "K6y_ZcGdmOE": [
+      "hemodinamica",
+      "monitorizacion",
+      "cirugia_general"
+    ],
+    "ZBOWz4pvRqo": [
+      "pediatria",
+      "hematologia"
+    ],
+    "ci_M5nufoxk": [
+      "uci",
+      "emergencias"
+    ],
+    "c1Nq5-R7HUc": [
+      "cirugia_general",
+      "gestion"
+    ],
+    "LFiAy0luc5U": [
+      "gestion"
+    ],
+    "iqry-fDYf-E": [
+      "gestion"
+    ],
+    "CdLxroRG-J0": [
+      "gestion"
+    ],
+    "ZD7qr8iu3W0": [
+      "orl_cmf",
+      "pediatria"
+    ],
+    "EX_itbnKDAw": [
+      "neuro",
+      "uci"
+    ],
+    "YPCKQLN3rFg": [
+      "gestion"
+    ],
+    "bK1xhN3C2ZU": [
+      "gestion",
+      "seguridad"
+    ],
+    "ho_UijcKCPM": [
+      "farmaco",
+      "preoperatorio"
+    ],
+    "gCgWVIO_IKY": [
+      "farmaco"
+    ],
+    "mqgFSQ_bEG4": [
+      "hematologia"
+    ],
+    "CYYPWPwgg9M": [
+      "farmaco",
+      "emergencias"
+    ],
+    "7aYMl5u_92g": [
+      "cardiaca",
+      "casos"
+    ],
+    "RmXuNiazYdg": [
+      "toracica",
+      "gestion"
+    ],
+    "58zWOjtrFVg": [
+      "gestion"
+    ],
+    "aLeQO6Owi0s": [
+      "obstetricia"
+    ],
+    "yhl6nS1oKAo": [
+      "preoperatorio"
+    ],
+    "G2xqbT_ZZbo": [
+      "cardiaca",
+      "hemodinamica"
+    ],
+    "5Fe3104Rm_M": [
+      "infecciosas",
+      "uci"
+    ],
+    "_EzAxD6iELg": [
+      "cardiaca"
+    ],
+    "CtSZ2vBnMD8": [
+      "pediatria",
+      "regional"
+    ],
+    "pAqJ2LYhiHY": [
+      "uci",
+      "anciano"
+    ],
+    "u8W0WSMKa8w": [
+      "pediatria",
+      "cardiaca"
+    ],
+    "OI0iynasHsA": [
+      "uci"
+    ],
+    "m5vXyBirlfk": [
+      "gestion"
+    ],
+    "kYXfjipp-vI": [
+      "pediatria"
+    ],
+    "UTvQUkyXHxY": [
+      "gestion",
+      "neurologia"
+    ],
+    "0tM9I7XOmEs": [
+      "toracica",
+      "preoperatorio"
+    ],
+    "YzGiP1d_9R0": [
+      "gestion"
+    ],
+    "A5oALJnySK0": [
+      "politrauma"
+    ],
+    "yNzJA31vT9k": [
+      "hematologia"
+    ],
+    "Lp1m_Tk0Sag": [
+      "farmaco"
+    ],
+    "WApX-9a3joA": [
+      "uci",
+      "gestion"
+    ],
+    "Vghgi5EfA0U": [
+      "viaarea",
+      "politrauma"
+    ],
+    "gXUMb_9or_U": [
+      "gestion",
+      "ventilacion"
+    ],
+    "KW96cRUlK44": [
+      "pediatria"
+    ],
+    "vzQCeXTWnsI": [
+      "endocrino",
+      "preoperatorio"
+    ],
+    "gJ8m_pRyIbQ": [
+      "farmaco",
+      "dolor"
+    ],
+    "UG7qSe8Gapg": [
+      "pediatria",
+      "uci"
+    ],
+    "-vs9sr67-1E": [
+      "uci",
+      "ventilacion"
+    ],
+    "W54r3MfZiD4": [
+      "pediatria",
+      "preoperatorio"
+    ],
+    "sLHoiGvfqfs": [
+      "neuro",
+      "regional",
+      "dolor",
+      "hematologia"
+    ],
+    "M7EcF4yHIio": [
+      "hemodinamica",
+      "monitorizacion"
+    ],
+    "FayzqzPGxf8": [
+      "fluidoterapia"
+    ],
+    "IGlDX2UsSLU": [
+      "neuro",
+      "uci",
+      "emergencias"
+    ],
+    "dyg6vTkQjfA": [
+      "toracica",
+      "cirugia_general"
+    ],
+    "uCSLfsbcRG4": [
+      "infecciosas",
+      "farmaco"
+    ],
+    "MSFmkW_y6o4": [
+      "pediatria",
+      "preoperatorio"
+    ],
+    "zTUGP2lN2F4": [
+      "toracica"
+    ],
+    "QsLYHPkP3AA": [
+      "anciano",
+      "preoperatorio"
+    ],
+    "Hn79MMGQu60": [
+      "pediatria",
+      "monitorizacion"
+    ],
+    "fFzsV4tMe1k": [
+      "anafilaxia",
+      "emergencias"
+    ],
+    "ueXqEKPpY4A": [
+      "uci",
+      "ecmo"
+    ],
+    "NmjzUpcxU6I": [
+      "pediatria",
+      "toracica"
+    ],
+    "NKlpsOTSDsE": [
+      "nefrologia",
+      "uci"
+    ],
+    "H0HVDWyy3Tg": [
+      "neuro"
+    ],
+    "siF_Mqyt6Z4": [
+      "gestion"
+    ],
+    "mdZnjUuxw14": [
+      "monitorizacion",
+      "farmaco"
+    ],
+    "Loclr7GADqc": [
+      "dolor"
+    ],
+    "8yMsCrUXT1w": [
+      "toracica",
+      "ecografia"
+    ],
+    "sTdddg5I5bM": [
+      "hepatico"
+    ],
+    "ClnBwzr7Wpk": [
+      "vascular"
+    ],
+    "i0Srp9IPOeI": [
+      "infecciosas",
+      "uci"
+    ],
+    "AbmIGWYCvJM": [
+      "ventilacion",
+      "uci"
+    ],
+    "UGwLlGeTkMo": [
+      "regional"
+    ],
+    "odlsD7YAQk8": [
+      "uci",
+      "farmaco"
+    ],
+    "PiW0hQkJ5-c": [
+      "gestion"
+    ],
+    "WdYosIZ7c98": [
+      "pediatria"
+    ],
+    "aVus-BWOvLM": [
+      "preoperatorio",
+      "gestion",
+      "seguridad"
+    ],
+    "zuSlYMFxXLg": [
+      "gestion"
+    ],
+    "NNfLra3XWxs": [
+      "toracica",
+      "cardiaca"
+    ],
+    "PW8l0VuQu54": [
+      "cardiaca",
+      "obstetricia",
+      "hematologia",
+      "politrauma"
+    ],
+    "ICvnRNE9GQc": [
+      "uci",
+      "emergencias"
+    ],
+    "e30pMVANdlo": [
+      "hemodinamica",
+      "monitorizacion"
+    ]
   }
 }
