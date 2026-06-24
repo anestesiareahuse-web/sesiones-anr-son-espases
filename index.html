@@ -567,23 +567,28 @@ async function loadVideos() {
   showSkeleton();
   try {
     const ts = Date.now();
-    // Fetch ambos archivos en paralelo
-    const [videosRes, manualRes] = await Promise.all([
-      fetch('./videos.json?_='+ts),
-      fetch('./manual_categories.json?_='+ts)
-    ]);
+    // videos.json se sirve desde GitHub Pages (actualización diaria)
+    const videosRes = await fetch('./videos.json?_='+ts);
     if (!videosRes.ok) throw new Error('HTTP '+videosRes.status);
     const data = await videosRes.json();
     allVideos = data.videos || [];
 
-    // Aplicar overrides de manual_categories.json en el cliente
-    if (manualRes.ok) {
-      const manual = await manualRes.json();
-      const overrides = manual.overrides || {};
-      allVideos = allVideos.map(v =>
-        overrides[v.videoId] ? { ...v, categories: overrides[v.videoId] } : v
+    // manual_categories.json se lee directamente de la API de GitHub
+    // para saltarnos el CDN de GitHub Pages (max-age=600 ignora query strings)
+    try {
+      const apiRes = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
+        { headers: { Accept: 'application/vnd.github.v3+json' } }
       );
-    }
+      if (apiRes.ok) {
+        const apiData = await apiRes.json();
+        const manual = JSON.parse(atob(apiData.content.replace(/\n/g, '')));
+        const overrides = manual.overrides || {};
+        allVideos = allVideos.map(v =>
+          overrides[v.videoId] ? { ...v, categories: overrides[v.videoId] } : v
+        );
+      }
+    } catch(e2) { /* si falla la API, seguimos sin overrides */ }
 
     if (data.updatedAt) {
       const d = new Date(data.updatedAt);
