@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T07:19:14.668054+00:00",
+  "updatedAt": "2026-06-24T07:42:33.894527+00:00",
   "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
   "videoCount": 99,
   "videos": [
@@ -9,7 +9,8 @@
       "publishedAt": "2026-06-05T12:04:34Z",
       "duration": "13:38",
       "categories": [
-        "uci"
+        "uci",
+        "ventilacion"
       ]
     },
     {
@@ -18,7 +19,7 @@
       "publishedAt": "2026-06-04T19:40:42Z",
       "duration": "20:31",
       "categories": [
-        "uncategorised"
+        "endocrino"
       ]
     },
     {
@@ -27,7 +28,8 @@
       "publishedAt": "2026-06-04T19:40:24Z",
       "duration": "29:35",
       "categories": [
-        "uncategorised"
+        "preoperatorio",
+        "viaarea"
       ]
     },
     {
@@ -36,7 +38,8 @@
       "publishedAt": "2026-06-04T19:40:12Z",
       "duration": "15:28",
       "categories": [
-        "uncategorised"
+        "preoperatorio",
+        "ecografia"
       ]
     },
     {
@@ -45,8 +48,7 @@
       "publishedAt": "2026-06-04T19:39:47Z",
       "duration": "52:42",
       "categories": [
-        "dolor",
-        "farmaco"
+        "dolor"
       ]
     },
     {
@@ -55,7 +57,7 @@
       "publishedAt": "2026-06-04T19:39:33Z",
       "duration": "43:58",
       "categories": [
-        "uncategorised"
+        "hematologia"
       ]
     },
     {
@@ -64,7 +66,7 @@
       "publishedAt": "2026-06-04T19:39:10Z",
       "duration": "17:45",
       "categories": [
-        "uncategorised"
+        "dolor"
       ]
     },
     {
@@ -73,7 +75,7 @@
       "publishedAt": "2026-03-09T09:11:38Z",
       "duration": "40:55",
       "categories": [
-        "uci"
+        "ecografia"
       ]
     },
     {
@@ -82,7 +84,7 @@
       "publishedAt": "2026-02-24T12:36:38Z",
       "duration": "18:32",
       "categories": [
-        "uncategorised"
+        "viaarea"
       ]
     },
     {
@@ -91,7 +93,8 @@
       "publishedAt": "2026-02-09T14:30:19Z",
       "duration": "20:50",
       "categories": [
-        "uncategorised"
+        "preoperatorio",
+        "uci"
       ]
     },
     {
@@ -100,7 +103,7 @@
       "publishedAt": "2026-02-09T14:17:32Z",
       "duration": "55:34",
       "categories": [
-        "uncategorised"
+        "preoperatorio"
       ]
     },
     {
@@ -109,7 +112,7 @@
       "publishedAt": "2026-02-09T14:13:47Z",
       "duration": "23:13",
       "categories": [
-        "uci"
+        "rcp"
       ]
     },
     {
@@ -147,7 +150,6 @@
       "duration": "16:55",
       "categories": [
         "pediatria",
-        "neuro",
         "dolor"
       ]
     },
@@ -157,7 +159,7 @@
       "publishedAt": "2025-10-02T07:24:10Z",
       "duration": "24:05",
       "categories": [
-        "uncategorised"
+        "uci"
       ]
     },
     {
@@ -166,7 +168,8 @@
       "publishedAt": "2025-07-13T18:50:37Z",
       "duration": "30:29",
       "categories": [
-        "uncategorised"
+        "pediatria",
+        "cirugia_general"
       ]
     },
     {
@@ -175,7 +178,8 @@
       "publishedAt": "2025-07-13T18:43:15Z",
       "duration": "49:40",
       "categories": [
-        "toracica"
+        "toracica",
+        "neuro"
       ]
     },
     {
@@ -184,7 +188,7 @@
       "publishedAt": "2025-07-13T18:33:06Z",
       "duration": "29:02",
       "categories": [
-        "uncategorised"
+        "anafilaxia"
       ]
     },
     {
@@ -193,7 +197,8 @@
       "publishedAt": "2025-07-04T10:03:03Z",
       "duration": "52:04",
       "categories": [
-        "uncategorised"
+        "neuro",
+        "uci"
       ]
     },
     {
@@ -202,7 +207,7 @@
       "publishedAt": "2025-06-20T14:24:01Z",
       "duration": "1:58",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -211,7 +216,8 @@
       "publishedAt": "2025-05-15T09:13:06Z",
       "duration": "43:44",
       "categories": [
-        "uncategorised"
+        "hemodinamica",
+        "cirugia_general"
       ]
     },
     {
@@ -220,7 +226,9 @@
       "publishedAt": "2025-04-01T16:10:03Z",
       "duration": "30:07",
       "categories": [
-        "pediatria"
+        "pediatria",
+        "gestion",
+        "hematologia"
       ]
     },
     {
@@ -238,7 +246,8 @@
       "publishedAt": "2025-03-31T10:49:40Z",
       "duration": "22:34",
       "categories": [
-        "uncategorised"
+        "cirugia_general",
+        "gestion"
       ]
     },
     {
@@ -247,7 +256,7 @@
       "publishedAt": "2025-03-02T16:33:35Z",
       "duration": "33:30",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -265,7 +274,7 @@
       "publishedAt": "2024-12-12T11:49:18Z",
       "duration": "39:26",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -274,7 +283,8 @@
       "publishedAt": "2024-12-12T10:49:24Z",
       "duration": "30:52",
       "categories": [
-        "pediatria"
+        "pediatria",
+        "toracica"
       ]
     },
     {
@@ -283,7 +293,8 @@
       "publishedAt": "2024-12-12T10:18:01Z",
       "duration": "27:16",
       "categories": [
-        "uncategorised"
+        "neuro",
+        "uci"
       ]
     },
     {
@@ -292,7 +303,7 @@
       "publishedAt": "2024-12-11T17:56:35Z",
       "duration": "43:25",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -310,7 +321,8 @@
       "publishedAt": "2024-12-11T11:31:30Z",
       "duration": "26:44",
       "categories": [
-        "uncategorised"
+        "farmaco",
+        "preoperatorio"
       ]
     },
     {
@@ -319,7 +331,7 @@
       "publishedAt": "2024-10-07T09:07:41Z",
       "duration": "25:31",
       "categories": [
-        "uncategorised"
+        "farmaco"
       ]
     },
     {
@@ -328,7 +340,7 @@
       "publishedAt": "2024-09-12T15:11:51Z",
       "duration": "51:41",
       "categories": [
-        "uncategorised"
+        "hematologia"
       ]
     },
     {
@@ -337,7 +349,8 @@
       "publishedAt": "2024-09-12T14:41:47Z",
       "duration": "25:35",
       "categories": [
-        "uncategorised"
+        "farmaco",
+        "casos"
       ]
     },
     {
@@ -346,7 +359,7 @@
       "publishedAt": "2024-06-17T16:48:31Z",
       "duration": "23:13",
       "categories": [
-        "uncategorised"
+        "cardiaca"
       ]
     },
     {
@@ -355,7 +368,8 @@
       "publishedAt": "2024-05-27T18:04:12Z",
       "duration": "23:59",
       "categories": [
-        "uncategorised"
+        "toracica",
+        "gestion"
       ]
     },
     {
@@ -364,7 +378,7 @@
       "publishedAt": "2024-05-27T17:57:28Z",
       "duration": "22:27",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -382,7 +396,7 @@
       "publishedAt": "2024-05-05T10:02:09Z",
       "duration": "56:27",
       "categories": [
-        "uncategorised"
+        "preoperatorio"
       ]
     },
     {
@@ -391,7 +405,8 @@
       "publishedAt": "2024-05-05T10:00:23Z",
       "duration": "32:15",
       "categories": [
-        "cardiaca"
+        "cardiaca",
+        "hemodinamica"
       ]
     },
     {
@@ -400,7 +415,8 @@
       "publishedAt": "2024-04-15T20:25:08Z",
       "duration": "49:01",
       "categories": [
-        "uncategorised"
+        "infecciosas",
+        "uci"
       ]
     },
     {
@@ -428,7 +444,8 @@
       "publishedAt": "2024-04-09T16:14:43Z",
       "duration": "34:52",
       "categories": [
-        "uci"
+        "uci",
+        "anciano"
       ]
     },
     {
@@ -437,7 +454,8 @@
       "publishedAt": "2024-03-27T20:26:06Z",
       "duration": "23:41",
       "categories": [
-        "uncategorised"
+        "pediatria",
+        "cardiaca"
       ]
     },
     {
@@ -464,7 +482,7 @@
       "publishedAt": "2024-03-27T18:39:07Z",
       "duration": "42:48",
       "categories": [
-        "uncategorised"
+        "pediatria"
       ]
     },
     {
@@ -473,7 +491,8 @@
       "publishedAt": "2024-03-27T08:36:40Z",
       "duration": "25:33",
       "categories": [
-        "gestion"
+        "gestion",
+        "neurologia"
       ]
     },
     {
@@ -482,7 +501,7 @@
       "publishedAt": "2024-02-29T18:57:57Z",
       "duration": "21:01",
       "categories": [
-        "uncategorised"
+        "toracica"
       ]
     },
     {
@@ -491,7 +510,7 @@
       "publishedAt": "2024-02-29T18:21:36Z",
       "duration": "32:52",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -500,7 +519,7 @@
       "publishedAt": "2024-02-29T18:18:29Z",
       "duration": "24:12",
       "categories": [
-        "uci"
+        "politrauma"
       ]
     },
     {
@@ -509,7 +528,7 @@
       "publishedAt": "2024-02-29T18:15:21Z",
       "duration": "58:34",
       "categories": [
-        "uncategorised"
+        "hematologia"
       ]
     },
     {
@@ -518,7 +537,7 @@
       "publishedAt": "2024-02-29T18:11:53Z",
       "duration": "33:41",
       "categories": [
-        "uncategorised"
+        "farmaco"
       ]
     },
     {
@@ -527,7 +546,8 @@
       "publishedAt": "2024-02-19T08:07:27Z",
       "duration": "30:38",
       "categories": [
-        "uncategorised"
+        "uci",
+        "gestion"
       ]
     },
     {
@@ -537,7 +557,7 @@
       "duration": "35:20",
       "categories": [
         "viaarea",
-        "uci"
+        "politrauma"
       ]
     },
     {
@@ -546,7 +566,8 @@
       "publishedAt": "2023-12-05T13:45:52Z",
       "duration": "35:49",
       "categories": [
-        "gestion"
+        "gestion",
+        "ventilacion"
       ]
     },
     {
@@ -564,7 +585,8 @@
       "publishedAt": "2023-11-27T12:08:33Z",
       "duration": "27:39",
       "categories": [
-        "uncategorised"
+        "endocrino",
+        "preoperatorio"
       ]
     },
     {
@@ -573,7 +595,8 @@
       "publishedAt": "2023-11-13T09:38:53Z",
       "duration": "46:18",
       "categories": [
-        "uncategorised"
+        "farmaco",
+        "dolor"
       ]
     },
     {
@@ -592,7 +615,8 @@
       "publishedAt": "2023-11-01T21:24:22Z",
       "duration": "29:45",
       "categories": [
-        "uci"
+        "uci",
+        "ventilacion"
       ]
     },
     {
@@ -601,7 +625,8 @@
       "publishedAt": "2023-11-01T21:10:53Z",
       "duration": "42:27",
       "categories": [
-        "uncategorised"
+        "pediatria",
+        "preoperatorio"
       ]
     },
     {
@@ -612,7 +637,8 @@
       "categories": [
         "neuro",
         "regional",
-        "dolor"
+        "dolor",
+        "hematologia"
       ]
     },
     {
@@ -621,7 +647,8 @@
       "publishedAt": "2023-11-01T20:54:39Z",
       "duration": "38:10",
       "categories": [
-        "uncategorised"
+        "hemodinamica",
+        "monitorizacion"
       ]
     },
     {
@@ -630,7 +657,7 @@
       "publishedAt": "2023-11-01T20:43:13Z",
       "duration": "31:25",
       "categories": [
-        "uncategorised"
+        "fluidoterapia"
       ]
     },
     {
@@ -639,7 +666,8 @@
       "publishedAt": "2023-09-14T17:27:13Z",
       "duration": "30:08",
       "categories": [
-        "uncategorised"
+        "neuro",
+        "uci"
       ]
     },
     {
@@ -648,7 +676,8 @@
       "publishedAt": "2023-06-26T09:09:17Z",
       "duration": "33:34",
       "categories": [
-        "uncategorised"
+        "toracica",
+        "cirugia_general"
       ]
     },
     {
@@ -657,7 +686,8 @@
       "publishedAt": "2023-06-23T17:00:04Z",
       "duration": "30:38",
       "categories": [
-        "uncategorised"
+        "infecciosas",
+        "farmaco"
       ]
     },
     {
@@ -666,7 +696,8 @@
       "publishedAt": "2023-06-23T16:49:28Z",
       "duration": "39:40",
       "categories": [
-        "pediatria"
+        "pediatria",
+        "preoperatorio"
       ]
     },
     {
@@ -684,7 +715,8 @@
       "publishedAt": "2023-06-12T17:58:33Z",
       "duration": "28:54",
       "categories": [
-        "uncategorised"
+        "anciano",
+        "preoperatorio"
       ]
     },
     {
@@ -693,7 +725,8 @@
       "publishedAt": "2023-06-12T17:57:02Z",
       "duration": "28:17",
       "categories": [
-        "pediatria"
+        "pediatria",
+        "monitorizacion"
       ]
     },
     {
@@ -702,7 +735,7 @@
       "publishedAt": "2023-05-08T11:00:00Z",
       "duration": "37:35",
       "categories": [
-        "uncategorised"
+        "anafilaxia"
       ]
     },
     {
@@ -711,7 +744,8 @@
       "publishedAt": "2023-05-08T10:37:47Z",
       "duration": "26:40",
       "categories": [
-        "uci"
+        "uci",
+        "ecmo"
       ]
     },
     {
@@ -730,7 +764,8 @@
       "publishedAt": "2023-04-25T09:07:57Z",
       "duration": "41:02",
       "categories": [
-        "uncategorised"
+        "nefrologia",
+        "uci"
       ]
     },
     {
@@ -748,7 +783,7 @@
       "publishedAt": "2023-04-04T16:43:09Z",
       "duration": "20:49",
       "categories": [
-        "uncategorised"
+        "gestion"
       ]
     },
     {
@@ -757,7 +792,8 @@
       "publishedAt": "2023-04-04T16:31:49Z",
       "duration": "1:11:26",
       "categories": [
-        "uncategorised"
+        "monitorizacion",
+        "farmaco"
       ]
     },
     {
@@ -766,7 +802,7 @@
       "publishedAt": "2023-03-29T08:40:21Z",
       "duration": "30:47",
       "categories": [
-        "uncategorised"
+        "dolor"
       ]
     },
     {
@@ -775,7 +811,8 @@
       "publishedAt": "2023-03-21T12:48:03Z",
       "duration": "28:56",
       "categories": [
-        "toracica"
+        "toracica",
+        "ecografia"
       ]
     },
     {
@@ -784,7 +821,7 @@
       "publishedAt": "2023-03-13T10:26:27Z",
       "duration": "30:15",
       "categories": [
-        "uncategorised"
+        "hepatico"
       ]
     },
     {
@@ -793,7 +830,7 @@
       "publishedAt": "2023-03-05T10:34:52Z",
       "duration": "33:50",
       "categories": [
-        "uncategorised"
+        "vascular"
       ]
     },
     {
@@ -802,7 +839,8 @@
       "publishedAt": "2023-02-27T10:13:26Z",
       "duration": "27:24",
       "categories": [
-        "uncategorised"
+        "infecciosas",
+        "uci"
       ]
     },
     {
@@ -811,7 +849,8 @@
       "publishedAt": "2023-02-20T23:04:52Z",
       "duration": "41:05",
       "categories": [
-        "uncategorised"
+        "ventilacion",
+        "uci"
       ]
     },
     {
@@ -857,7 +896,8 @@
       "publishedAt": "2023-01-16T11:52:30Z",
       "duration": "39:43",
       "categories": [
-        "uncategorised"
+        "preoperatorio",
+        "gestion"
       ]
     },
     {
@@ -876,8 +916,7 @@
       "duration": "48:34",
       "categories": [
         "toracica",
-        "cardiaca",
-        "neuro"
+        "cardiaca"
       ]
     },
     {
@@ -887,8 +926,9 @@
       "duration": "52:53",
       "categories": [
         "cardiaca",
-        "uci",
-        "obstetricia"
+        "obstetricia",
+        "hematologia",
+        "politrauma"
       ]
     },
     {
@@ -897,7 +937,7 @@
       "publishedAt": "2023-01-16T10:23:38Z",
       "duration": "42:36",
       "categories": [
-        "uncategorised"
+        "uci"
       ]
     },
     {
@@ -906,7 +946,8 @@
       "publishedAt": "2023-01-16T10:17:59Z",
       "duration": "42:10",
       "categories": [
-        "uncategorised"
+        "hemodinamica",
+        "monitorizacion"
       ]
     }
   ]
