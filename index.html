@@ -9,23 +9,23 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
     /* ── Son Espases palette ── */
-    --teal:    #1a7a6e;
-    --teal2:   #22a090;
-    --teal3:   #0f5248;
-    --bg:      #071210;
-    --bg2:     #0c1e1b;
-    --surface: #102320;
-    --surface2:#163530;
-    --surface3:#1c4540;
-    --teal-dim:rgba(26,122,110,.15);
-    --teal-glow:rgba(26,122,110,.28);
-    --text:    #dff0ec;
-    --muted:   #6a9b96;
-    --border:  rgba(26,122,110,.18);
-    --border2: rgba(26,122,110,.35);
+    --teal:    #008490;   /* color corporativo Son Espases */
+    --teal2:   #00a8b8;   /* teal más vivo para acentos */
+    --teal3:   #005f6b;   /* teal oscuro */
+    --bg:      #0a1a1c;   /* fondo principal — menos negro, más teal */
+    --bg2:     #0e2226;
+    --surface: #122b2f;   /* tarjetas */
+    --surface2:#183438;
+    --surface3:#1e3d42;
+    --teal-dim:rgba(0,132,144,.18);
+    --teal-glow:rgba(0,132,144,.35);
+    --text:    #e0f4f6;
+    --muted:   #6aabb4;
+    --border:  rgba(0,132,144,.22);
+    --border2: rgba(0,132,144,.45);
     --radius:  14px;
     --red:     #e85555;
-    /* aliases used throughout */
+    /* aliases */
     --green:   var(--teal2);
     --green2:  var(--teal);
     --green-dim: var(--teal-dim);
@@ -79,7 +79,7 @@
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 0 16px var(--teal-glow);transition:box-shadow .2s;
     -webkit-tap-highlight-color:transparent;user-select:none}
-  .logo-icon:active{box-shadow:0 0 24px rgba(26,122,110,.5)}
+  .logo-icon:active{box-shadow:0 0 24px rgba(0,132,144,.5)}
   .logo-icon svg{width:22px;height:22px}
   .logo-text{flex:1;min-width:0}
   .logo-title{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -96,7 +96,7 @@
     border-radius:24px;color:var(--text);font-size:14px;padding:0 36px 0 38px;
     outline:none;transition:border-color .2s,box-shadow .2s}
   #search::placeholder{color:var(--muted)}
-  #search:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(26,122,110,.18)}
+  #search:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(0,132,144,.18)}
   .search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);
     background:var(--surface2);border:none;color:var(--muted);border-radius:50%;
     width:22px;height:22px;display:none;align-items:center;justify-content:center;
@@ -191,9 +191,9 @@
     background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.5) 100%);
     opacity:0;transition:opacity .2s}
   .card:hover .play-ov{opacity:1}
-  .play-circle{width:50px;height:50px;border-radius:50%;background:rgba(26,122,110,.9);
+  .play-circle{width:50px;height:50px;border-radius:50%;background:rgba(0,132,144,.9);
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 0 26px rgba(26,122,110,.6)}
+    box-shadow:0 0 26px rgba(0,132,144,.6)}
   .play-circle svg{width:20px;height:20px;fill:#fff;margin-left:3px}
   .dur{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.75);color:#fff;
     font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.3px}
@@ -204,7 +204,7 @@
   .card-date{font-size:11px;color:var(--muted);flex-shrink:0}
   .card-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
   .tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
-    color:var(--green);border:1px solid rgba(26,122,110,.35);font-weight:600}
+    color:var(--green);border:1px solid rgba(0,132,144,.35);font-weight:600}
   .tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
 
   /* ── Empty / states ── */
@@ -250,7 +250,7 @@
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .av-cats{display:flex;flex-wrap:wrap;gap:4px}
   .av-tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
-    color:var(--green);border:1px solid rgba(26,122,110,.35);font-weight:600}
+    color:var(--green);border:1px solid rgba(0,132,144,.35);font-weight:600}
   .av-tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
   .av-arrow{color:var(--muted);font-size:14px;flex-shrink:0;transition:transform .2s;margin-top:2px}
   .av-item.open .av-arrow{transform:rotate(180deg)}
@@ -339,12 +339,12 @@
   <div class="hdr-top">
     <div class="logo-icon" id="logoIcon" title="Toca 5 veces para abrir el panel de administración">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M19 8C19 11.31 16.31 14 13 14C9.69 14 7 11.31 7 8" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M7 8V4C7 3.45 7.45 3 8 3H10C10.55 3 11 3.45 11 4V8" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M13 8V4C13 3.45 13.45 3 14 3H16C16.55 3 17 3.45 17 4V8" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M13 14V17C13 19.21 11.21 21 9 21C6.79 21 5 19.21 5 17V15" stroke="#22a090" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="5" cy="14" r="1.5" stroke="#22a090" stroke-width="1.4"/>
-        <circle cx="19" cy="8" r="1.2" fill="#22a090"/>
+        <path d="M19 8C19 11.31 16.31 14 13 14C9.69 14 7 11.31 7 8" stroke="#00a8b8" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M7 8V4C7 3.45 7.45 3 8 3H10C10.55 3 11 3.45 11 4V8" stroke="#00a8b8" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M13 8V4C13 3.45 13.45 3 14 3H16C16.55 3 17 3.45 17 4V8" stroke="#00a8b8" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M13 14V17C13 19.21 11.21 21 9 21C6.79 21 5 19.21 5 17V15" stroke="#00a8b8" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="5" cy="14" r="1.5" stroke="#00a8b8" stroke-width="1.4"/>
+        <circle cx="19" cy="8" r="1.2" fill="#00a8b8"/>
       </svg>
     </div>
     <div class="logo-text">
