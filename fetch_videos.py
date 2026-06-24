@@ -206,7 +206,7 @@ def main():
 
     payload = {
         "updatedAt": datetime.now(timezone.utc).isoformat(),
-        "playlistId": PLAYLIST_ID,
+        "playlistIds": PLAYLIST_IDS,
         "videoCount": len(videos),
         "videos": videos,
     }
