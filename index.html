@@ -44,37 +44,54 @@
 
   /* ── Hero splash ── */
   .hero{
-    position:relative;width:100%;height:280px;overflow:hidden;
+    position:relative;width:100%;height:340px;overflow:hidden;
     display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-    padding-bottom:28px;
+    padding-bottom:32px;
   }
   .hero-img{
-    position:absolute;inset:-30%;width:100%;height:160%;object-fit:cover;object-position:center 30%;
-    filter:brightness(.45) saturate(1.2);
+    position:absolute;top:-20%;left:0;
+    width:100%;height:140%;
+    object-fit:cover;object-position:center 35%;
+    filter:brightness(.38) saturate(1.3);
     will-change:transform;
   }
   .hero-overlay{
     position:absolute;inset:0;
-    background:linear-gradient(180deg,
-      rgba(7,18,16,.15) 0%,
-      rgba(7,18,16,.3) 40%,
-      rgba(7,18,16,.85) 100%);
+    background:
+      linear-gradient(90deg, rgba(0,132,144,.22) 0%, transparent 60%),
+      linear-gradient(180deg,
+        rgba(10,26,28,.05) 0%,
+        rgba(10,26,28,.25) 40%,
+        rgba(10,26,28,.92) 100%);
   }
-  .hero-content{position:relative;z-index:1;text-align:center}
-  /* Son Espases logo recreation */
-  .se-logo{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:6px}
-  .se-logo-top{display:flex;align-items:center;gap:8px}
-  .se-dots{display:grid;grid-template-columns:repeat(3,5px);gap:3px}
-  .se-dot{width:5px;height:5px;border-radius:50%;background:#fff;opacity:.9}
-  .se-dot.sm{width:4px;height:4px;opacity:.6}
-  .se-name{font-size:20px;color:#fff;line-height:1;letter-spacing:.2px}
+  /* teal left-edge accent */
+  .hero-edge{
+    position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(180deg,var(--teal2),var(--teal3));
+    z-index:1;
+  }
+  .hero-content{
+    position:relative;z-index:2;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  /* Son Espases logo */
+  .se-logo{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .se-logo-top{display:flex;align-items:center;gap:10px}
+  .se-dots{display:grid;grid-template-columns:repeat(3,6px);gap:3.5px}
+  .se-dot{width:6px;height:6px;border-radius:1px;background:#fff;opacity:.92}
+  .se-dot.sm{opacity:.5}
+  .se-name{font-size:26px;color:#fff;line-height:1;letter-spacing:.3px}
   .se-name span{font-weight:300}
   .se-name strong{font-weight:800}
-  .se-sub{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:1.5px;
-    text-transform:lowercase;border-top:1px solid rgba(255,255,255,.25);
-    padding-top:3px;width:100%;text-align:center}
-  .hero-tagline{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.5px;
-    text-transform:uppercase}
+  .se-divider{width:100%;height:1px;background:rgba(255,255,255,.28);margin:2px 0}
+  .se-sub{font-size:10.5px;color:rgba(255,255,255,.72);letter-spacing:2px;
+    text-transform:lowercase}
+  .hero-tagline{
+    font-size:10.5px;color:rgba(255,255,255,.5);letter-spacing:1.8px;
+    text-transform:uppercase;
+    border:1px solid rgba(255,255,255,.18);border-radius:20px;
+    padding:4px 14px;backdrop-filter:blur(4px);background:rgba(0,132,144,.12);
+  }
 
   /* ── Header ── */
   header{position:sticky;top:0;z-index:100;
@@ -326,6 +343,7 @@
 <div class="hero" id="heroSection">
   <img class="hero-img" src="./assets/hero.jpg" alt="" />
   <div class="hero-overlay"></div>
+  <div class="hero-edge"></div>
   <div class="hero-content">
     <div class="se-logo">
       <div class="se-logo-top">
@@ -336,6 +354,7 @@
         </div>
         <div class="se-name"><span>Son </span><strong>Espases</strong></div>
       </div>
+      <div class="se-divider"></div>
       <div class="se-sub">hospital universitari</div>
     </div>
     <div class="hero-tagline">Sesiones de Anestesiología y Reanimación</div>
@@ -447,9 +466,10 @@ const CATS = [
   { id:'emergencias',   label:'Emergencias',          emerg:true },
   { id:'anafilaxia',    label:'Anafilaxia' },
   { id:'anciano',       label:'Anciano / Fragilidad' },
-  { id:'cardiaca',      label:'Cirugía cardíaca' },
+  { id:'cardiaca',      label:'Cardíaca' },
+  { id:'cardiologia',   label:'Cardiología' },
   { id:'cirugia_general',label:'Cirugía general' },
-  { id:'dolor',         label:'Dolor / DAP' },
+  { id:'dolor',         label:'DAP / UDO' },
   { id:'ecmo',          label:'ECMO' },
   { id:'ecografia',     label:'Ecografía / POCUS' },
   { id:'endocrino',     label:'Endocrino' },
@@ -462,21 +482,21 @@ const CATS = [
   { id:'infecciosas',   label:'Infecciosas' },
   { id:'monitorizacion',label:'Monitorización' },
   { id:'nefrologia',    label:'Nefrología / Renal' },
-  { id:'neuro',         label:'Neuroanestesia' },
+  { id:'neuro',         label:'Neurocirugía' },
   { id:'neurologia',    label:'Neurología' },
   { id:'obesidad',      label:'Obesidad' },
   { id:'obstetricia',   label:'Obstetricia' },
-  { id:'orl_cmf',       label:'ORL / Cirugía maxilofacial' },
+  { id:'orl_cmf',       label:'ORL / CMF' },
   { id:'pediatria',     label:'Pediatría' },
   { id:'politrauma',    label:'Politrauma' },
   { id:'preoperatorio', label:'Preoperatorio' },
   { id:'rcp',           label:'RCP' },
-  { id:'regional',      label:'Anestesia regional' },
+  { id:'regional',      label:'Regional' },
   { id:'seguridad',     label:'Seguridad del paciente' },
-  { id:'toracica',      label:'Cirugía torácica' },
+  { id:'toracica',      label:'Torácica' },
   { id:'trasplante',    label:'Trasplante' },
   { id:'traumatologia', label:'Traumatología' },
-  { id:'uci',           label:'Reanimación / UCI' },
+  { id:'uci',           label:'Reanimación' },
   { id:'vascular',      label:'Vascular' },
   { id:'ventilacion',   label:'Ventilación' },
   { id:'viaarea',       label:'Vía aérea' },
