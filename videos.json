@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T17:03:04.657962+00:00",
+  "updatedAt": "2026-06-24T17:08:46.754729+00:00",
   "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
   "videoCount": 99,
   "videos": [
@@ -379,6 +379,7 @@
       "duration": "23:13",
       "categories": [
         "cardiaca",
+        "cardiologia",
         "casos"
       ]
     },
@@ -426,6 +427,7 @@
       "duration": "32:15",
       "categories": [
         "cardiaca",
+        "cardiologia",
         "hemodinamica"
       ]
     },
@@ -445,7 +447,8 @@
       "publishedAt": "2024-04-15T20:08:29Z",
       "duration": "21:30",
       "categories": [
-        "cardiaca"
+        "cardiaca",
+        "cardiologia"
       ]
     },
     {
