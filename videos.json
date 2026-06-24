@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T07:42:33.894527+00:00",
+  "updatedAt": "2026-06-24T07:55:16.474654+00:00",
   "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
   "videoCount": 99,
   "videos": [
@@ -19,7 +19,8 @@
       "publishedAt": "2026-06-04T19:40:42Z",
       "duration": "20:31",
       "categories": [
-        "endocrino"
+        "endocrino",
+        "casos"
       ]
     },
     {
@@ -48,7 +49,9 @@
       "publishedAt": "2026-06-04T19:39:47Z",
       "duration": "52:42",
       "categories": [
-        "dolor"
+        "dolor",
+        "farmaco",
+        "regional"
       ]
     },
     {
@@ -75,7 +78,10 @@
       "publishedAt": "2026-03-09T09:11:38Z",
       "duration": "40:55",
       "categories": [
-        "ecografia"
+        "uci",
+        "ecografia",
+        "hemodinamica",
+        "emergencias"
       ]
     },
     {
@@ -84,7 +90,8 @@
       "publishedAt": "2026-02-24T12:36:38Z",
       "duration": "18:32",
       "categories": [
-        "viaarea"
+        "viaarea",
+        "emergencias"
       ]
     },
     {
@@ -94,7 +101,7 @@
       "duration": "20:50",
       "categories": [
         "preoperatorio",
-        "uci"
+        "ventilacion"
       ]
     },
     {
@@ -112,7 +119,9 @@
       "publishedAt": "2026-02-09T14:13:47Z",
       "duration": "23:13",
       "categories": [
-        "rcp"
+        "uci",
+        "rcp",
+        "emergencias"
       ]
     },
     {
@@ -121,7 +130,9 @@
       "publishedAt": "2026-02-09T14:13:23Z",
       "duration": "21:49",
       "categories": [
-        "uci"
+        "uci",
+        "farmaco",
+        "emergencias"
       ]
     },
     {
@@ -140,7 +151,8 @@
       "duration": "21:16",
       "categories": [
         "neuro",
-        "dolor"
+        "dolor",
+        "farmaco"
       ]
     },
     {
@@ -150,6 +162,7 @@
       "duration": "16:55",
       "categories": [
         "pediatria",
+        "neurologia",
         "dolor"
       ]
     },
@@ -159,7 +172,8 @@
       "publishedAt": "2025-10-02T07:24:10Z",
       "duration": "24:05",
       "categories": [
-        "uci"
+        "uci",
+        "emergencias"
       ]
     },
     {
@@ -179,7 +193,7 @@
       "duration": "49:40",
       "categories": [
         "toracica",
-        "neuro"
+        "ventilacion"
       ]
     },
     {
@@ -188,7 +202,8 @@
       "publishedAt": "2025-07-13T18:33:06Z",
       "duration": "29:02",
       "categories": [
-        "anafilaxia"
+        "anafilaxia",
+        "emergencias"
       ]
     },
     {
@@ -198,7 +213,8 @@
       "duration": "52:04",
       "categories": [
         "neuro",
-        "uci"
+        "uci",
+        "emergencias"
       ]
     },
     {
@@ -217,6 +233,7 @@
       "duration": "43:44",
       "categories": [
         "hemodinamica",
+        "monitorizacion",
         "cirugia_general"
       ]
     },
@@ -227,7 +244,6 @@
       "duration": "30:07",
       "categories": [
         "pediatria",
-        "gestion",
         "hematologia"
       ]
     },
@@ -237,7 +253,8 @@
       "publishedAt": "2025-04-01T15:35:22Z",
       "duration": "25:03",
       "categories": [
-        "uci"
+        "uci",
+        "emergencias"
       ]
     },
     {
@@ -350,7 +367,7 @@
       "duration": "25:35",
       "categories": [
         "farmaco",
-        "casos"
+        "emergencias"
       ]
     },
     {
@@ -359,7 +376,8 @@
       "publishedAt": "2024-06-17T16:48:31Z",
       "duration": "23:13",
       "categories": [
-        "cardiaca"
+        "cardiaca",
+        "casos"
       ]
     },
     {
@@ -667,7 +685,8 @@
       "duration": "30:08",
       "categories": [
         "neuro",
-        "uci"
+        "uci",
+        "emergencias"
       ]
     },
     {
@@ -735,7 +754,8 @@
       "publishedAt": "2023-05-08T11:00:00Z",
       "duration": "37:35",
       "categories": [
-        "anafilaxia"
+        "anafilaxia",
+        "emergencias"
       ]
     },
     {
@@ -937,7 +957,8 @@
       "publishedAt": "2023-01-16T10:23:38Z",
       "duration": "42:36",
       "categories": [
-        "uci"
+        "uci",
+        "emergencias"
       ]
     },
     {

@@ -1,427 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
   <title>Sesiones ANR — Son Espases</title>
-  <meta name="theme-color" content="#060d09" />
+  <meta name="theme-color" content="#060d09"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#060d09; --bg2:#0b1810; --surface:#0f2016; --surface2:#162b1c; --surface3:#1c3523;
+    --green:#00c878; --green2:#00a862; --green-dim:rgba(0,200,120,.13); --green-glow:rgba(0,200,120,.22);
+    --text:#e8f5ee; --muted:#6b9478; --border:rgba(0,200,120,.11); --border2:rgba(0,200,120,.22);
+    --radius:14px; --red:#e85555;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden}
+  body::before{content:'';position:fixed;top:-180px;left:50%;transform:translateX(-50%);
+    width:560px;height:560px;
+    background:radial-gradient(circle,rgba(0,200,120,.07) 0%,transparent 68%);
+    pointer-events:none;z-index:0}
 
-    :root {
-      --bg:         #060d09;
-      --bg2:        #0b1810;
-      --surface:    #0f2016;
-      --surface2:   #162b1c;
-      --surface3:   #1c3523;
-      --green:      #00c878;
-      --green2:     #00a862;
-      --green-dim:  rgba(0,200,120,0.15);
-      --green-glow: rgba(0,200,120,0.25);
-      --text:       #e8f5ee;
-      --muted:      #6b9478;
-      --border:     rgba(0,200,120,0.12);
-      --border2:    rgba(0,200,120,0.22);
-      --radius:     16px;
-    }
+  /* ── Header ── */
+  header{position:sticky;top:0;z-index:100;
+    background:linear-gradient(180deg,#060d09 60%,transparent);
+    padding:16px 16px 0}
+  .hdr-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .logo-icon{width:40px;height:40px;border-radius:12px;flex-shrink:0;cursor:pointer;
+    background:linear-gradient(145deg,#0f2a1a,#1a4028);border:1px solid var(--border2);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 16px rgba(0,200,120,.18);transition:box-shadow .2s;
+    -webkit-tap-highlight-color:transparent;user-select:none}
+  .logo-icon:active{box-shadow:0 0 24px rgba(0,200,120,.4)}
+  .logo-icon svg{width:22px;height:22px}
+  .logo-text{flex:1;min-width:0}
+  .logo-title{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .logo-sub{font-size:11px;color:var(--muted);white-space:nowrap}
+  .update-badge{font-size:10px;color:var(--green);background:var(--green-dim);
+    border:1px solid var(--border2);border-radius:20px;padding:4px 9px;
+    white-space:nowrap;flex-shrink:0;font-weight:600}
 
-    html { scroll-behavior: smooth; }
+  /* ── Search ── */
+  .search-wrap{position:relative;margin-bottom:14px}
+  .search-wrap .ico-s{position:absolute;left:13px;top:50%;transform:translateY(-50%);
+    width:16px;height:16px;fill:var(--muted);pointer-events:none}
+  #search{width:100%;height:42px;background:var(--surface);border:1px solid var(--border);
+    border-radius:24px;color:var(--text);font-size:14px;padding:0 36px 0 38px;
+    outline:none;transition:border-color .2s,box-shadow .2s}
+  #search::placeholder{color:var(--muted)}
+  #search:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(0,200,120,.09)}
+  .search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    background:var(--surface2);border:none;color:var(--muted);border-radius:50%;
+    width:22px;height:22px;display:none;align-items:center;justify-content:center;
+    cursor:pointer;font-size:13px}
+  .search-clear.on{display:flex}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100dvh;
-      overflow-x: hidden;
-    }
+  /* ── Main ── */
+  main{position:relative;z-index:1;padding:10px 12px 48px}
 
-    /* ── Ambient background glow ── */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0,200,120,0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  /* ── View transitions ── */
+  .view{display:none}
+  .view.active{display:block}
 
-    /* ── Header ── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: linear-gradient(180deg, #060d09 55%, transparent);
-      padding: 18px 16px 0;
-    }
+  /* ── Category grid ── */
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:16px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
+    display:flex;flex-direction:column;gap:6px;-webkit-tap-highlight-color:transparent}
+  .cat-card:hover,.cat-card:focus-visible{transform:translateY(-2px);border-color:var(--border2);
+    box-shadow:0 6px 20px rgba(0,0,0,.4);outline:none}
+  .cat-card:active{transform:scale(.97)}
+  .cat-card.full{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;
+    padding:14px 18px}
+  .cat-card.emerg{border-color:rgba(232,85,85,.25);background:rgba(232,85,85,.05)}
+  .cat-card.emerg:hover{border-color:rgba(232,85,85,.5)}
+  .cat-card.emerg .cat-name{color:#f08080}
+  .cat-card.emerg .cat-count{background:rgba(232,85,85,.18);color:#f08080;border-color:rgba(232,85,85,.3)}
+  .cat-name{font-size:14px;font-weight:600;line-height:1.25}
+  .cat-count{font-size:12px;font-weight:700;color:var(--green);background:var(--green-dim);
+    border:1px solid var(--border2);border-radius:20px;padding:2px 9px;
+    align-self:flex-start;white-space:nowrap}
+  .cat-card.full .cat-count{font-size:13px}
 
-    .header-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
+  /* ── List view ── */
+  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .back-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);
+    border-radius:22px;height:34px;padding:0 14px;font-size:13px;cursor:pointer;
+    display:flex;align-items:center;gap:6px;transition:border-color .18s,color .18s;
+    flex-shrink:0;-webkit-tap-highlight-color:transparent}
+  .back-btn:hover{border-color:var(--green2);color:var(--text)}
+  .back-btn svg{width:14px;height:14px;fill:currentColor}
+  .list-title{font-size:15px;font-weight:700;flex:1;min-width:0;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .results-info{font-size:12px;color:var(--muted);margin-bottom:14px;padding:0 2px;min-height:18px}
 
-    /* Logo / stethoscope icon */
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: linear-gradient(145deg, #0f2a1a, #1a4028);
-      border: 1px solid var(--border2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 0 18px rgba(0,200,120,0.2);
-    }
-    .logo-icon svg {
-      width: 24px;
-      height: 24px;
-    }
+  /* ── Video grid ── */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+  @media(max-width:380px){.grid{grid-template-columns:1fr}}
 
-    .logo-text { flex: 1; min-width: 0; }
-    .logo-title {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.1px;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .logo-sub {
-      font-size: 11px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
+  /* ── Video card ── */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;
+    text-decoration:none;color:inherit;display:block;-webkit-tap-highlight-color:transparent}
+  .card:hover{transform:translateY(-3px);border-color:var(--border2);
+    box-shadow:0 8px 24px rgba(0,0,0,.5)}
+  .card:active{transform:scale(.98)}
+  .thumb-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+  .thumb-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+  .card:hover .thumb-wrap img{transform:scale(1.04)}
+  .play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.5) 100%);
+    opacity:0;transition:opacity .2s}
+  .card:hover .play-ov{opacity:1}
+  .play-circle{width:50px;height:50px;border-radius:50%;background:rgba(0,200,120,.85);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 26px rgba(0,200,120,.55)}
+  .play-circle svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+  .dur{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.75);color:#fff;
+    font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.3px}
+  .card-body{padding:12px 12px 10px}
+  .card-title{font-size:13px;font-weight:600;line-height:1.4;display:-webkit-box;
+    -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .card-date{font-size:11px;color:var(--muted);flex-shrink:0}
+  .card-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+  .tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
+    color:var(--green);border:1px solid rgba(0,200,120,.2);font-weight:600}
+  .tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
 
-    .update-badge {
-      font-size: 10px;
-      color: var(--green);
-      background: var(--green-dim);
-      border: 1px solid var(--border2);
-      border-radius: 20px;
-      padding: 4px 10px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      font-weight: 600;
-    }
+  /* ── Empty / states ── */
+  .empty{display:flex;flex-direction:column;align-items:center;gap:14px;
+    padding:72px 24px;color:var(--muted);text-align:center;grid-column:1/-1}
+  .empty svg{width:48px;height:48px;opacity:.3;fill:var(--green)}
+  .empty p{font-size:14px;line-height:1.6}
+  .empty code{background:var(--surface2);border:1px solid var(--border);
+    padding:2px 7px;border-radius:4px;font-size:12px;color:var(--green)}
 
-    /* ── Search ── */
-    .search-wrap {
-      position: relative;
-      margin-bottom: 14px;
-    }
-    .search-wrap .ico-search {
-      position: absolute;
-      left: 13px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      fill: var(--muted);
-      pointer-events: none;
-    }
-    #search {
-      width: 100%;
-      height: 42px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      color: var(--text);
-      font-size: 14px;
-      padding: 0 36px 0 38px;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    #search::placeholder { color: var(--muted); }
-    #search:focus {
-      border-color: var(--green2);
-      box-shadow: 0 0 0 3px rgba(0,200,120,0.1);
-    }
-    .search-clear {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--surface2);
-      border: none;
-      color: var(--muted);
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 13px;
-    }
-    .search-clear.visible { display: flex; }
+  /* ── Skeleton ── */
+  .skel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .skel-t{width:100%;aspect-ratio:16/9;
+    background:linear-gradient(90deg,var(--surface2) 25%,var(--surface3) 50%,var(--surface2) 75%);
+    background-size:200% 100%;animation:shimmer 1.5s infinite}
+  .skel-b{padding:12px;display:flex;flex-direction:column;gap:8px}
+  .skel-l{height:11px;border-radius:6px;
+    background:linear-gradient(90deg,var(--surface2) 25%,var(--surface3) 50%,var(--surface2) 75%);
+    background-size:200% 100%;animation:shimmer 1.5s infinite}
+  .skel-l.s{width:50%}
+  @keyframes shimmer{to{background-position:-200% 0}}
 
-    /* ── Category chips ── */
-    .chips-wrap {
-      overflow-x: auto;
-      white-space: nowrap;
-      padding-bottom: 14px;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    .chips-wrap::-webkit-scrollbar { display: none; }
-    .chips-inner { display: inline-flex; gap: 8px; padding: 0 2px; }
+  /* ── Admin panel ── */
+  #vAdmin{padding-bottom:60px}
+  .admin-hdr{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:16px;margin-bottom:16px}
+  .admin-hdr h2{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--green)}
+  .admin-hdr p{font-size:12px;color:var(--muted);line-height:1.5}
+  .admin-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .af-btn{height:30px;padding:0 12px;border-radius:16px;border:1px solid var(--border);
+    background:var(--surface);color:var(--muted);font-size:12px;cursor:pointer;
+    transition:all .15s;white-space:nowrap}
+  .af-btn.on{border-color:var(--green);color:var(--green);background:var(--green-dim)}
+  .admin-video-list{display:flex;flex-direction:column;gap:8px}
+  .av-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden}
+  .av-head{display:flex;align-items:flex-start;gap:10px;padding:12px;cursor:pointer;
+    -webkit-tap-highlight-color:transparent}
+  .av-thumb{width:72px;aspect-ratio:16/9;border-radius:8px;object-fit:cover;flex-shrink:0;
+    background:var(--surface2)}
+  .av-info{flex:1;min-width:0}
+  .av-title{font-size:13px;font-weight:600;line-height:1.35;margin-bottom:5px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .av-cats{display:flex;flex-wrap:wrap;gap:4px}
+  .av-tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
+    color:var(--green);border:1px solid rgba(0,200,120,.2);font-weight:600}
+  .av-tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
+  .av-arrow{color:var(--muted);font-size:14px;flex-shrink:0;transition:transform .2s;margin-top:2px}
+  .av-item.open .av-arrow{transform:rotate(180deg)}
+  .av-edit{display:none;padding:0 12px 12px;border-top:1px solid var(--border);padding-top:12px}
+  .av-item.open .av-edit{display:block}
+  .cat-toggles{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .ct-btn{height:28px;padding:0 11px;border-radius:14px;border:1px solid var(--border);
+    background:var(--surface2);color:var(--muted);font-size:11px;cursor:pointer;
+    transition:all .15s;user-select:none}
+  .ct-btn.on{border-color:var(--green);background:var(--green-dim);color:var(--green);font-weight:600}
+  .ct-btn.on.is-emerg{border-color:rgba(232,85,85,.5);background:rgba(232,85,85,.1);color:#f08080}
+  .av-save-row{display:flex;gap:8px;margin-top:6px}
+  .btn-sm{height:32px;padding:0 14px;border-radius:16px;border:none;font-size:12px;
+    font-weight:600;cursor:pointer;transition:opacity .15s}
+  .btn-sm:active{opacity:.7}
+  .btn-primary{background:var(--green);color:#000}
+  .btn-ghost{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
 
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: 34px;
-      padding: 0 14px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .18s;
-      user-select: none;
-      white-space: nowrap;
-    }
-    .chip:hover {
-      border-color: var(--green2);
-      color: var(--text);
-      background: var(--surface2);
-    }
-    .chip.active {
-      background: var(--green-dim);
-      border-color: var(--green);
-      color: var(--green);
-      box-shadow: 0 0 12px rgba(0,200,120,0.15);
-    }
-    .chip-count {
-      font-size: 11px;
-      font-weight: 700;
-      opacity: .8;
-    }
+  /* admin bottom bar */
+  .admin-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;
+    background:rgba(6,13,9,.95);backdrop-filter:blur(12px);
+    border-top:1px solid var(--border);padding:10px 16px;
+    display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .admin-bar.hidden{display:none}
+  .btn-github{height:36px;padding:0 16px;border-radius:18px;border:none;font-size:13px;
+    font-weight:600;cursor:pointer;background:var(--green);color:#000;
+    display:flex;align-items:center;gap:6px;transition:opacity .15s}
+  .btn-github:disabled{opacity:.45;cursor:not-allowed}
+  .btn-github svg{width:16px;height:16px;fill:#000}
+  .btn-download{height:36px;padding:0 14px;border-radius:18px;font-size:13px;
+    font-weight:600;cursor:pointer;background:var(--surface2);color:var(--text);
+    border:1px solid var(--border)}
+  .admin-status{font-size:11px;color:var(--muted);flex:1;text-align:right}
 
-    /* ── Main ── */
-    main {
-      position: relative;
-      z-index: 1;
-      padding: 10px 12px 40px;
-    }
+  /* password gate */
+  .pw-gate{display:flex;flex-direction:column;align-items:center;gap:16px;
+    padding:60px 24px;text-align:center}
+  .pw-gate h2{font-size:18px;font-weight:700;color:var(--green)}
+  .pw-gate p{font-size:13px;color:var(--muted);line-height:1.5}
+  .pw-input{width:100%;max-width:280px;height:44px;background:var(--surface);
+    border:1px solid var(--border);border-radius:12px;color:var(--text);
+    font-size:16px;padding:0 16px;outline:none;text-align:center;letter-spacing:4px}
+  .pw-input:focus{border-color:var(--green2)}
+  .pw-btn{height:40px;padding:0 28px;border-radius:20px;border:none;
+    background:var(--green);color:#000;font-size:14px;font-weight:700;cursor:pointer}
+  .pw-error{font-size:12px;color:var(--red);min-height:16px}
 
-    .results-info {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 14px;
-      padding: 0 2px;
-      min-height: 18px;
-    }
-
-    /* ── Grid ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 14px;
-    }
-    @media (max-width: 380px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── Card ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform .2s, border-color .2s, box-shadow .2s;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .card:hover, .card:focus-visible {
-      transform: translateY(-3px);
-      border-color: var(--border2);
-      box-shadow: 0 8px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(0,200,120,0.08);
-      outline: none;
-    }
-    .card:active { transform: scale(.98); }
-
-    /* Thumbnail */
-    .thumb-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: var(--surface2);
-      overflow: hidden;
-    }
-    .thumb-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .3s;
-    }
-    .card:hover .thumb-wrap img { transform: scale(1.04); }
-
-    /* Play overlay */
-    .play-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.55) 100%);
-      opacity: 0;
-      transition: opacity .2s;
-    }
-    .card:hover .play-overlay { opacity: 1; }
-    .play-btn-circle {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: rgba(0,200,120,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 28px rgba(0,200,120,0.6);
-    }
-    .play-btn-circle svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
-
-    .duration-badge {
-      position: absolute;
-      bottom: 7px;
-      right: 7px;
-      background: rgba(0,0,0,.75);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 5px;
-      letter-spacing: .3px;
-    }
-
-    /* Card body */
-    .card-body { padding: 13px 13px 11px; }
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 9px;
-      color: var(--text);
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .card-date {
-      font-size: 11px;
-      color: var(--muted);
-      flex-shrink: 0;
-    }
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      justify-content: flex-end;
-    }
-    .tag {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 10px;
-      background: var(--green-dim);
-      color: var(--green);
-      border: 1px solid rgba(0,200,120,0.2);
-      font-weight: 600;
-    }
-
-    /* ── Empty / error states ── */
-    .state-msg {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 72px 24px;
-      color: var(--muted);
-      text-align: center;
-      grid-column: 1 / -1;
-    }
-    .state-msg svg { width: 52px; height: 52px; opacity: .35; fill: var(--green); }
-    .state-msg p { font-size: 14px; line-height: 1.6; }
-    .state-msg code {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      padding: 2px 7px;
-      border-radius: 5px;
-      font-size: 12px;
-      color: var(--green);
-    }
-
-    /* ── Skeleton loader ── */
-    .skeleton {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .skel-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: linear-gradient(90deg, var(--surface2) 25%, var(--surface3) 50%, var(--surface2) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    .skel-body { padding: 13px; display: flex; flex-direction: column; gap: 9px; }
-    .skel-line {
-      height: 11px;
-      border-radius: 6px;
-      background: linear-gradient(90deg, var(--surface2) 25%, var(--surface3) 50%, var(--surface2) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    .skel-line.short { width: 50%; }
-    @keyframes shimmer { to { background-position: -200% 0; } }
-
-    /* ── Divider ── */
-    .section-divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 4px 0 16px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .8px;
-    }
-    .section-divider::before, .section-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+  /* github token modal */
+  .modal-bg{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);
+    display:flex;align-items:center;justify-content:center;padding:20px}
+  .modal-bg.hidden{display:none}
+  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);
+    padding:20px;width:100%;max-width:380px}
+  .modal h3{font-size:15px;font-weight:700;color:var(--green);margin-bottom:8px}
+  .modal p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+  .modal input{width:100%;height:40px;background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;color:var(--text);font-size:13px;padding:0 12px;outline:none;
+    margin-bottom:10px}
+  .modal input:focus{border-color:var(--green2)}
+  .modal-btns{display:flex;gap:8px;justify-content:flex-end}
   </style>
 </head>
 <body>
 
 <header>
-  <div class="header-top">
-    <div class="logo-icon">
-      <!-- Stethoscope SVG -->
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div class="hdr-top">
+    <div class="logo-icon" id="logoIcon" title="Toca 5 veces para abrir el panel de administración">
+      <svg viewBox="0 0 24 24" fill="none">
         <path d="M19 8C19 11.31 16.31 14 13 14C9.69 14 7 11.31 7 8" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M7 8V4C7 3.45 7.45 3 8 3H10C10.55 3 11 3.45 11 4V8" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M13 8V4C13 3.45 13.45 3 14 3H16C16.55 3 17 3.45 17 4V8" stroke="#00c878" stroke-width="1.6" stroke-linecap="round"/>
@@ -436,217 +254,561 @@
     </div>
     <span class="update-badge" id="updateBadge">—</span>
   </div>
-
   <div class="search-wrap">
-    <svg class="ico-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-    <input type="search" id="search" placeholder="Buscar sesión…" autocomplete="off" spellcheck="false" />
-    <button class="search-clear" id="searchClear" aria-label="Borrar">✕</button>
-  </div>
-
-  <div class="chips-wrap">
-    <div class="chips-inner" id="chips"></div>
+    <svg class="ico-s" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <input type="search" id="search" placeholder="Buscar sesión…" autocomplete="off" spellcheck="false"/>
+    <button class="search-clear" id="searchClear">✕</button>
   </div>
 </header>
 
 <main>
-  <div class="results-info" id="resultsInfo"></div>
-  <div class="grid" id="grid"></div>
+  <!-- View: Category grid -->
+  <div id="vHome" class="view active">
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+
+  <!-- View: Video list -->
+  <div id="vList" class="view">
+    <div class="list-hdr">
+      <button class="back-btn" id="backBtn">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Categorías
+      </button>
+      <span class="list-title" id="listTitle"></span>
+    </div>
+    <div class="results-info" id="resultsInfo"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <!-- View: Search results -->
+  <div id="vSearch" class="view">
+    <div class="results-info" id="searchInfo"></div>
+    <div class="grid" id="searchGrid"></div>
+  </div>
+
+  <!-- View: Admin panel -->
+  <div id="vAdmin" class="view">
+    <div id="adminPwGate" class="pw-gate">
+      <h2>Panel de administración</h2>
+      <p>Introduce la contraseña para editar las categorías de los vídeos.</p>
+      <input type="password" class="pw-input" id="pwInput" placeholder="••••••" maxlength="20"/>
+      <div class="pw-error" id="pwError"></div>
+      <button class="pw-btn" id="pwBtn">Entrar</button>
+    </div>
+    <div id="adminContent" style="display:none">
+      <div class="admin-hdr">
+        <h2>Editor de categorías</h2>
+        <p>Toca un vídeo para expandir y editar sus categorías. Los cambios se guardan en GitHub automáticamente.</p>
+      </div>
+      <div class="admin-filters" id="adminFilters"></div>
+      <div class="admin-video-list" id="adminList"></div>
+    </div>
+  </div>
 </main>
 
+<!-- Admin bottom bar -->
+<div class="admin-bar hidden" id="adminBar">
+  <button class="btn-download" id="btnDownload">⬇ Descargar JSON</button>
+  <button class="btn-github" id="btnGithub">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    Guardar en GitHub
+  </button>
+  <span class="admin-status" id="adminStatus"></span>
+</div>
+
+<!-- GitHub token modal -->
+<div class="modal-bg hidden" id="tokenModal">
+  <div class="modal">
+    <h3>Token de GitHub</h3>
+    <p>Para guardar directamente en GitHub necesitas un <b>Personal Access Token</b> con permiso <code>contents:write</code>.<br><br>
+    Ve a <b>GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens</b> y crea uno para este repositorio.</p>
+    <input type="password" id="tokenInput" placeholder="github_pat_…"/>
+    <div class="modal-btns">
+      <button class="btn-sm btn-ghost" id="tokenCancel">Cancelar</button>
+      <button class="btn-sm btn-primary" id="tokenSave">Guardar</button>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ── Categories ── */
-const CATEGORIES = [
-  { id: 'all',           label: 'Todos',                 keywords: null },
-  { id: 'anafilaxia',    label: 'Anafilaxia',            keywords: ['anafilaxia','anafiláctico','reacción alérgica'] },
-  { id: 'anciano',       label: 'Anciano / Fragilidad',  keywords: ['anciano','geriátr','fragilidad','frágil','prefrágil','mayor','envejecim'] },
-  { id: 'cardiaca',      label: 'Cirugía cardíaca',      keywords: ['cardíac','cardiac','cardiaca','corazón','heart','valvul','valv','bypass','coronar','aorta','cec','extracorpórea','tavi','teer','miocardi','pericardi','arritmia','fibrilación','brugada','cardiópata'] },
-  { id: 'cirugia_general',label:'Cirugía general',       keywords: ['cirugía general','cirugia general','hipec','atresia','colect','laparoscop','laparotom','cirugía abdominal','esofag'] },
-  { id: 'dolor',         label: 'Dolor / DAP',           keywords: ['dolor','pain','postoperat','analgesia','analgés','opioide','opioid','fentanilo','morfin','multimodal','pca','gabapentin','pregabalina','tramadol','ketorolaco','dolor agudo','dolor crónico','sufentanilo','dap','lumbalgia','opioid free','ofa'] },
-  { id: 'ecmo',          label: 'ECMO',                  keywords: ['ecmo','oxigenación por membrana'] },
-  { id: 'ecografia',     label: 'Ecografía / POCUS',     keywords: ['ecograf','pocus','ecoguiad','ultrasonid','ecocardiograf'] },
-  { id: 'endocrino',     label: 'Endocrino',             keywords: ['endocrin','tiroides','suprarren','feocromocitoma','diabetes','diabétic','insulina','glp-1','glp 1','metabolis','hormonal'] },
-  { id: 'farmaco',       label: 'Farmacología',          keywords: ['farmacol','fármaco','drug','propofol','sevoflur','desflur','isofluran','rocuroni','cisatracuri','sugamadex','neostigmin','dexmedetomidin','midazolam','remifentanilo','relajante','bloqueante neuromuscular','reversi','halogenad','tci','nvpo','hipertermia maligna','ketamin','sustancias de abuso','profundidad anestésica','sedline','bioconect','ceftazidima','avibactam'] },
-  { id: 'fluidoterapia', label: 'Fluidoterapia',         keywords: ['fluidoter','fluidotherap','cristaloid','coloide','reposición hídrica'] },
-  { id: 'gestion',       label: 'Gestión y seguridad',   keywords: ['seguridad','gestión','protocolo','checklist','error','incidente','calidad','simulación','formación','crisis','trabajo en equipo','hemorragia masiva','recuperación intensificada','sensar','dynamed','novedades en anestesia','grupos de trabajo','comisiones','medioambiental','idisba','investigación','desfibrilador','hipotermia perioperatoria'] },
-  { id: 'hematologia',   label: 'Hematología',           keywords: ['hematolog','coagulación','rotem','teg','tromboelastom','transfus','plaqueta','hemostasia','anticoagul','trombosis','patient blood','pbm'] },
-  { id: 'hemodinamica',  label: 'Hemodinámica',          keywords: ['hemodinámica','hemodinam','gasto cardíaco','precarga','poscarga','vasopres','noradren','dopamin','control hemodinámico','hipotensión'] },
-  { id: 'hepatico',      label: 'Hepático',              keywords: ['hepátic','hígado','cirrótico','cirrosis','trasplante hepático','hepat'] },
-  { id: 'infecciosas',   label: 'Infecciosas',           keywords: ['infeccios','antibiótic','antimicrob','multirresistente','multiresistente','ceftazidima','avibactam','carbapenem','infección'] },
-  { id: 'monitorizacion',label: 'Monitorización',        keywords: ['monitorizac','monitoriz','sedline','bis ','entropía','profundidad anestésica','bispectral','presión arterial invasiva'] },
-  { id: 'nefrologia',    label: 'Nefrología / Renal',    keywords: ['nefrol','renal','riñón','insuficiencia renal','diálisis','creatinina','lesión renal aguda','lra'] },
-  { id: 'neuro',         label: 'Neuroanestesia',        keywords: ['neuroanest','neurocirugía','cerebral','intracraneal','craneal','cráneo','columna','medular','craneotom','tce','tec','trombectomía','postrombectomía'] },
-  { id: 'neurologia',    label: 'Neurología',            keywords: ['neurolog','ictus','epilepsia','convuls','parkinson','esclerosis'] },
-  { id: 'obesidad',      label: 'Obesidad',              keywords: ['obesidad','obeso','bariátric','bypass gástrico','manga gástrica'] },
-  { id: 'obstetricia',   label: 'Obstetricia',           keywords: ['obstetric','obstétric','embarazad','cesárea','parto','matern','perinatal','prenatal','placenta','eclampsia','preeclampsia'] },
-  { id: 'pediatria',     label: 'Pediatría',             keywords: ['pediatr','pediátr','neonat','infant','niño','niña','recién nacido','neonatal','pediátrico'] },
-  { id: 'politrauma',    label: 'Politrauma',            keywords: ['politraum','trauma grave','trauma múltiple','damage control','control de daños'] },
-  { id: 'preoperatorio', label: 'Preoperatorio',         keywords: ['preoperator','preoperatori','valoración preoper','preanestés','ayuno','optimización preop','criterios derivación','agonistas glp','autoinmun','enfermedades autoinmunes'] },
-  { id: 'rcp',           label: 'RCP',                   keywords: ['rcp','reanimación cardiopulmonar','svb','svav','bls','acls','parada cardiorrespiratoria','soporte vital'] },
-  { id: 'regional',      label: 'Anestesia regional',    keywords: ['regional','bloqueo','block','plexo','nervio','epidural','raquídea','intradural','subaracnoid','tap block','pecs','fascial','quadratus','serratus','paravertebral','erector spinae','esp block','interescalén','supraclavicular','infraclavicular','axilar','femoral','ciático','safeno','poplíteo','prilocaína'] },
-  { id: 'toracica',      label: 'Cirugía torácica',      keywords: ['torác','tórax','toraci','lobectom','neumonectom','toracoscop','mediastin','pleural','neumotórax','ventilación protección','resecabilidad','operabilidad torác','cto','esófago'] },
-  { id: 'trasplante',    label: 'Trasplante',            keywords: ['trasplante','transplante','donante','injerto'] },
-  { id: 'traumatologia', label: 'Traumatología',         keywords: ['traumatol','ortopéd','fractura','artroplastia','prótesis','rodilla','cadera'] },
-  { id: 'uci',           label: 'Reanimación / UCI',     keywords: ['reanimat','uci','uvi','crítico','crítica','intensiv','resucitación','shock séptico','sepsis','ventilación mecánica','parada cardíaca','tep','tromboembolismo','angiotensina','oxemia','surviving sepsis'] },
-  { id: 'vascular',      label: 'Vascular',              keywords: ['vascular','vascula','carótida','aorta abdominal','aneurisma','endovascular','bypass periférico'] },
-  { id: 'ventilacion',   label: 'Ventilación',           keywords: ['ventilación mecánica','ventilación protectora','modo ventilatorio','asincronía','presión soporte','peep','reclutamiento alveolar','weaning','destete','oxigenoterapia','oxemia'] },
-  { id: 'viaarea',       label: 'Vía aérea',             keywords: ['vía aérea','airway','intubación','intubat','laringoscop','mascarilla laríng','supraglót','videolaringoscop','fibroscop','fibroptia','cricotiroid','traqueotom','laringoscopia','vía aérea difícil','extubación','laringoespasmo'] },
-  { id: 'casos',         label: 'Casos clínicos',        keywords: ['caso clínico','caso clini','clinical case','presentación de caso','sesión clínica','a propósito de'] },
+/* ════════════════════════════════════════════════════════════
+   CATEGORIES
+   ════════════════════════════════════════════════════════════ */
+const CATS = [
+  { id:'all',           label:'Todos',                full:true },
+  { id:'emergencias',   label:'Emergencias',          emerg:true },
+  { id:'anafilaxia',    label:'Anafilaxia' },
+  { id:'anciano',       label:'Anciano / Fragilidad' },
+  { id:'cardiaca',      label:'Cirugía cardíaca' },
+  { id:'cirugia_general',label:'Cirugía general' },
+  { id:'dolor',         label:'Dolor / DAP' },
+  { id:'ecmo',          label:'ECMO' },
+  { id:'ecografia',     label:'Ecografía / POCUS' },
+  { id:'endocrino',     label:'Endocrino' },
+  { id:'farmaco',       label:'Farmacología' },
+  { id:'fluidoterapia', label:'Fluidoterapia' },
+  { id:'gestion',       label:'Gestión y formación' },
+  { id:'hematologia',   label:'Hematología' },
+  { id:'hemodinamica',  label:'Hemodinámica' },
+  { id:'hepatico',      label:'Hepático' },
+  { id:'infecciosas',   label:'Infecciosas' },
+  { id:'monitorizacion',label:'Monitorización' },
+  { id:'nefrologia',    label:'Nefrología / Renal' },
+  { id:'neuro',         label:'Neuroanestesia' },
+  { id:'neurologia',    label:'Neurología' },
+  { id:'obesidad',      label:'Obesidad' },
+  { id:'obstetricia',   label:'Obstetricia' },
+  { id:'pediatria',     label:'Pediatría' },
+  { id:'politrauma',    label:'Politrauma' },
+  { id:'preoperatorio', label:'Preoperatorio' },
+  { id:'rcp',           label:'RCP' },
+  { id:'regional',      label:'Anestesia regional' },
+  { id:'toracica',      label:'Cirugía torácica' },
+  { id:'trasplante',    label:'Trasplante' },
+  { id:'traumatologia', label:'Traumatología' },
+  { id:'uci',           label:'Reanimación / UCI' },
+  { id:'vascular',      label:'Vascular' },
+  { id:'ventilacion',   label:'Ventilación' },
+  { id:'viaarea',       label:'Vía aérea' },
+  { id:'casos',         label:'Casos clínicos' },
 ];
+const CAT_MAP = Object.fromEntries(CATS.map(c => [c.id, c]));
+const EMERG_ID = 'emergencias';
 
-function categorise(title) {
-  const t = title.toLowerCase();
-  const cats = CATEGORIES.filter(c => c.keywords && c.keywords.some(kw => t.includes(kw)));
-  return cats.length ? cats.map(c => c.id) : ['uncategorised'];
+/* ════════════════════════════════════════════════════════════
+   STATE
+   ════════════════════════════════════════════════════════════ */
+let allVideos = [];
+let activeCatId = 'all';
+let adminEdits = {};   // videoId → [cats]  (pending changes)
+let adminFilter = null;
+let adminUnlocked = false;
+let logoCnt = 0, logoTimer = null;
+
+const ADMIN_PW = 'anr2024';
+const GH_REPO  = 'anestesiareahuse-web/sesiones-anr-son-espases';
+const GH_FILE  = 'manual_categories.json';
+
+/* ════════════════════════════════════════════════════════════
+   DOM REFS
+   ════════════════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const vHome=$('vHome'), vList=$('vList'), vSearch=$('vSearch'), vAdmin=$('vAdmin');
+const catGrid=$('catGrid'), grid=$('grid'), searchGrid=$('searchGrid');
+const searchEl=$('search'), searchClear=$('searchClear');
+const resultsInfo=$('resultsInfo'), searchInfo=$('searchInfo');
+const listTitle=$('listTitle'), backBtn=$('backBtn'), updateBadge=$('updateBadge');
+const adminBar=$('adminBar'), adminList=$('adminList'), adminFilters=$('adminFilters');
+const adminStatus=$('adminStatus');
+
+/* ════════════════════════════════════════════════════════════
+   NAVIGATION
+   ════════════════════════════════════════════════════════════ */
+function showView(v) {
+  [vHome,vList,vSearch,vAdmin].forEach(el => el.classList.remove('active'));
+  v.classList.add('active');
+  const isAdmin = v === vAdmin;
+  adminBar.classList.toggle('hidden', !isAdmin || !adminUnlocked);
 }
 
-function formatDate(iso) {
-  if (!iso) return '';
-  return new Date(iso).toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' });
+/* ════════════════════════════════════════════════════════════
+   LOAD DATA
+   ════════════════════════════════════════════════════════════ */
+async function loadVideos() {
+  showSkeleton();
+  try {
+    const r = await fetch('./videos.json?_='+Date.now());
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    const data = await r.json();
+    allVideos = data.videos || [];
+    if (data.updatedAt) {
+      const d = new Date(data.updatedAt);
+      updateBadge.textContent = d.toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'2-digit'});
+    }
+    buildCatGrid();
+  } catch(e) {
+    vHome.innerHTML = `<div class="empty" style="display:flex">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      <p><strong>No se pudo cargar videos.json</strong><br>
+      Lanza el workflow de GitHub Actions manualmente.</p></div>`;
+  }
 }
 
-/* ── State ── */
-let allVideos = [], activeCategory = 'all', searchQuery = '';
+function showSkeleton() {
+  showView(vHome);
+  catGrid.innerHTML = Array.from({length:10},()=>`
+    <div class="skel"><div class="skel-t" style="aspect-ratio:auto;height:72px"></div></div>`).join('');
+}
 
-const grid       = document.getElementById('grid');
-const chips      = document.getElementById('chips');
-const searchEl   = document.getElementById('search');
-const searchClear= document.getElementById('searchClear');
-const resultsInfo= document.getElementById('resultsInfo');
-const updateBadge= document.getElementById('updateBadge');
+/* ════════════════════════════════════════════════════════════
+   CATEGORY GRID
+   ════════════════════════════════════════════════════════════ */
+function buildCatGrid() {
+  const counts = {};
+  CATS.forEach(c => counts[c.id] = 0);
+  allVideos.forEach(v => (v.categories||[]).forEach(cid => {
+    if (counts[cid] !== undefined) counts[cid]++;
+  }));
+  counts['all'] = allVideos.length;
 
-/* ── Chips ── */
-function buildChips(videos) {
-  const counts = { all: videos.length };
-  CATEGORIES.forEach(c => { if (c.id !== 'all') counts[c.id] = 0; });
-  counts['uncategorised'] = 0;
-  videos.forEach(v => v.categories.forEach(cid => { if (counts[cid] !== undefined) counts[cid]++; else counts[cid]=1; }));
-
-  chips.innerHTML = '';
-  const allCats = [...CATEGORIES];
-  if (counts['uncategorised'] > 0) allCats.push({ id: 'uncategorised', label: 'Sin clasificar' });
-
-  allCats.forEach(cat => {
+  catGrid.innerHTML = '';
+  CATS.forEach(cat => {
     const n = counts[cat.id] || 0;
     if (cat.id !== 'all' && n === 0) return;
-    const el = document.createElement('button');
-    el.className = 'chip' + (cat.id === activeCategory ? ' active' : '');
-    el.dataset.id = cat.id;
-    el.innerHTML = `${cat.label} <span class="chip-count">${n}</span>`;
-    el.addEventListener('click', () => {
-      activeCategory = cat.id;
-      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.id === activeCategory));
-      render();
-      el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    });
-    chips.appendChild(el);
+    const el = document.createElement('div');
+    el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'');
+    el.tabIndex = 0;
+    el.innerHTML = `<span class="cat-name">${cat.label}</span>
+      <span class="cat-count">${n}</span>`;
+    el.addEventListener('click', () => openCategory(cat.id));
+    el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
+    catGrid.appendChild(el);
   });
 }
 
-/* ── Render ── */
-function render() {
-  const q = searchQuery.trim().toLowerCase();
-  let filtered = allVideos.filter(v =>
-    (activeCategory === 'all' || v.categories.includes(activeCategory)) &&
-    (!q || v.title.toLowerCase().includes(q))
-  );
-  filtered.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+function openCategory(catId) {
+  activeCatId = catId;
+  const cat = CAT_MAP[catId];
+  listTitle.textContent = cat ? cat.label : catId;
+  renderList();
+  showView(vList);
+  window.scrollTo(0,0);
+}
 
-  if (q)
-    resultsInfo.textContent = `${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} para "${searchQuery.trim()}"`;
-  else if (activeCategory !== 'all') {
-    const label = [...CATEGORIES, { id:'uncategorised', label:'Sin clasificar' }].find(c => c.id === activeCategory)?.label || activeCategory;
-    resultsInfo.textContent = `${filtered.length} vídeo${filtered.length !== 1 ? 's' : ''} · ${label}`;
+/* ════════════════════════════════════════════════════════════
+   VIDEO LIST
+   ════════════════════════════════════════════════════════════ */
+function renderList() {
+  let vids = activeCatId === 'all'
+    ? [...allVideos]
+    : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
+  vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
+  resultsInfo.textContent = `${vids.length} vídeo${vids.length!==1?'s':''} · ${CAT_MAP[activeCatId]?.label||activeCatId}`;
+  grid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML();
+}
+
+/* ════════════════════════════════════════════════════════════
+   SEARCH
+   ════════════════════════════════════════════════════════════ */
+function renderSearch(q) {
+  if (!q) { showView(vHome); return; }
+  const low = q.toLowerCase();
+  const vids = allVideos
+    .filter(v => v.title.toLowerCase().includes(low))
+    .sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
+  searchInfo.textContent = `${vids.length} resultado${vids.length!==1?'s':''} para "${q}"`;
+  searchGrid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML();
+  showView(vSearch);
+}
+
+/* ════════════════════════════════════════════════════════════
+   CARD HTML
+   ════════════════════════════════════════════════════════════ */
+function cardHTML(v) {
+  const tags = (v.categories||[]).filter(c=>c!=='uncategorised').slice(0,2)
+    .map(c => {
+      const cat = CAT_MAP[c];
+      const cls = c===EMERG_ID?' emerg':'';
+      return cat ? `<span class="tag${cls}">${cat.label}</span>` : '';
+    }).join('');
+  return `<a class="card" href="https://www.youtube.com/watch?v=${v.videoId}"
+    target="_blank" rel="noopener" aria-label="${esc(v.title)}">
+    <div class="thumb-wrap">
+      <img src="https://i.ytimg.com/vi/${v.videoId}/mqdefault.jpg" alt="" loading="lazy" decoding="async"/>
+      <div class="play-ov"><div class="play-circle">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div></div>
+      ${v.duration?`<span class="dur">${v.duration}</span>`:''}
+    </div>
+    <div class="card-body">
+      <div class="card-title">${esc(v.title)}</div>
+      <div class="card-foot">
+        <span class="card-date">${fmtDate(v.publishedAt)}</span>
+        <div class="card-tags">${tags}</div>
+      </div>
+    </div>
+  </a>`;
+}
+
+function emptyHTML() {
+  return `<div class="empty">
+    <svg viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm1-5C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8z"/></svg>
+    <p>No se encontraron vídeos.</p></div>`;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ADMIN PANEL
+   ════════════════════════════════════════════════════════════ */
+function openAdmin() {
+  showView(vAdmin);
+  window.scrollTo(0,0);
+  if (adminUnlocked) { adminBar.classList.remove('hidden'); }
+}
+
+$('pwBtn').addEventListener('click', checkPw);
+$('pwInput').addEventListener('keydown', e => e.key==='Enter' && checkPw());
+
+function checkPw() {
+  const val = $('pwInput').value.trim();
+  if (val === ADMIN_PW) {
+    $('adminPwGate').style.display = 'none';
+    $('adminContent').style.display = 'block';
+    adminBar.classList.remove('hidden');
+    adminUnlocked = true;
+    buildAdminList(null);
   } else {
-    resultsInfo.textContent = `${filtered.length} vídeo${filtered.length !== 1 ? 's' : ''} en total`;
+    $('pwError').textContent = 'Contraseña incorrecta.';
+    setTimeout(()=>$('pwError').textContent='', 2000);
   }
+}
 
-  if (!filtered.length) {
-    grid.innerHTML = `<div class="state-msg">
-      <svg viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm1-5C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8z"/></svg>
-      <p>No se encontraron vídeos.<br>Prueba con otro término o categoría.</p>
+/* filters */
+function buildAdminFilters() {
+  const opts = [{id:null,label:'Todos'},...CATS.filter(c=>c.id!=='all')];
+  adminFilters.innerHTML = opts.map(o =>
+    `<button class="af-btn${adminFilter===o.id?' on':''}" data-fid="${o.id??'__all__'}">${o.label}</button>`
+  ).join('');
+  adminFilters.querySelectorAll('.af-btn').forEach(btn => {
+    btn.addEventListener('click', ()=>{
+      adminFilter = btn.dataset.fid==='__all__' ? null : btn.dataset.fid;
+      buildAdminList(adminFilter);
+      adminFilters.querySelectorAll('.af-btn').forEach(b=>b.classList.toggle('on',b===btn));
+    });
+  });
+}
+
+function buildAdminList(filterCat) {
+  buildAdminFilters();
+  let vids = filterCat
+    ? allVideos.filter(v => (v.categories||[]).includes(filterCat))
+    : [...allVideos];
+  vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
+
+  adminList.innerHTML = vids.map(v => {
+    const cats = adminEdits[v.videoId] || v.categories || [];
+    const tagsHtml = cats.filter(c=>c!=='uncategorised').map(c => {
+      const cat = CAT_MAP[c];
+      const cls = c===EMERG_ID?' emerg':'';
+      return cat ? `<span class="av-tag${cls}">${cat.label}</span>` : '';
+    }).join('');
+    return `<div class="av-item" data-vid="${v.videoId}">
+      <div class="av-head">
+        <img class="av-thumb" src="https://i.ytimg.com/vi/${v.videoId}/mqdefault.jpg" alt="" loading="lazy"/>
+        <div class="av-info">
+          <div class="av-title">${esc(v.title)}</div>
+          <div class="av-cats">${tagsHtml||'<span style="color:var(--red);font-size:10px">Sin categoría</span>'}</div>
+        </div>
+        <span class="av-arrow">▾</span>
+      </div>
+      <div class="av-edit" data-vid="${v.videoId}">
+        <div class="cat-toggles">${buildToggles(v.videoId, cats)}</div>
+        <div class="av-save-row">
+          <button class="btn-sm btn-ghost" onclick="resetVideo('${v.videoId}')">Restaurar</button>
+        </div>
+      </div>
     </div>`;
-    return;
-  }
+  }).join('');
 
-  grid.innerHTML = filtered.map(v => {
-    const tags = v.categories.filter(c => c !== 'uncategorised').slice(0, 2)
-      .map(c => { const cat = CATEGORIES.find(x => x.id === c); return cat ? `<span class="tag">${cat.label}</span>` : ''; }).join('');
-    return `<a class="card" href="https://www.youtube.com/watch?v=${v.videoId}" target="_blank" rel="noopener" aria-label="${esc(v.title)}">
-      <div class="thumb-wrap">
-        <img src="https://i.ytimg.com/vi/${v.videoId}/mqdefault.jpg" alt="" loading="lazy" decoding="async" />
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-        ${v.duration ? `<span class="duration-badge">${v.duration}</span>` : ''}
-      </div>
-      <div class="card-body">
-        <div class="card-title">${esc(v.title)}</div>
-        <div class="card-footer">
-          <span class="card-date">${formatDate(v.publishedAt)}</span>
-          <div class="card-tags">${tags}</div>
-        </div>
-      </div>
-    </a>`;
+  /* expand/collapse */
+  adminList.querySelectorAll('.av-head').forEach(h => {
+    h.addEventListener('click', ()=>{
+      const item = h.closest('.av-item');
+      item.classList.toggle('open');
+    });
+  });
+
+  /* toggle buttons */
+  adminList.querySelectorAll('.ct-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const catId = btn.dataset.cat;
+      const vid = btn.closest('.av-edit').dataset.vid;
+      const video = allVideos.find(v=>v.videoId===vid);
+      const current = adminEdits[vid] ? [...adminEdits[vid]] : [...(video.categories||[])];
+      const idx = current.indexOf(catId);
+      if (idx>=0) current.splice(idx,1); else current.push(catId);
+      adminEdits[vid] = current;
+      btn.classList.toggle('on', current.includes(catId));
+      btn.classList.toggle('is-emerg', catId===EMERG_ID && current.includes(catId));
+      // update tags display
+      const tagsEl = btn.closest('.av-item').querySelector('.av-cats');
+      tagsEl.innerHTML = current.filter(c=>c!=='uncategorised').map(c=>{
+        const cat=CAT_MAP[c]; const cls=c===EMERG_ID?' emerg':'';
+        return cat?`<span class="av-tag${cls}">${cat.label}</span>`:'';
+      }).join('') || '<span style="color:var(--red);font-size:10px">Sin categoría</span>';
+      updateAdminStatus();
+    });
+  });
+}
+
+function buildToggles(vid, activeCats) {
+  return CATS.filter(c=>c.id!=='all').map(c=>{
+    const on = activeCats.includes(c.id);
+    const isE = c.id===EMERG_ID && on;
+    return `<button class="ct-btn${on?' on':''}${isE?' is-emerg':''}" data-cat="${c.id}">${c.label}</button>`;
   }).join('');
 }
 
+function resetVideo(vid) {
+  delete adminEdits[vid];
+  buildAdminList(adminFilter);
+  updateAdminStatus();
+}
+
+function updateAdminStatus() {
+  const n = Object.keys(adminEdits).length;
+  adminStatus.textContent = n>0 ? `${n} vídeo${n!==1?'s':''} modificado${n!==1?'s':''}` : '';
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUILD manual_categories.json
+   ════════════════════════════════════════════════════════════ */
+function buildManualJson() {
+  // Start from current categories in videos.json as base overrides
+  const overrides = {};
+  allVideos.forEach(v => {
+    const cats = adminEdits[v.videoId] || v.categories || [];
+    overrides[v.videoId] = cats;
+  });
+  const note = "Clasificación manual. Edita las categorías de cada vídeo. IDs válidos: " +
+    CATS.filter(c=>c.id!=='all').map(c=>c.id).join(', ');
+  return JSON.stringify({ _note: note, overrides }, null, 2);
+}
+
+/* download */
+$('btnDownload').addEventListener('click', ()=>{
+  const blob = new Blob([buildManualJson()], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'manual_categories.json';
+  a.click();
+});
+
+/* push to GitHub */
+$('btnGithub').addEventListener('click', ()=>{
+  const token = localStorage.getItem('gh_token');
+  if (!token) { $('tokenModal').classList.remove('hidden'); return; }
+  pushToGitHub(token);
+});
+$('tokenCancel').addEventListener('click', ()=>$('tokenModal').classList.add('hidden'));
+$('tokenSave').addEventListener('click', ()=>{
+  const t = $('tokenInput').value.trim();
+  if (!t) return;
+  localStorage.setItem('gh_token', t);
+  $('tokenModal').classList.add('hidden');
+  pushToGitHub(t);
+});
+
+async function pushToGitHub(token) {
+  const btn = $('btnGithub');
+  btn.disabled = true;
+  adminStatus.textContent = 'Conectando con GitHub…';
+  try {
+    // Get current file SHA
+    const infoRes = await fetch(
+      `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
+      { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }}
+    );
+    if (!infoRes.ok) throw new Error('No se pudo obtener el archivo actual (token válido?)');
+    const info = await infoRes.json();
+
+    const content = buildManualJson();
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+
+    adminStatus.textContent = 'Subiendo cambios…';
+    const putRes = await fetch(
+      `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `admin: update manual_categories.json [${new Date().toISOString().slice(0,10)}]`,
+          content: encoded,
+          sha: info.sha
+        })
+      }
+    );
+    if (!putRes.ok) throw new Error('Error al subir: ' + putRes.status);
+
+    // Trigger workflow to regenerate videos.json
+    adminStatus.textContent = 'Lanzando actualización…';
+    await fetch(
+      `https://api.github.com/repos/${GH_REPO}/actions/workflows/update_videos.yml/dispatches`,
+      {
+        method: 'POST',
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref: 'main' })
+      }
+    );
+
+    adminEdits = {};
+    adminStatus.textContent = '✓ Guardado. La web se actualizará en ~1 min.';
+    setTimeout(()=>adminStatus.textContent='', 5000);
+  } catch(err) {
+    adminStatus.textContent = '✗ Error: ' + err.message;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   LOGO TAP (secret admin access)
+   ════════════════════════════════════════════════════════════ */
+$('logoIcon').addEventListener('click', ()=>{
+  // If search is active, don't count
+  if (searchEl.value) return;
+  // If in list/search view, go back
+  if (vList.classList.contains('active') || vSearch.classList.contains('active')) {
+    goHome(); return;
+  }
+  logoCnt++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(()=>logoCnt=0, 2000);
+  if (logoCnt>=5) { logoCnt=0; openAdmin(); }
+});
+
+/* ════════════════════════════════════════════════════════════
+   BACK / HOME
+   ════════════════════════════════════════════════════════════ */
+backBtn.addEventListener('click', goHome);
+function goHome() {
+  showView(vHome);
+  buildCatGrid();
+  window.scrollTo(0,0);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SEARCH EVENTS
+   ════════════════════════════════════════════════════════════ */
+searchEl.addEventListener('input', ()=>{
+  const q = searchEl.value.trim();
+  searchClear.classList.toggle('on', q.length>0);
+  renderSearch(q);
+});
+searchClear.addEventListener('click', ()=>{
+  searchEl.value='';
+  searchClear.classList.remove('on');
+  goHome();
+});
+
+/* ════════════════════════════════════════════════════════════
+   UTILS
+   ════════════════════════════════════════════════════════════ */
+function fmtDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'});
+}
 function esc(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* ── Skeleton ── */
-function showSkeleton() {
-  grid.innerHTML = Array.from({length: 8}, () => `
-    <div class="skeleton">
-      <div class="skel-thumb"></div>
-      <div class="skel-body"><div class="skel-line"></div><div class="skel-line short"></div></div>
-    </div>`).join('');
-}
-
-/* ── Load ── */
-async function loadVideos() {
-  showSkeleton();
-  try {
-    const res = await fetch('./videos.json?_=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-
-    allVideos = (data.videos || []).map(v => ({
-      ...v,
-      categories: v.categories?.length ? v.categories : categorise(v.title),
-    }));
-
-    if (data.updatedAt) {
-      const d = new Date(data.updatedAt);
-      updateBadge.textContent = d.toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'2-digit' });
-    }
-
-    buildChips(allVideos);
-    render();
-  } catch(e) {
-    grid.innerHTML = `<div class="state-msg">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-      <p><strong>No se pudo cargar videos.json</strong><br>
-      Ejecuta <code>python fetch_videos.py</code> o lanza<br>el workflow de GitHub Actions manualmente.</p>
-    </div>`;
-  }
-}
-
-/* ── Search ── */
-searchEl.addEventListener('input', () => {
-  searchQuery = searchEl.value;
-  searchClear.classList.toggle('visible', searchQuery.length > 0);
-  render();
-});
-searchClear.addEventListener('click', () => {
-  searchEl.value = ''; searchQuery = '';
-  searchClear.classList.remove('visible');
-  searchEl.focus();
-  render();
-});
-
+/* ════════════════════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════════════════════ */
 loadVideos();
 </script>
 </body>
