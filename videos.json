@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T10:01:50.216052+00:00",
+  "updatedAt": "2026-06-24T16:46:46.328221+00:00",
   "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
   "videoCount": 99,
   "videos": [
@@ -20,7 +20,7 @@
       "duration": "20:31",
       "categories": [
         "endocrino",
-        "casos"
+        "cirugia_general"
       ]
     },
     {
@@ -40,7 +40,9 @@
       "duration": "15:28",
       "categories": [
         "preoperatorio",
-        "ecografia"
+        "ecografia",
+        "obesidad",
+        "endocrino"
       ]
     },
     {
@@ -91,7 +93,8 @@
       "duration": "18:32",
       "categories": [
         "viaarea",
-        "emergencias"
+        "emergencias",
+        "pediatria"
       ]
     },
     {
@@ -101,7 +104,8 @@
       "duration": "20:50",
       "categories": [
         "preoperatorio",
-        "ventilacion"
+        "ventilacion",
+        "uci"
       ]
     },
     {
@@ -141,7 +145,8 @@
       "publishedAt": "2025-10-19T07:20:56Z",
       "duration": "11:58",
       "categories": [
-        "toracica"
+        "toracica",
+        "uci"
       ]
     },
     {
@@ -152,7 +157,8 @@
       "categories": [
         "neuro",
         "dolor",
-        "farmaco"
+        "farmaco",
+        "traumatologia"
       ]
     },
     {
@@ -173,7 +179,8 @@
       "duration": "24:05",
       "categories": [
         "uci",
-        "emergencias"
+        "emergencias",
+        "hematologia"
       ]
     },
     {
