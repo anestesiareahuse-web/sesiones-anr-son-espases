@@ -37,7 +37,7 @@
 
   /* ── Hero splash ── */
   .hero{
-    position:relative;width:100%;height:220px;overflow:hidden;
+    position:relative;width:100%;height:280px;overflow:hidden;
     display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
     padding-bottom:28px;
   }
@@ -96,7 +96,7 @@
     border-radius:24px;color:var(--text);font-size:14px;padding:0 36px 0 38px;
     outline:none;transition:border-color .2s,box-shadow .2s}
   #search::placeholder{color:var(--muted)}
-  #search:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(0,200,120,.09)}
+  #search:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(26,122,110,.18)}
   .search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);
     background:var(--surface2);border:none;color:var(--muted);border-radius:50%;
     width:22px;height:22px;display:none;align-items:center;justify-content:center;
@@ -160,7 +160,9 @@
   .cat-card-mini .cat-count{font-size:11px}
 
   /* ── List view ── */
-  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px;
+    position:sticky;top:88px;z-index:50;
+    background:var(--bg);padding:8px 0 6px;margin-left:-2px;margin-right:-2px;padding-left:2px;}
   .back-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);
     border-radius:22px;height:34px;padding:0 14px;font-size:13px;cursor:pointer;
     display:flex;align-items:center;gap:6px;transition:border-color .18s,color .18s;
@@ -202,7 +204,7 @@
   .card-date{font-size:11px;color:var(--muted);flex-shrink:0}
   .card-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
   .tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
-    color:var(--green);border:1px solid rgba(0,200,120,.2);font-weight:600}
+    color:var(--green);border:1px solid rgba(26,122,110,.35);font-weight:600}
   .tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
 
   /* ── Empty / states ── */
@@ -248,7 +250,7 @@
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .av-cats{display:flex;flex-wrap:wrap;gap:4px}
   .av-tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
-    color:var(--green);border:1px solid rgba(0,200,120,.2);font-weight:600}
+    color:var(--green);border:1px solid rgba(26,122,110,.35);font-weight:600}
   .av-tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
   .av-arrow{color:var(--muted);font-size:14px;flex-shrink:0;transition:transform .2s;margin-top:2px}
   .av-item.open .av-arrow{transform:rotate(180deg)}
