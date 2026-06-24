@@ -400,6 +400,7 @@
       <input type="password" class="pw-input" id="pwInput" placeholder="••••••" maxlength="20"/>
       <div class="pw-error" id="pwError"></div>
       <button class="pw-btn" id="pwBtn">Entrar</button>
+      <button class="btn-sm btn-ghost" id="btnTokenGate" style="margin-top:8px;font-size:13px">🔑 Configurar token GitHub</button>
     </div>
     <div id="adminContent" style="display:none">
       <div class="admin-hdr">
@@ -906,11 +907,12 @@ $('btnGithub').addEventListener('click', ()=>{
   if (!token) { $('tokenModal').classList.remove('hidden'); return; }
   pushToGitHub(token);
 });
-$('btnToken').addEventListener('click', ()=>{
-  localStorage.removeItem('gh_token');
-  $('tokenInput').value = '';
+function openTokenModal() {
+  $('tokenInput').value = localStorage.getItem('gh_token') || '';
   $('tokenModal').classList.remove('hidden');
-});
+}
+$('btnToken').addEventListener('click', openTokenModal);
+$('btnTokenGate').addEventListener('click', openTokenModal);
 $('tokenCancel').addEventListener('click', ()=>$('tokenModal').classList.add('hidden'));
 $('tokenSave').addEventListener('click', ()=>{
   const t = $('tokenInput').value.trim();
