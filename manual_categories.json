@@ -1,5 +1,5 @@
 {
-  "_note": "Clasificación manual. IDs válidos: emergencias, anafilaxia, anciano, cardiaca, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, pediatria, politrauma, preoperatorio, rcp, regional, toracica, trasplante, traumatologia, uci, vascular, ventilacion, viaarea, casos",
+  "_note": "Clasificación manual. IDs válidos: emergencias, anafilaxia, anciano, cardiaca, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, vascular, ventilacion, viaarea, casos",
   "overrides": {
     "ugguCfQ41yk":  ["uci", "ventilacion"],
     "6-i5Hicr_vQ":  ["endocrino", "casos"],
@@ -22,7 +22,10 @@
     "7ENCqyRr5iU":  ["toracica", "ventilacion"],
     "lfvDG54naxc":  ["anafilaxia", "emergencias"],
     "hSMyEKaZy1g":  ["neuro", "uci", "emergencias"],
-    "UJoZ5m2ea_A":  ["gestion"],
+    "UJoZ5m2ea_A":  ["gestion", "seguridad"],
+    "bK1xhN3C2ZU":  ["gestion", "seguridad"],
+    "aVus-BWOvLM":  ["preoperatorio", "gestion", "seguridad"],
+    "ZD7qr8iu3W0":  ["orl_cmf", "pediatria"],
     "K6y_ZcGdmOE":  ["hemodinamica", "monitorizacion", "cirugia_general"],
     "ZBOWz4pvRqo":  ["pediatria", "hematologia"],
     "ci_M5nufoxk":  ["uci", "emergencias"],
@@ -65,7 +68,6 @@
     "ClnBwzr7Wpk":  ["vascular"],
     "i0Srp9IPOeI":  ["infecciosas", "uci"],
     "AbmIGWYCvJM":  ["ventilacion", "uci"],
-    "aVus-BWOvLM":  ["preoperatorio", "gestion"],
     "ICvnRNE9GQc":  ["uci", "emergencias"],
     "e30pMVANdlo":  ["hemodinamica", "monitorizacion"]
   }

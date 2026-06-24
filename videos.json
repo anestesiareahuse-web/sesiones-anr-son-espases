@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T08:00:05.815999+00:00",
+  "updatedAt": "2026-06-24T10:01:50.216052+00:00",
   "playlistId": "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
   "videoCount": 99,
   "videos": [
@@ -223,7 +223,8 @@
       "publishedAt": "2025-06-20T14:24:01Z",
       "duration": "1:58",
       "categories": [
-        "gestion"
+        "gestion",
+        "seguridad"
       ]
     },
     {
@@ -300,8 +301,8 @@
       "publishedAt": "2024-12-12T10:49:24Z",
       "duration": "30:52",
       "categories": [
-        "pediatria",
-        "toracica"
+        "orl_cmf",
+        "pediatria"
       ]
     },
     {
@@ -329,7 +330,8 @@
       "publishedAt": "2024-12-11T17:42:29Z",
       "duration": "31:40",
       "categories": [
-        "gestion"
+        "gestion",
+        "seguridad"
       ]
     },
     {
@@ -918,7 +920,8 @@
       "duration": "39:43",
       "categories": [
         "preoperatorio",
-        "gestion"
+        "gestion",
+        "seguridad"
       ]
     },
     {
