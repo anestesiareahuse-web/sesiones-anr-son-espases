@@ -563,10 +563,25 @@ function showView(v) {
 async function loadVideos() {
   showSkeleton();
   try {
-    const r = await fetch('./videos.json?_='+Date.now());
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    const data = await r.json();
+    const ts = Date.now();
+    // Fetch ambos archivos en paralelo
+    const [videosRes, manualRes] = await Promise.all([
+      fetch('./videos.json?_='+ts),
+      fetch('./manual_categories.json?_='+ts)
+    ]);
+    if (!videosRes.ok) throw new Error('HTTP '+videosRes.status);
+    const data = await videosRes.json();
     allVideos = data.videos || [];
+
+    // Aplicar overrides de manual_categories.json en el cliente
+    if (manualRes.ok) {
+      const manual = await manualRes.json();
+      const overrides = manual.overrides || {};
+      allVideos = allVideos.map(v =>
+        overrides[v.videoId] ? { ...v, categories: overrides[v.videoId] } : v
+      );
+    }
+
     if (data.updatedAt) {
       const d = new Date(data.updatedAt);
       updateBadge.textContent = d.toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'2-digit'});
@@ -978,38 +993,25 @@ async function pushToGitHub(token) {
   const today = new Date().toISOString().slice(0,10);
 
   try {
-    // ── 1. Guardar manual_categories.json ──────────────────────────
     adminStatus.textContent = 'Subiendo categorías…';
     const manualInfo = await ghGet(token, GH_FILE);
     const manualContent = buildManualJson();
     await ghPut(token, GH_FILE, manualContent, manualInfo.sha,
       `admin: update manual_categories.json [${today}]`);
 
-    // ── 2. Actualizar videos.json aplicando overrides directamente ─
-    adminStatus.textContent = 'Actualizando videos.json…';
-    const videosInfo = await ghGet(token, 'videos.json');
-    const videosData = JSON.parse(decodeURIComponent(escape(atob(videosInfo.content.replace(/\n/g,'')))));
-
-    // Parse overrides from the manual JSON we just built
-    const manualData = JSON.parse(manualContent);
-    const overrides = manualData.overrides || {};
-
-    // Apply overrides to each video
-    videosData.videos = videosData.videos.map(v => {
-      if (overrides[v.videoId]) {
-        return { ...v, categories: overrides[v.videoId] };
-      }
-      return v;
-    });
-    videosData.updatedAt = new Date().toISOString();
-
-    const videosContent = JSON.stringify(videosData, null, 2);
-    await ghPut(token, 'videos.json', videosContent, videosInfo.sha,
-      `admin: update videos.json [${today}]`);
-
     adminEdits = {};
-    adminStatus.textContent = '✓ Guardado. Recarga en unos segundos para ver los cambios.';
-    setTimeout(()=>adminStatus.textContent='', 8000);
+    adminStatus.textContent = '✓ Guardado. Aplicando cambios…';
+
+    // Aplicar overrides localmente sin recargar página
+    const manual = JSON.parse(manualContent);
+    const overrides = manual.overrides || {};
+    allVideos = allVideos.map(v =>
+      overrides[v.videoId] ? { ...v, categories: overrides[v.videoId] } : v
+    );
+    buildCatGrid();
+
+    adminStatus.textContent = '✓ Cambios aplicados correctamente.';
+    setTimeout(()=>adminStatus.textContent='', 6000);
 
   } catch(err) {
     adminStatus.textContent = '✗ Error: ' + err.message;
