@@ -42,8 +42,9 @@
     padding-bottom:28px;
   }
   .hero-img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
+    position:absolute;inset:-30%;width:100%;height:160%;object-fit:cover;object-position:center 30%;
     filter:brightness(.45) saturate(1.2);
+    will-change:transform;
   }
   .hero-overlay{
     position:absolute;inset:0;
@@ -501,6 +502,16 @@ const adminStatus=$('adminStatus');
    NAVIGATION
    ════════════════════════════════════════════════════════════ */
 const heroEl = document.getElementById('heroSection');
+const heroImg = heroEl.querySelector('.hero-img');
+
+// Parallax: image moves at 40% of scroll speed
+function updateParallax() {
+  if (heroEl.style.display === 'none') return;
+  const offset = window.scrollY * 0.4;
+  heroImg.style.transform = `translateY(${offset}px)`;
+}
+window.addEventListener('scroll', updateParallax, { passive: true });
+
 function showView(v) {
   [vHome,vList,vSearch,vAdmin].forEach(el => el.classList.remove('active'));
   v.classList.add('active');
