@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.anestesiareahuse_web.twa",
+    "sha256_cert_fingerprints": [
+      "C2:7E:20:AF:57:FD:D1:8D:A5:C7:E6:87:DF:2B:FB:05:37:D8:57:9A:DB:0D:1C:78:4D:FC:81:E9:AA:3A:14:69"
+    ]
+  }
+}]
