@@ -7,7 +7,7 @@
     ],
     "6-i5Hicr_vQ": [
       "endocrino",
-      "casos"
+      "cirugia_general"
     ],
     "DfLcRgMUWNQ": [
       "preoperatorio",
@@ -15,7 +15,9 @@
     ],
     "6lENtxYBqUM": [
       "preoperatorio",
-      "ecografia"
+      "ecografia",
+      "obesidad",
+      "endocrino"
     ],
     "EUZKnTBrGmc": [
       "dolor",
@@ -36,11 +38,13 @@
     ],
     "jNViX_wIl_Y": [
       "viaarea",
-      "emergencias"
+      "emergencias",
+      "pediatria"
     ],
     "983586OYayc": [
       "preoperatorio",
-      "ventilacion"
+      "ventilacion",
+      "uci"
     ],
     "HFVUMETrAPE": [
       "preoperatorio"
@@ -56,12 +60,14 @@
       "emergencias"
     ],
     "ZM223Ux9Nmo": [
-      "toracica"
+      "toracica",
+      "uci"
     ],
     "8Ip0bWHJ9NE": [
       "neuro",
       "dolor",
-      "farmaco"
+      "farmaco",
+      "traumatologia"
     ],
     "0fkX477Asoc": [
       "pediatria",
@@ -70,7 +76,8 @@
     ],
     "vBVM0FuSzPI": [
       "uci",
-      "emergencias"
+      "emergencias",
+      "hematologia"
     ],
     "JKv0pkRCArY": [
       "pediatria",
