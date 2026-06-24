@@ -44,53 +44,55 @@
 
   /* ── Hero splash ── */
   .hero{
-    position:relative;width:100%;height:340px;overflow:hidden;
+    position:relative;width:100%;height:420px;overflow:hidden;
     display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-    padding-bottom:32px;
+    padding-bottom:36px;
   }
   .hero-img{
-    position:absolute;top:-20%;left:0;
-    width:100%;height:140%;
-    object-fit:cover;object-position:center 35%;
-    filter:brightness(.38) saturate(1.3);
+    position:absolute;top:-15%;left:0;
+    width:100%;height:130%;
+    object-fit:cover;object-position:center 40%;
+    filter:brightness(.55) saturate(1.4);
     will-change:transform;
   }
   .hero-overlay{
     position:absolute;inset:0;
     background:
-      linear-gradient(90deg, rgba(0,132,144,.22) 0%, transparent 60%),
       linear-gradient(180deg,
-        rgba(10,26,28,.05) 0%,
-        rgba(10,26,28,.25) 40%,
-        rgba(10,26,28,.92) 100%);
+        rgba(0,132,144,.08) 0%,
+        rgba(10,26,28,.1)   35%,
+        rgba(10,26,28,.75) 75%,
+        rgba(10,26,28,.97) 100%);
   }
   /* teal left-edge accent */
   .hero-edge{
-    position:absolute;left:0;top:0;bottom:0;width:4px;
-    background:linear-gradient(180deg,var(--teal2),var(--teal3));
+    position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,transparent,var(--teal2),transparent);
     z-index:1;
   }
   .hero-content{
     position:relative;z-index:2;text-align:center;
-    display:flex;flex-direction:column;align-items:center;gap:10px;
+    display:flex;flex-direction:column;align-items:center;gap:14px;
   }
   /* Son Espases logo */
-  .se-logo{display:flex;flex-direction:column;align-items:center;gap:6px}
-  .se-logo-top{display:flex;align-items:center;gap:10px}
-  .se-dots{display:grid;grid-template-columns:repeat(3,6px);gap:3.5px}
-  .se-dot{width:6px;height:6px;border-radius:1px;background:#fff;opacity:.92}
-  .se-dot.sm{opacity:.5}
-  .se-name{font-size:26px;color:#fff;line-height:1;letter-spacing:.3px}
-  .se-name span{font-weight:300}
+  .se-logo{display:flex;flex-direction:column;align-items:center;gap:7px}
+  .se-logo-top{display:flex;align-items:center;gap:12px}
+  .se-dots{display:grid;grid-template-columns:repeat(3,7px);gap:4px}
+  .se-dot{width:7px;height:7px;border-radius:1.5px;background:#fff;opacity:.95}
+  .se-dot.sm{opacity:.45}
+  .se-name{font-size:30px;color:#fff;line-height:1;letter-spacing:.3px}
+  .se-name span{font-weight:200}
   .se-name strong{font-weight:800}
-  .se-divider{width:100%;height:1px;background:rgba(255,255,255,.28);margin:2px 0}
-  .se-sub{font-size:10.5px;color:rgba(255,255,255,.72);letter-spacing:2px;
+  .se-divider{width:100%;height:1px;background:rgba(255,255,255,.3);margin:2px 0}
+  .se-sub{font-size:11px;color:rgba(255,255,255,.75);letter-spacing:2.5px;
     text-transform:lowercase}
   .hero-tagline{
-    font-size:10.5px;color:rgba(255,255,255,.5);letter-spacing:1.8px;
+    font-size:10px;color:rgba(255,255,255,.65);letter-spacing:2px;
     text-transform:uppercase;
-    border:1px solid rgba(255,255,255,.18);border-radius:20px;
-    padding:4px 14px;backdrop-filter:blur(4px);background:rgba(0,132,144,.12);
+    border:1px solid rgba(0,168,184,.45);border-radius:20px;
+    padding:5px 16px;backdrop-filter:blur(8px);
+    background:rgba(0,132,144,.25);
+    box-shadow:0 0 20px rgba(0,132,144,.2);
   }
 
   /* ── Header ── */
@@ -1059,6 +1061,8 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
+  // Siempre mostrar el hero al cargar
+  window.scrollTo(0, 0);
 }
 </script>
 </body>

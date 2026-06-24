@@ -1,4 +1,4 @@
-const CACHE = 'anr-v1';
+const CACHE = 'anr-v3';
 const ASSETS = [
   './',
   './index.html',
