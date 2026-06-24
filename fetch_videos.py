@@ -10,8 +10,15 @@ import json, os, re, sys
 from datetime import datetime, timezone
 from urllib import request, parse, error
 
-API_KEY     = os.environ.get("YOUTUBE_API_KEY", "")
-PLAYLIST_ID = "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV"
+API_KEY      = os.environ.get("YOUTUBE_API_KEY", "")
+PLAYLIST_IDS = [
+    "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",   # playlist principal
+    "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4",   # playlist adicional
+]
+EXTRA_VIDEO_IDS = [
+    "lV6kqTRoGDQ",   # video individual añadido manualmente
+    "9AGG5JzR4MU",   # video individual añadido manualmente
+]
 OUTPUT_FILE = "videos.json"
 MANUAL_FILE = "manual_categories.json"
 API_BASE    = "https://www.googleapis.com/youtube/v3"
@@ -93,13 +100,11 @@ def load_manual_overrides() -> dict:
     return data.get("overrides", {})
 
 
-def fetch_playlist_videos() -> list[dict]:
+def fetch_playlist(playlist_id: str, overrides: dict) -> list[dict]:
     videos, page_token, page = [], None, 1
-    overrides = load_manual_overrides()
-
     while True:
-        print(f"  Fetching playlist page {page}…")
-        params = {"part": "snippet", "playlistId": PLAYLIST_ID, "maxResults": MAX_RESULTS}
+        print(f"  Playlist {playlist_id} — page {page}…")
+        params = {"part": "snippet", "playlistId": playlist_id, "maxResults": MAX_RESULTS}
         if page_token:
             params["pageToken"] = page_token
 
@@ -126,10 +131,7 @@ def fetch_playlist_videos() -> list[dict]:
             title = sn.get("title", "").strip()
             if title in ("Deleted video", "Private video"):
                 continue
-
-            # Manual override takes priority; fallback to keyword detection
             cats = overrides.get(vid) or categorise(title)
-
             videos.append({
                 "videoId": vid,
                 "title": title,
@@ -142,8 +144,48 @@ def fetch_playlist_videos() -> list[dict]:
         if not page_token:
             break
         page += 1
-
     return videos
+
+
+def fetch_individual_videos(video_ids: list[str], overrides: dict) -> list[dict]:
+    if not video_ids:
+        return []
+    print(f"  Fetching {len(video_ids)} individual video(s)…")
+    det = api_get("videos", {"part": "snippet,contentDetails", "id": ",".join(video_ids)})
+    videos = []
+    for item in det.get("items", []):
+        vid = item["id"]
+        sn = item["snippet"]
+        title = sn.get("title", "").strip()
+        if title in ("Deleted video", "Private video"):
+            continue
+        cats = overrides.get(vid) or categorise(title)
+        videos.append({
+            "videoId": vid,
+            "title": title,
+            "publishedAt": sn.get("publishedAt", ""),
+            "duration": parse_duration(item["contentDetails"].get("duration", "")),
+            "categories": cats,
+        })
+    return videos
+
+
+def fetch_playlist_videos() -> list[dict]:
+    overrides = load_manual_overrides()
+    seen, all_videos = set(), []
+
+    for playlist_id in PLAYLIST_IDS:
+        for v in fetch_playlist(playlist_id, overrides):
+            if v["videoId"] not in seen:
+                seen.add(v["videoId"])
+                all_videos.append(v)
+
+    for v in fetch_individual_videos(EXTRA_VIDEO_IDS, overrides):
+        if v["videoId"] not in seen:
+            seen.add(v["videoId"])
+            all_videos.append(v)
+
+    return all_videos
 
 
 def main():
@@ -151,7 +193,7 @@ def main():
         print("ERROR: YOUTUBE_API_KEY is not set.", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Fetching playlist: {PLAYLIST_ID}")
+    print(f"Fetching {len(PLAYLIST_IDS)} playlist(s) + {len(EXTRA_VIDEO_IDS)} individual video(s)…")
     videos = fetch_playlist_videos()
 
     uncat = sum(1 for v in videos if v["categories"] == ["uncategorised"])
