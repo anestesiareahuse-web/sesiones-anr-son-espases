@@ -159,8 +159,9 @@
   .grid-section-label::after{content:'';flex:1;height:1px;background:var(--border)}
   .cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
     padding:14px 12px 14px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
-    display:flex;flex-direction:column;gap:6px;-webkit-tap-highlight-color:transparent;
+    display:flex;flex-direction:column;gap:4px;-webkit-tap-highlight-color:transparent;
     position:relative;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .cat-icon{font-size:1.5rem;line-height:1;margin-bottom:2px}
   .cat-card:hover,.cat-card:focus-visible{transform:translateY(-2px);border-color:var(--border2);
     box-shadow:0 6px 20px rgba(0,0,0,.4);outline:none}
   .cat-card:active{transform:scale(.97)}
@@ -483,46 +484,46 @@
    CATEGORIES
    ════════════════════════════════════════════════════════════ */
 const CATS = [
-  { id:'all',           label:'Todos',                full:true },
-  { id:'recientes',     label:'Recientes',            recent:true },
-  { id:'emergencias',   label:'Emergencias',          emerg:true },
-  { id:'anafilaxia',    label:'Anafilaxia' },
-  { id:'anciano',       label:'Anciano / Fragilidad' },
-  { id:'cardiaca',      label:'Cardíaca' },
-  { id:'cardiologia',   label:'Cardiología' },
-  { id:'cirugia_general',label:'Cirugía general' },
-  { id:'dolor',         label:'DAP / UDO' },
-  { id:'ecmo',          label:'ECMO' },
-  { id:'ecografia',     label:'Ecografía / POCUS' },
-  { id:'endocrino',     label:'Endocrino' },
-  { id:'farmaco',       label:'Farmacología' },
-  { id:'fluidoterapia', label:'Fluidoterapia' },
-  { id:'gestion',       label:'Gestión y formación' },
-  { id:'hematologia',   label:'Hematología' },
-  { id:'hemodinamica',  label:'Hemodinámica' },
-  { id:'hepatico',      label:'Hepático' },
-  { id:'infecciosas',   label:'Infecciosas' },
-  { id:'monitorizacion',label:'Monitorización' },
-  { id:'nefrologia',    label:'Nefrología / Renal' },
-  { id:'neuro',         label:'Neurocirugía' },
-  { id:'neurologia',    label:'Neurología' },
-  { id:'obesidad',      label:'Obesidad' },
-  { id:'obstetricia',   label:'Obstetricia' },
-  { id:'orl_cmf',       label:'ORL / CMF' },
-  { id:'pediatria',     label:'Pediatría' },
-  { id:'politrauma',    label:'Politrauma' },
-  { id:'preoperatorio', label:'Preoperatorio' },
-  { id:'rcp',           label:'RCP' },
-  { id:'regional',      label:'Regional' },
-  { id:'seguridad',     label:'Seguridad del paciente' },
-  { id:'toracica',      label:'Torácica' },
-  { id:'trasplante',    label:'Trasplante' },
-  { id:'traumatologia', label:'Traumatología' },
-  { id:'uci',           label:'Reanimación' },
-  { id:'vascular',      label:'Vascular' },
-  { id:'ventilacion',   label:'Ventilación' },
-  { id:'viaarea',       label:'Vía aérea' },
-  { id:'casos',         label:'Casos clínicos' },
+  { id:'all',           label:'Todos',                full:true,   icon:'🎬' },
+  { id:'recientes',     label:'Recientes',            recent:true, icon:'🆕' },
+  { id:'emergencias',   label:'Emergencias',          emerg:true,  icon:'⚡' },
+  { id:'anafilaxia',    label:'Anafilaxia',                        icon:'🐝' },
+  { id:'anciano',       label:'Anciano / Fragilidad',              icon:'🧓' },
+  { id:'cardiaca',      label:'Cardíaca',                          icon:'🫀' },
+  { id:'cardiologia',   label:'Cardiología',                       icon:'💓' },
+  { id:'cirugia_general',label:'Cirugía general',                  icon:'🔪' },
+  { id:'dolor',         label:'DAP / UDO',                         icon:'💊' },
+  { id:'ecmo',          label:'ECMO',                              icon:'🔄' },
+  { id:'ecografia',     label:'Ecografía / POCUS',                 icon:'📡' },
+  { id:'endocrino',     label:'Endocrino',                         icon:'🧬' },
+  { id:'farmaco',       label:'Farmacología',                      icon:'💉' },
+  { id:'fluidoterapia', label:'Fluidoterapia',                     icon:'💧' },
+  { id:'gestion',       label:'Gestión y formación',               icon:'📋' },
+  { id:'hematologia',   label:'Hematología',                       icon:'🩸' },
+  { id:'hemodinamica',  label:'Hemodinámica',                      icon:'📈' },
+  { id:'hepatico',      label:'Hepático',                          icon:'🫁' },
+  { id:'infecciosas',   label:'Infecciosas',                       icon:'🦠' },
+  { id:'monitorizacion',label:'Monitorización',                    icon:'📊' },
+  { id:'nefrologia',    label:'Nefrología / Renal',                icon:'🫘' },
+  { id:'neuro',         label:'Neurocirugía',                      icon:'🧠' },
+  { id:'neurologia',    label:'Neurología',                        icon:'⚡' },
+  { id:'obesidad',      label:'Obesidad',                          icon:'⚖️' },
+  { id:'obstetricia',   label:'Obstetricia',                       icon:'🤰' },
+  { id:'orl_cmf',       label:'ORL / CMF',                         icon:'👂' },
+  { id:'pediatria',     label:'Pediatría',                         icon:'👶' },
+  { id:'politrauma',    label:'Politrauma',                        icon:'🚑' },
+  { id:'preoperatorio', label:'Preoperatorio',                     icon:'📝' },
+  { id:'rcp',           label:'RCP',                               icon:'🫁' },
+  { id:'regional',      label:'Regional',                          icon:'💉' },
+  { id:'seguridad',     label:'Seguridad del paciente',            icon:'🛡️' },
+  { id:'toracica',      label:'Torácica',                          icon:'🫁' },
+  { id:'trasplante',    label:'Trasplante',                        icon:'🏥' },
+  { id:'traumatologia', label:'Traumatología',                     icon:'🦴' },
+  { id:'uci',           label:'Reanimación',                       icon:'🏨' },
+  { id:'vascular',      label:'Vascular',                          icon:'🩺' },
+  { id:'ventilacion',   label:'Ventilación',                       icon:'💨' },
+  { id:'viaarea',       label:'Vía aérea',                         icon:'😮' },
+  { id:'casos',         label:'Casos clínicos',                    icon:'🔍' },
 ];
 const CAT_MAP = Object.fromEntries(CATS.map(c => [c.id, c]));
 const EMERG_ID = 'emergencias';
@@ -691,7 +692,8 @@ function makeCard(cat, n, favs, inFavsSection) {
     ? `<button class="pin-btn${isPinned?' on':''}" title="${isPinned?'Quitar de favoritas':'Añadir a favoritas'}">${isPinned?'★':'☆'}</button>`
     : '';
 
-  el.innerHTML = `${starBtn}<span class="cat-name">${cat.label}</span><span class="cat-count">${n}</span>`;
+  const iconHtml = cat.icon ? `<span class="cat-icon">${cat.icon}</span>` : '';
+  el.innerHTML = `${starBtn}${iconHtml}<span class="cat-name">${cat.label}</span><span class="cat-count">${n}</span>`;
   el.addEventListener('click', () => openCategory(cat.id));
   el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
 
