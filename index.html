@@ -175,6 +175,10 @@
   .cat-card.recent:hover{border-color:rgba(50,200,100,.55)}
   .cat-card.recent .cat-name{color:#5cd98a}
   .cat-card.recent .cat-count{background:rgba(50,200,100,.18);color:#5cd98a;border-color:rgba(50,200,100,.3)}
+  .cat-card.saved{border-color:rgba(0,132,144,.3);background:rgba(0,132,144,.06)}
+  .cat-card.saved:hover{border-color:rgba(0,132,144,.55)}
+  .cat-card.saved .cat-name{color:var(--green)}
+  .cat-card.saved .cat-count{background:rgba(0,132,144,.18);color:var(--green);border-color:rgba(0,132,144,.3)}
   .cat-card.pinned{border-color:rgba(255,200,50,.25);background:rgba(255,200,50,.04)}
   .cat-card.pinned .cat-name{color:#f5d76e}
   .cat-card.pinned .cat-count{background:rgba(255,200,50,.15);color:#f5d76e;border-color:rgba(255,200,50,.3)}
@@ -252,6 +256,18 @@
   .tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--green-dim);
     color:var(--green);border:1px solid rgba(0,132,144,.35);font-weight:600}
   .tag.emerg{background:rgba(232,85,85,.12);color:#f08080;border-color:rgba(232,85,85,.25)}
+  /* card-wrap */
+  .card-wrap{display:flex;flex-direction:column;position:relative}
+  .card-wrap.watched .card{opacity:.6}
+  .watched-badge{position:absolute;top:6px;left:6px;background:rgba(0,180,80,.85);color:#fff;
+    font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
+  .card-actions{display:flex;gap:6px;padding:6px 6px 2px;background:var(--surface)}
+  .card-btn{flex:1;font-size:11px;font-weight:600;padding:5px 4px;border-radius:6px;
+    border:1px solid var(--border);background:var(--surface2);color:var(--muted);
+    cursor:pointer;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+  .card-btn:hover{border-color:var(--border2);color:var(--fg)}
+  .watch-btn.on{background:rgba(0,180,80,.12);color:#4dd98a;border-color:rgba(0,180,80,.3)}
+  .save-btn.on{background:rgba(0,132,144,.12);color:var(--green);border-color:rgba(0,132,144,.3)}
 
   /* ── Empty / states ── */
   .empty{display:flex;flex-direction:column;align-items:center;gap:14px;
@@ -486,6 +502,7 @@
 const CATS = [
   { id:'all',           label:'Todos',                full:true,   icon:'🎬' },
   { id:'recientes',     label:'Recientes',            recent:true, icon:'🆕' },
+  { id:'guardados',     label:'Guardados',            saved:true,  icon:'🔖' },
   { id:'emergencias',   label:'Emergencias',          emerg:true,  icon:'⚡' },
   { id:'anafilaxia',    label:'Anafilaxia',                        icon:'🐝' },
   { id:'anciano',       label:'Anciano / Fragilidad',              icon:'🧓' },
@@ -627,6 +644,39 @@ function showSkeleton() {
 }
 
 /* ════════════════════════════════════════════════════════════
+   WATCHED VIDEOS
+   ════════════════════════════════════════════════════════════ */
+const WATCHED_KEY = 'anr_watched_v1';
+function getWatched() {
+  try { return JSON.parse(localStorage.getItem(WATCHED_KEY)) || []; } catch { return []; }
+}
+function toggleWatched(videoId, e) {
+  e.preventDefault(); e.stopPropagation();
+  const w = getWatched();
+  const idx = w.indexOf(videoId);
+  if (idx >= 0) w.splice(idx, 1); else w.push(videoId);
+  localStorage.setItem(WATCHED_KEY, JSON.stringify(w));
+  renderList();
+}
+
+/* ════════════════════════════════════════════════════════════
+   SAVED VIDEOS
+   ════════════════════════════════════════════════════════════ */
+const SAVED_KEY = 'anr_saved_v1';
+function getSaved() {
+  try { return JSON.parse(localStorage.getItem(SAVED_KEY)) || []; } catch { return []; }
+}
+function toggleSaved(videoId, e) {
+  e.preventDefault(); e.stopPropagation();
+  const s = getSaved();
+  const idx = s.indexOf(videoId);
+  if (idx >= 0) s.splice(idx, 1); else s.push(videoId);
+  localStorage.setItem(SAVED_KEY, JSON.stringify(s));
+  renderList();
+  if (activeCatId === 'guardados') renderList();
+}
+
+/* ════════════════════════════════════════════════════════════
    FAVORITES
    ════════════════════════════════════════════════════════════ */
 const FAVS_KEY = 'anr_favs_v1';
@@ -653,6 +703,7 @@ function buildCatGrid() {
   }));
   counts['all'] = allVideos.length;
   counts['recientes'] = Math.min(20, allVideos.length);
+  counts['guardados'] = getSaved().length;
 
   const favs = getFavs();
   catGrid.innerHTML = '';
@@ -682,9 +733,9 @@ function buildCatGrid() {
 function makeCard(cat, n, favs, inFavsSection) {
   const isPinned = favs.includes(cat.id);
   const el = document.createElement('div');
-  const isSpecial = cat.full || cat.emerg || cat.recent;
+  const isSpecial = cat.full || cat.emerg || cat.recent || cat.saved;
   const pinnedCls = isPinned && !isSpecial ? ' pinned' : '';
-  el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'') + (cat.recent?' recent':'') + pinnedCls;
+  el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'') + (cat.recent?' recent':'') + (cat.saved?' saved':'') + pinnedCls;
   el.tabIndex = 0;
 
   // Star button (not on "Todos", "Emergencias" or "Recientes")
@@ -716,15 +767,26 @@ function openCategory(catId) {
    VIDEO LIST
    ════════════════════════════════════════════════════════════ */
 function renderList() {
+  const saved = getSaved();
   let vids = activeCatId === 'all'
     ? [...allVideos]
     : activeCatId === 'recientes'
       ? [...allVideos].sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,20)
-      : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
+      : activeCatId === 'guardados'
+        ? allVideos.filter(v => saved.includes(v.videoId))
+        : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
   vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
   resultsInfo.textContent = `${vids.length} vídeo${vids.length!==1?'s':''} · ${CAT_MAP[activeCatId]?.label||activeCatId}`;
   grid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML();
 }
+
+/* delegación de eventos para botones de vídeo */
+document.addEventListener('click', e => {
+  const wb = e.target.closest('.watch-btn');
+  if (wb) { toggleWatched(wb.dataset.id, e); return; }
+  const sb = e.target.closest('.save-btn');
+  if (sb) { toggleSaved(sb.dataset.id, e); return; }
+});
 
 /* ════════════════════════════════════════════════════════════
    NORMALIZE (accent-insensitive search)
@@ -790,13 +852,16 @@ function renderSearch(q) {
    CARD HTML
    ════════════════════════════════════════════════════════════ */
 function cardHTML(v) {
+  const watched = getWatched().includes(v.videoId);
+  const saved = getSaved().includes(v.videoId);
   const tags = (v.categories||[]).filter(c=>c!=='uncategorised').slice(0,2)
     .map(c => {
       const cat = CAT_MAP[c];
       const cls = c===EMERG_ID?' emerg':'';
       return cat ? `<span class="tag${cls}">${cat.label}</span>` : '';
     }).join('');
-  return `<a class="card" href="https://www.youtube.com/watch?v=${v.videoId}"
+  return `<div class="card-wrap${watched?' watched':''}">
+  <a class="card" href="https://www.youtube.com/watch?v=${v.videoId}"
     target="_blank" rel="noopener" aria-label="${esc(v.title)}">
     <div class="thumb-wrap">
       <img src="https://i.ytimg.com/vi/${v.videoId}/mqdefault.jpg" alt="" loading="lazy" decoding="async"/>
@@ -804,6 +869,7 @@ function cardHTML(v) {
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       </div></div>
       ${v.duration?`<span class="dur">${v.duration}</span>`:''}
+      ${watched?`<span class="watched-badge">✓ Visto</span>`:''}
     </div>
     <div class="card-body">
       <div class="card-title">${esc(v.title)}</div>
@@ -812,7 +878,12 @@ function cardHTML(v) {
         <div class="card-tags">${tags}</div>
       </div>
     </div>
-  </a>`;
+  </a>
+  <div class="card-actions">
+    <button class="card-btn watch-btn${watched?' on':''}" data-id="${v.videoId}" title="${watched?'Marcar como no visto':'Marcar como visto'}">${watched?'✓ Visto':'○ Marcar visto'}</button>
+    <button class="card-btn save-btn${saved?' on':''}" data-id="${v.videoId}" title="${saved?'Quitar de guardados':'Guardar'}">${saved?'🔖':'🔖 Guardar'}</button>
+  </div>
+  </div>`;
 }
 
 function emptyHTML() {
