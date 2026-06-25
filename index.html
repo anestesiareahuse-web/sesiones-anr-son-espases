@@ -152,13 +152,13 @@
   .view.active{display:block}
 
   /* ── Category grid ── */
-  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
   .grid-section-label{grid-column:1/-1;font-size:11px;font-weight:700;color:var(--muted);
     text-transform:uppercase;letter-spacing:.7px;padding:4px 2px 0;
     display:flex;align-items:center;gap:8px}
   .grid-section-label::after{content:'';flex:1;height:1px;background:var(--border)}
   .cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:14px 12px 14px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
+    padding:10px 8px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;
     display:flex;flex-direction:column;gap:4px;-webkit-tap-highlight-color:transparent;
     position:relative;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
   .cat-icon{font-size:1.5rem;line-height:1;margin-bottom:2px}
