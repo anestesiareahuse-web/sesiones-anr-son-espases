@@ -278,6 +278,9 @@
   .cat-bg-emoji{position:absolute;bottom:-6px;right:2px;font-size:3.8rem;
     opacity:.13;filter:blur(1px);pointer-events:none;user-select:none;line-height:1;
     transform:rotate(-8deg)}
+  .cat-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:.18;border-radius:var(--radius);pointer-events:none;user-select:none;
+    filter:saturate(1.4)}
 
   /* ── Empty / states ── */
   .empty{display:flex;flex-direction:column;align-items:center;gap:14px;
@@ -519,8 +522,8 @@ const CATS = [
   { id:'emergencias',   label:'Emergencias',          emerg:true,  bg:'⚡' },
   { id:'anafilaxia',    label:'Anafilaxia',                        bg:'🐝' },
   { id:'anciano',       label:'Anciano / Fragilidad',              bg:'🧓' },
-  { id:'cardiaca',      label:'Cardíaca',                          bg:'🫀' },
-  { id:'cardiologia',   label:'Cardiología',                       bg:'💓' },
+  { id:'cardiaca',      label:'Cardíaca',                          bg:'🫀', img:'assets/cats/cardiaca.webp' },
+  { id:'cardiologia',   label:'Cardiología',                       bg:'💓', img:'assets/cats/cardiaca.webp' },
   { id:'cirugia_general',label:'Cirugía general',                  bg:'🔬' },
   { id:'dolor',         label:'DAP / UDO',                         bg:'💊' },
   { id:'ecmo',          label:'ECMO',                              bg:'🔄' },
@@ -768,8 +771,10 @@ function makeCard(cat, n, watchedN, favs, inFavsSection) {
 
   const progressHtml = (!cat.recent && !cat.saved && n > 0 && watchedN > 0)
     ? `<span class="cat-progress">${watchedN}/${n} vistos</span>` : '';
-  const bgEmoji = cat.bg ? `<span class="cat-bg-emoji">${cat.bg}</span>` : '';
-  el.innerHTML = `${starBtn}${bgEmoji}<span class="cat-name">${cat.label}</span><div class="cat-foot-row"><span class="cat-count">${n}</span>${progressHtml}</div>`;
+  const bgEl = cat.img
+    ? `<img class="cat-bg-img" src="${cat.img}" alt="" loading="lazy"/>`
+    : cat.bg ? `<span class="cat-bg-emoji">${cat.bg}</span>` : '';
+  el.innerHTML = `${starBtn}${bgEl}<span class="cat-name">${cat.label}</span><div class="cat-foot-row"><span class="cat-count">${n}</span>${progressHtml}</div>`;
   el.addEventListener('click', () => openCategory(cat.id));
   el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
 
