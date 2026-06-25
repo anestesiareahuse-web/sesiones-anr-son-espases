@@ -210,9 +210,14 @@
   .cat-card-mini .cat-count{font-size:11px}
 
   /* ── List view ── */
-  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:6px;
     position:sticky;top:88px;z-index:50;
     background:var(--bg);padding:8px 0 6px;margin-left:-2px;margin-right:-2px;padding-left:2px;}
+  .list-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+  .filter-unwatched-btn{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;
+    border:1px solid var(--border);background:var(--surface2);color:var(--muted);
+    cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+  .filter-unwatched-btn.on{background:rgba(0,180,80,.12);color:#4dd98a;border-color:rgba(0,180,80,.35)}
   .back-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);
     border-radius:22px;height:34px;padding:0 14px;font-size:13px;cursor:pointer;
     display:flex;align-items:center;gap:6px;transition:border-color .18s,color .18s;
@@ -268,6 +273,8 @@
   .card-btn:hover{border-color:var(--border2);color:var(--fg)}
   .watch-btn.on{background:rgba(0,180,80,.12);color:#4dd98a;border-color:rgba(0,180,80,.3)}
   .save-btn.on{background:rgba(0,132,144,.12);color:var(--green);border-color:rgba(0,132,144,.3)}
+  .cat-foot-row{display:flex;align-items:center;justify-content:space-between;gap:4px}
+  .cat-progress{font-size:10px;color:var(--muted);white-space:nowrap}
 
   /* ── Empty / states ── */
   .empty{display:flex;flex-direction:column;align-items:center;gap:14px;
@@ -439,7 +446,10 @@
       </button>
       <span class="list-title" id="listTitle"></span>
     </div>
-    <div class="results-info" id="resultsInfo"></div>
+    <div class="list-toolbar">
+      <div class="results-info" id="resultsInfo"></div>
+      <button class="filter-unwatched-btn" id="filterUnwatchedBtn" title="Mostrar solo no vistos">○ Solo no vistos</button>
+    </div>
     <div class="grid" id="grid"></div>
   </div>
 
@@ -705,6 +715,16 @@ function buildCatGrid() {
   counts['recientes'] = Math.min(20, allVideos.length);
   counts['guardados'] = getSaved().length;
 
+  // progreso de vistos por categoría
+  const watched = getWatched();
+  const watchedCounts = {};
+  CATS.forEach(c => watchedCounts[c.id] = 0);
+  allVideos.forEach(v => {
+    if (!watched.includes(v.videoId)) return;
+    (v.categories||[]).forEach(cid => { if (watchedCounts[cid] !== undefined) watchedCounts[cid]++; });
+  });
+  watchedCounts['all'] = watched.filter(id => allVideos.find(v=>v.videoId===id)).length;
+
   const favs = getFavs();
   catGrid.innerHTML = '';
 
@@ -715,7 +735,7 @@ function buildCatGrid() {
     lbl.className = 'grid-section-label';
     lbl.textContent = 'Mis favoritas';
     catGrid.appendChild(lbl);
-    pinnedCats.forEach(cat => catGrid.appendChild(makeCard(cat, counts[cat.id]||0, favs, true)));
+    pinnedCats.forEach(cat => catGrid.appendChild(makeCard(cat, counts[cat.id]||0, watchedCounts[cat.id]||0, favs, true)));
     const lbl2 = document.createElement('div');
     lbl2.className = 'grid-section-label';
     lbl2.textContent = 'Todas las categorías';
@@ -726,11 +746,11 @@ function buildCatGrid() {
   CATS.forEach(cat => {
     const n = counts[cat.id] || 0;
     if (cat.id !== 'all' && cat.id !== 'guardados' && cat.id !== 'recientes' && n === 0) return;
-    catGrid.appendChild(makeCard(cat, n, favs, false));
+    catGrid.appendChild(makeCard(cat, n, watchedCounts[cat.id]||0, favs, false));
   });
 }
 
-function makeCard(cat, n, favs, inFavsSection) {
+function makeCard(cat, n, watchedN, favs, inFavsSection) {
   const isPinned = favs.includes(cat.id);
   const el = document.createElement('div');
   const isSpecial = cat.full || cat.emerg || cat.recent || cat.saved;
@@ -743,8 +763,9 @@ function makeCard(cat, n, favs, inFavsSection) {
     ? `<button class="pin-btn${isPinned?' on':''}" title="${isPinned?'Quitar de favoritas':'Añadir a favoritas'}">${isPinned?'★':'☆'}</button>`
     : '';
 
-  const iconHtml = cat.icon ? `<span class="cat-icon">${cat.icon}</span>` : '';
-  el.innerHTML = `${starBtn}${iconHtml}<span class="cat-name">${cat.label}</span><span class="cat-count">${n}</span>`;
+  const progressHtml = (!cat.recent && !cat.saved && n > 0 && watchedN > 0)
+    ? `<span class="cat-progress">${watchedN}/${n} vistos</span>` : '';
+  el.innerHTML = `${starBtn}<span class="cat-name">${cat.label}</span><div class="cat-foot-row"><span class="cat-count">${n}</span>${progressHtml}</div>`;
   el.addEventListener('click', () => openCategory(cat.id));
   el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
 
@@ -756,6 +777,7 @@ function makeCard(cat, n, favs, inFavsSection) {
 
 function openCategory(catId) {
   activeCatId = catId;
+  filterUnwatched = false;
   const cat = CAT_MAP[catId];
   listTitle.textContent = cat ? cat.label : catId;
   renderList();
@@ -766,8 +788,11 @@ function openCategory(catId) {
 /* ════════════════════════════════════════════════════════════
    VIDEO LIST
    ════════════════════════════════════════════════════════════ */
+let filterUnwatched = false;
+
 function renderList() {
   const saved = getSaved();
+  const watched = getWatched();
   let vids = activeCatId === 'all'
     ? [...allVideos]
     : activeCatId === 'recientes'
@@ -776,9 +801,25 @@ function renderList() {
         ? allVideos.filter(v => saved.includes(v.videoId))
         : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
   vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
-  resultsInfo.textContent = `${vids.length} vídeo${vids.length!==1?'s':''} · ${CAT_MAP[activeCatId]?.label||activeCatId}`;
+
+  const totalVids = vids.length;
+  const watchedCount = vids.filter(v => watched.includes(v.videoId)).length;
+
+  if (filterUnwatched) vids = vids.filter(v => !watched.includes(v.videoId));
+
+  const filterBtn = $('filterUnwatchedBtn');
+  filterBtn.classList.toggle('on', filterUnwatched);
+  filterBtn.textContent = filterUnwatched ? '✓ Solo no vistos' : '○ Solo no vistos';
+
+  const progressText = watchedCount > 0 ? ` · ${watchedCount}/${totalVids} vistos` : '';
+  resultsInfo.textContent = `${vids.length} vídeo${vids.length!==1?'s':''} · ${CAT_MAP[activeCatId]?.label||activeCatId}${progressText}`;
   grid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML(activeCatId);
 }
+
+$('filterUnwatchedBtn').addEventListener('click', () => {
+  filterUnwatched = !filterUnwatched;
+  renderList();
+});
 
 /* delegación de eventos para botones de vídeo */
 document.addEventListener('click', e => {
@@ -786,6 +827,21 @@ document.addEventListener('click', e => {
   if (wb) { toggleWatched(wb.dataset.id, e); return; }
   const sb = e.target.closest('.save-btn');
   if (sb) { toggleSaved(sb.dataset.id, e); return; }
+  const shb = e.target.closest('.share-btn');
+  if (shb) {
+    e.preventDefault(); e.stopPropagation();
+    const url = `https://www.youtube.com/watch?v=${shb.dataset.id}`;
+    const title = shb.dataset.title || 'Sesión ANR';
+    if (navigator.share) {
+      navigator.share({ title, url }).catch(()=>{});
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        const orig = shb.textContent;
+        shb.textContent = '✓ Copiado';
+        setTimeout(() => shb.textContent = orig, 1800);
+      });
+    }
+  }
 });
 
 /* ════════════════════════════════════════════════════════════
@@ -880,8 +936,9 @@ function cardHTML(v) {
     </div>
   </a>
   <div class="card-actions">
-    <button class="card-btn watch-btn${watched?' on':''}" data-id="${v.videoId}" title="${watched?'Marcar como no visto':'Marcar como visto'}">${watched?'✓ Visto':'○ Marcar visto'}</button>
-    <button class="card-btn save-btn${saved?' on':''}" data-id="${v.videoId}" title="${saved?'Quitar de guardados':'Guardar'}">${saved?'🔖':'🔖 Guardar'}</button>
+    <button class="card-btn watch-btn${watched?' on':''}" data-id="${v.videoId}">${watched?'✓ Visto':'○ Marcar visto'}</button>
+    <button class="card-btn save-btn${saved?' on':''}" data-id="${v.videoId}">${saved?'🔖':'🔖 Guardar'}</button>
+    <button class="card-btn share-btn" data-id="${v.videoId}" data-title="${esc(v.title)}">⬆ Compartir</button>
   </div>
   </div>`;
 }
