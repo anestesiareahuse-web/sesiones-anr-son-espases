@@ -170,6 +170,10 @@
   .cat-card.emerg:hover{border-color:rgba(232,85,85,.5)}
   .cat-card.emerg .cat-name{color:#f08080}
   .cat-card.emerg .cat-count{background:rgba(232,85,85,.18);color:#f08080;border-color:rgba(232,85,85,.3)}
+  .cat-card.recent{border-color:rgba(0,180,160,.25);background:rgba(0,180,160,.05)}
+  .cat-card.recent:hover{border-color:rgba(0,180,160,.5)}
+  .cat-card.recent .cat-name{color:#4dd8cc}
+  .cat-card.recent .cat-count{background:rgba(0,180,160,.18);color:#4dd8cc;border-color:rgba(0,180,160,.3)}
   .cat-card.pinned{border-color:rgba(255,200,50,.25);background:rgba(255,200,50,.04)}
   .cat-card.pinned .cat-name{color:#f5d76e}
   .cat-card.pinned .cat-count{background:rgba(255,200,50,.15);color:#f5d76e;border-color:rgba(255,200,50,.3)}
@@ -480,6 +484,7 @@
    ════════════════════════════════════════════════════════════ */
 const CATS = [
   { id:'all',           label:'Todos',                full:true },
+  { id:'recientes',     label:'Recientes',            recent:true },
   { id:'emergencias',   label:'Emergencias',          emerg:true },
   { id:'anafilaxia',    label:'Anafilaxia' },
   { id:'anciano',       label:'Anciano / Fragilidad' },
@@ -646,6 +651,7 @@ function buildCatGrid() {
     if (counts[cid] !== undefined) counts[cid]++;
   }));
   counts['all'] = allVideos.length;
+  counts['recientes'] = Math.min(20, allVideos.length);
 
   const favs = getFavs();
   catGrid.innerHTML = '';
@@ -675,12 +681,13 @@ function buildCatGrid() {
 function makeCard(cat, n, favs, inFavsSection) {
   const isPinned = favs.includes(cat.id);
   const el = document.createElement('div');
-  const pinnedCls = isPinned && !cat.emerg && !cat.full ? ' pinned' : '';
-  el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'') + pinnedCls;
+  const isSpecial = cat.full || cat.emerg || cat.recent;
+  const pinnedCls = isPinned && !isSpecial ? ' pinned' : '';
+  el.className = 'cat-card' + (cat.full?' full':'') + (cat.emerg?' emerg':'') + (cat.recent?' recent':'') + pinnedCls;
   el.tabIndex = 0;
 
-  // Star button (not on "Todos" or "Emergencias")
-  const starBtn = (!cat.full && !cat.emerg)
+  // Star button (not on "Todos", "Emergencias" or "Recientes")
+  const starBtn = !isSpecial
     ? `<button class="pin-btn${isPinned?' on':''}" title="${isPinned?'Quitar de favoritas':'Añadir a favoritas'}">${isPinned?'★':'☆'}</button>`
     : '';
 
@@ -688,7 +695,7 @@ function makeCard(cat, n, favs, inFavsSection) {
   el.addEventListener('click', () => openCategory(cat.id));
   el.addEventListener('keydown', e => e.key==='Enter' && openCategory(cat.id));
 
-  if (!cat.full && !cat.emerg) {
+  if (!isSpecial) {
     el.querySelector('.pin-btn').addEventListener('click', e => toggleFav(cat.id, e));
   }
   return el;
@@ -709,7 +716,9 @@ function openCategory(catId) {
 function renderList() {
   let vids = activeCatId === 'all'
     ? [...allVideos]
-    : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
+    : activeCatId === 'recientes'
+      ? [...allVideos].sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,20)
+      : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
   vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
   resultsInfo.textContent = `${vids.length} vídeo${vids.length!==1?'s':''} · ${CAT_MAP[activeCatId]?.label||activeCatId}`;
   grid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML();
