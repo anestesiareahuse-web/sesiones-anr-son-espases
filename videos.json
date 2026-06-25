@@ -1,11 +1,30 @@
 {
-  "updatedAt": "2026-06-24T20:48:44.939121+00:00",
+  "updatedAt": "2026-06-25T12:05:59.459523+00:00",
   "playlistIds": [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
     "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4"
   ],
   "videoCount": 107,
   "videos": [
+    {
+      "videoId": "9AGG5JzR4MU",
+      "title": "Maquina de anestesia. Dr. Alfonso",
+      "publishedAt": "2026-06-24T21:49:06Z",
+      "duration": "30:04",
+      "categories": [
+        "uncategorised",
+        "ventilacion"
+      ]
+    },
+    {
+      "videoId": "lV6kqTRoGDQ",
+      "title": "Formación enfermería Clearsight",
+      "publishedAt": "2026-06-24T21:48:51Z",
+      "duration": "10:27",
+      "categories": [
+        "gestion"
+      ]
+    },
     {
       "videoId": "ugguCfQ41yk",
       "title": "Ventilación mecánica en Renimación. Dra. Bárcena",
@@ -976,7 +995,8 @@
         "toracica",
         "cardiaca",
         "neuro",
-        "uci"
+        "uci",
+        "vascular"
       ]
     },
     {
@@ -1018,7 +1038,8 @@
       "publishedAt": "2022-12-27T10:38:35Z",
       "duration": "23:01",
       "categories": [
-        "uncategorised"
+        "uncategorised",
+        "ecografia"
       ]
     },
     {
@@ -1027,7 +1048,7 @@
       "publishedAt": "2022-12-27T10:38:35Z",
       "duration": "17:55",
       "categories": [
-        "vascular"
+        "ecografia"
       ]
     },
     {
@@ -1036,8 +1057,7 @@
       "publishedAt": "2022-12-27T10:38:35Z",
       "duration": "25:38",
       "categories": [
-        "ecografia",
-        "vascular"
+        "ecografia"
       ]
     },
     {
@@ -1046,7 +1066,6 @@
       "publishedAt": "2022-12-27T10:38:35Z",
       "duration": "20:06",
       "categories": [
-        "regional",
         "ecografia"
       ]
     },
@@ -1065,25 +1084,8 @@
       "publishedAt": "2023-01-10T22:05:27Z",
       "duration": "17:54",
       "categories": [
-        "pediatria"
-      ]
-    },
-    {
-      "videoId": "lV6kqTRoGDQ",
-      "title": "Formación enfermería Clearsight",
-      "publishedAt": "2024-04-09T16:30:51Z",
-      "duration": "10:27",
-      "categories": [
-        "gestion"
-      ]
-    },
-    {
-      "videoId": "9AGG5JzR4MU",
-      "title": "Maquina de anestesia. Dr. Alfonso",
-      "publishedAt": "2024-05-27T19:23:13Z",
-      "duration": "30:04",
-      "categories": [
-        "uncategorised"
+        "pediatria",
+        "ecografia"
       ]
     }
   ]
