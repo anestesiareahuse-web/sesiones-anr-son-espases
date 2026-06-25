@@ -725,7 +725,7 @@ function buildCatGrid() {
   // ── All categories ──
   CATS.forEach(cat => {
     const n = counts[cat.id] || 0;
-    if (cat.id !== 'all' && n === 0) return;
+    if (cat.id !== 'all' && cat.id !== 'guardados' && cat.id !== 'recientes' && n === 0) return;
     catGrid.appendChild(makeCard(cat, n, favs, false));
   });
 }
@@ -777,7 +777,7 @@ function renderList() {
         : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
   vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
   resultsInfo.textContent = `${vids.length} vídeo${vids.length!==1?'s':''} · ${CAT_MAP[activeCatId]?.label||activeCatId}`;
-  grid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML();
+  grid.innerHTML = vids.length ? vids.map(cardHTML).join('') : emptyHTML(activeCatId);
 }
 
 /* delegación de eventos para botones de vídeo */
@@ -886,7 +886,12 @@ function cardHTML(v) {
   </div>`;
 }
 
-function emptyHTML() {
+function emptyHTML(catId) {
+  if (catId === 'guardados') {
+    return `<div class="empty">
+      <span style="font-size:2.5rem">🔖</span>
+      <p>Ningún vídeo guardado aún.<br>Pulsa <strong>🔖 Guardar</strong> en cualquier vídeo para añadirlo aquí.</p></div>`;
+  }
   return `<div class="empty">
     <svg viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm1-5C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8z"/></svg>
     <p>No se encontraron vídeos.</p></div>`;
