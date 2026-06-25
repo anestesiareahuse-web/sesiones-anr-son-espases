@@ -1,8 +1,10 @@
 [{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.github.anestesiareahuse_web.twa",
-        "sha256_cert_fingerprints": ["65:F8:EE:4E:0C:72:66:63:D5:BB:C9:BE:8C:EE:32:4F:1A:04:FB:D5:A7:77:F4:8E:DC:53:43:F1:C6:08:F2:2E"]
-      }
-    }]
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.anestesiareahuse_web.twa",
+    "sha256_cert_fingerprints": [
+      "3B:BF:69:76:80:13:03:B3:0B:3C:6F:4C:1E:81:AE:1A:24:E7:0A:8C:A6:57:5D:22:64:D5:0F:7C:F8:E8:7F:3B"
+    ]
+  }
+}]
