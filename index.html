@@ -210,10 +210,10 @@
   .cat-card-mini .cat-count{font-size:11px}
 
   /* ── List view ── */
-  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:6px;
-    position:sticky;top:88px;z-index:50;
-    background:var(--bg);padding:8px 0 6px;margin-left:-2px;margin-right:-2px;padding-left:2px;}
-  .list-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+  .list-hdr{display:flex;align-items:center;gap:10px;margin-bottom:0;}
+  .list-sticky{position:sticky;top:var(--hdr-h,82px);z-index:50;
+    background:var(--bg);padding:8px 2px 6px;margin:0 -2px;}
+  .list-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:8px;margin-bottom:4px;}
   .filter-unwatched-btn{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;
     border:1px solid var(--border);background:var(--surface2);color:var(--muted);
     cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
@@ -445,16 +445,18 @@
 
   <!-- View: Video list -->
   <div id="vList" class="view">
-    <div class="list-hdr">
-      <button class="back-btn" id="backBtn">
-        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-        Categorías
-      </button>
-      <span class="list-title" id="listTitle"></span>
-    </div>
-    <div class="list-toolbar">
-      <div class="results-info" id="resultsInfo"></div>
-      <button class="filter-unwatched-btn" id="filterUnwatchedBtn" title="Mostrar solo no vistos">○ Solo no vistos</button>
+    <div class="list-sticky">
+      <div class="list-hdr">
+        <button class="back-btn" id="backBtn">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          Categorías
+        </button>
+        <span class="list-title" id="listTitle"></span>
+      </div>
+      <div class="list-toolbar">
+        <div class="results-info" id="resultsInfo"></div>
+        <button class="filter-unwatched-btn" id="filterUnwatchedBtn" title="Mostrar solo no vistos">○ Solo no vistos</button>
+      </div>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -1253,6 +1255,11 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
+  // Ajustar offset sticky según altura real del header
+  const _hdr = document.querySelector('header');
+  const _setHdrH = () => document.documentElement.style.setProperty('--hdr-h', _hdr.offsetHeight + 'px');
+  _setHdrH();
+  new ResizeObserver(_setHdrH).observe(_hdr);
   // Siempre mostrar el hero al cargar
   window.scrollTo(0, 0);
 }
