@@ -52,7 +52,7 @@
     background:#003040;color:var(--text);min-height:100dvh;overflow-x:hidden}
   body::before{
     content:'';position:fixed;inset:0;z-index:-1;
-    background:url('./assets/hero.jpg') center 30%/cover no-repeat;
+    background:url('./assets/hero.jpg') center 30%/cover no-repeat fixed;
     filter:brightness(.35) saturate(1.8);
   }
 
@@ -278,9 +278,9 @@
   .cat-bg-emoji{position:absolute;bottom:-6px;right:2px;font-size:3.8rem;
     opacity:.13;filter:blur(1px);pointer-events:none;user-select:none;line-height:1;
     transform:rotate(-8deg)}
-  .cat-bg-img{position:absolute;inset:-20%;width:120%;height:140%;object-fit:cover;
+  .cat-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:.18;border-radius:var(--radius);pointer-events:none;user-select:none;
-    filter:saturate(1.4);will-change:transform;transform:translateY(0)}
+    filter:saturate(1.4)}
 
   /* ── Empty / states ── */
   .empty{display:flex;flex-direction:column;align-items:center;gap:14px;
@@ -1255,24 +1255,6 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
-  // Parallax suave en imágenes de fondo de tarjetas
-  (function(){
-    const FACTOR = 0.45;
-    let ticking = false;
-    function updateParallax(){
-      const imgs = document.querySelectorAll('.cat-bg-img');
-      const vh = window.innerHeight;
-      imgs.forEach(img => {
-        const rect = img.closest('.cat-card').getBoundingClientRect();
-        const center = rect.top + rect.height / 2 - vh / 2;
-        img.style.transform = `translateY(${center * FACTOR}px)`;
-      });
-      ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-      if(!ticking){ requestAnimationFrame(updateParallax); ticking = true; }
-    }, {passive:true});
-  })();
   // Ajustar offset sticky según altura real del header
   const _hdr = document.querySelector('header');
   const _setHdrH = () => document.documentElement.style.setProperty('--hdr-h', _hdr.offsetHeight + 'px');
