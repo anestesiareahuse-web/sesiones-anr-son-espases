@@ -807,7 +807,7 @@ function renderList() {
   let vids = activeCatId === 'all'
     ? [...allVideos]
     : activeCatId === 'recientes'
-      ? [...allVideos].sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,20)
+      ? [...allVideos].sort((a,b) => new Date(b.addedAt||b.publishedAt)-new Date(a.addedAt||a.publishedAt)).slice(0,20)
       : activeCatId === 'guardados'
         ? allVideos.filter(v => saved.includes(v.videoId))
         : allVideos.filter(v => (v.categories||[]).includes(activeCatId));

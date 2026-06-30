@@ -123,6 +123,13 @@ def fetch_playlist(playlist_id: str, overrides: dict) -> list[dict]:
             for item in det.get("items", []):
                 durations[item["id"]] = parse_duration(item["contentDetails"].get("duration", ""))
 
+        # Fetch original YouTube publish dates for this batch
+        yt_published = {}
+        if video_ids:
+            snip = api_get("videos", {"part": "snippet", "id": ",".join(video_ids)})
+            for item in snip.get("items", []):
+                yt_published[item["id"]] = item["snippet"].get("publishedAt", "")
+
         for it in items:
             sn = it["snippet"]
             vid = sn.get("resourceId", {}).get("videoId", "")
@@ -135,7 +142,8 @@ def fetch_playlist(playlist_id: str, overrides: dict) -> list[dict]:
             videos.append({
                 "videoId": vid,
                 "title": title,
-                "publishedAt": sn.get("publishedAt", ""),
+                "publishedAt": yt_published.get(vid, sn.get("publishedAt", "")),
+                "addedAt": sn.get("publishedAt", ""),
                 "duration": durations.get(vid, ""),
                 "categories": cats,
             })
@@ -147,11 +155,12 @@ def fetch_playlist(playlist_id: str, overrides: dict) -> list[dict]:
     return videos
 
 
-def fetch_individual_videos(video_ids: list[str], overrides: dict) -> list[dict]:
+def fetch_individual_videos(video_ids: list[str], overrides: dict, existing_map: dict) -> list[dict]:
     if not video_ids:
         return []
     print(f"  Fetching {len(video_ids)} individual video(s)…")
     det = api_get("videos", {"part": "snippet,contentDetails", "id": ",".join(video_ids)})
+    now = datetime.now(timezone.utc).isoformat()
     videos = []
     for item in det.get("items", []):
         vid = item["id"]
@@ -160,17 +169,20 @@ def fetch_individual_videos(video_ids: list[str], overrides: dict) -> list[dict]
         if title in ("Deleted video", "Private video"):
             continue
         cats = overrides.get(vid) or categorise(title)
+        # Preserve existing addedAt so it doesn't reset on every run
+        added_at = existing_map.get(vid, {}).get("addedAt", now)
         videos.append({
             "videoId": vid,
             "title": title,
             "publishedAt": sn.get("publishedAt", ""),
+            "addedAt": added_at,
             "duration": parse_duration(item["contentDetails"].get("duration", "")),
             "categories": cats,
         })
     return videos
 
 
-def fetch_playlist_videos() -> list[dict]:
+def fetch_playlist_videos(existing_map: dict) -> list[dict]:
     overrides = load_manual_overrides()
     seen, all_videos = set(), []
 
@@ -180,7 +192,7 @@ def fetch_playlist_videos() -> list[dict]:
                 seen.add(v["videoId"])
                 all_videos.append(v)
 
-    for v in fetch_individual_videos(EXTRA_VIDEO_IDS, overrides):
+    for v in fetch_individual_videos(EXTRA_VIDEO_IDS, overrides, existing_map):
         if v["videoId"] not in seen:
             seen.add(v["videoId"])
             all_videos.append(v)
@@ -193,16 +205,17 @@ def main():
         print("ERROR: YOUTUBE_API_KEY is not set.", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Fetching {len(PLAYLIST_IDS)} playlist(s) + {len(EXTRA_VIDEO_IDS)} individual video(s)…")
-    videos = fetch_playlist_videos()
-
-    uncat = sum(1 for v in videos if v["categories"] == ["uncategorised"])
-    print(f"  → {len(videos)} videos  |  {len(videos)-uncat} clasificados  |  {uncat} sin clasificar")
-
     existing = {}
     if os.path.exists(OUTPUT_FILE):
         with open(OUTPUT_FILE, encoding="utf-8") as f:
             existing = json.load(f)
+
+    existing_map = {v["videoId"]: v for v in existing.get("videos", [])}
+    print(f"Fetching {len(PLAYLIST_IDS)} playlist(s) + {len(EXTRA_VIDEO_IDS)} individual video(s)…")
+    videos = fetch_playlist_videos(existing_map)
+
+    uncat = sum(1 for v in videos if v["categories"] == ["uncategorised"])
+    print(f"  → {len(videos)} videos  |  {len(videos)-uncat} clasificados  |  {uncat} sin clasificar")
 
     payload = {
         "updatedAt": datetime.now(timezone.utc).isoformat(),
