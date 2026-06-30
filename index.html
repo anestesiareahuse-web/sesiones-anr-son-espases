@@ -218,6 +218,9 @@
     border:1px solid var(--border);background:var(--surface2);color:var(--muted);
     cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
   .filter-unwatched-btn.on{background:rgba(0,180,80,.12);color:#4dd98a;border-color:rgba(0,180,80,.35)}
+  .sort-select{font-size:11px;font-weight:600;padding:4px 8px;border-radius:20px;
+    border:1px solid var(--border);background:var(--surface2);color:var(--muted);
+    cursor:pointer;outline:none;flex-shrink:0}
   .back-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);
     border-radius:22px;height:34px;padding:0 14px;font-size:13px;cursor:pointer;
     display:flex;align-items:center;gap:6px;transition:border-color .18s,color .18s;
@@ -455,6 +458,12 @@
       </div>
       <div class="list-toolbar">
         <div class="results-info" id="resultsInfo"></div>
+        <select class="sort-select" id="sortSelect">
+          <option value="date-desc">📅 Más reciente</option>
+          <option value="date-asc">📅 Más antiguo</option>
+          <option value="az">🔤 A → Z</option>
+          <option value="za">🔤 Z → A</option>
+        </select>
         <button class="filter-unwatched-btn" id="filterUnwatchedBtn" title="Mostrar solo no vistos">○ Solo no vistos</button>
       </div>
     </div>
@@ -807,11 +816,15 @@ function renderList() {
   let vids = activeCatId === 'all'
     ? [...allVideos]
     : activeCatId === 'recientes'
-      ? [...allVideos].sort((a,b) => new Date(b.addedAt||b.publishedAt)-new Date(a.addedAt||a.publishedAt)).slice(0,20)
+      ? [...allVideos].sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,20)
       : activeCatId === 'guardados'
         ? allVideos.filter(v => saved.includes(v.videoId))
         : allVideos.filter(v => (v.categories||[]).includes(activeCatId));
-  vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
+  const sortVal = $('sortSelect').value;
+  if (sortVal === 'date-desc') vids.sort((a,b) => new Date(b.publishedAt)-new Date(a.publishedAt));
+  else if (sortVal === 'date-asc') vids.sort((a,b) => new Date(a.publishedAt)-new Date(b.publishedAt));
+  else if (sortVal === 'az') vids.sort((a,b) => a.title.localeCompare(b.title, 'es'));
+  else if (sortVal === 'za') vids.sort((a,b) => b.title.localeCompare(a.title, 'es'));
 
   const totalVids = vids.length;
   const watchedCount = vids.filter(v => watched.includes(v.videoId)).length;
@@ -831,6 +844,7 @@ $('filterUnwatchedBtn').addEventListener('click', () => {
   filterUnwatched = !filterUnwatched;
   renderList();
 });
+$('sortSelect').addEventListener('change', () => renderList());
 
 /* delegación de eventos para botones de vídeo */
 document.addEventListener('click', e => {
