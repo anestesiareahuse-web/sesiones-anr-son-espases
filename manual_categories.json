@@ -1,5 +1,5 @@
 {
-  "_note": "Clasificación manual. Edita las categorías de cada vídeo. IDs válidos: emergencias, anafilaxia, anciano, cardiaca, cardiologia, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, vascular, ventilacion, viaarea, casos",
+  "_note": "Clasificación manual. Edita las categorías de cada vídeo. IDs válidos: emergencias, anafilaxia, anciano, cardiaca, cardiologia, cirugia_general, cirugia_pediatrica, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, ginecologia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, urologia, vascular, ventilacion, viaarea, casos",
   "overrides": {
     "ugguCfQ41yk": [
       "uci",
@@ -87,7 +87,11 @@
     "7ENCqyRr5iU": [
       "toracica",
       "ventilacion",
-      "uci"
+      "uci",
+      "ginecologia",
+      "urologia",
+      "cirugia_general",
+      "cirugia_pediatrica"
     ],
     "lfvDG54naxc": [
       "anafilaxia",
