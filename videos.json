@@ -1,15 +1,57 @@
 {
-  "updatedAt": "2026-06-25T12:05:59.459523+00:00",
+  "updatedAt": "2026-07-01T12:48:10.610480+00:00",
   "playlistIds": [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
     "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4"
   ],
-  "videoCount": 107,
+  "videoCount": 111,
   "videos": [
+    {
+      "videoId": "c7ynMgEvzqU",
+      "title": "Videolaringoscopia ó laringoscopia estándar: ¿por qué intubamos como en el siglo pasado? Dra. Vich",
+      "publishedAt": "2026-07-01T10:51:09Z",
+      "addedAt": "2026-07-01T10:50:36Z",
+      "duration": "16:27",
+      "categories": [
+        "viaarea"
+      ]
+    },
+    {
+      "videoId": "lWbZvYV2KQo",
+      "title": "Manejo perioperatorio del paciente con ECMO  Dra  Canibe Galiana",
+      "publishedAt": "2026-07-01T09:59:12Z",
+      "addedAt": "2026-07-01T09:55:47Z",
+      "duration": "25:34",
+      "categories": [
+        "uci",
+        "ecmo"
+      ]
+    },
+    {
+      "videoId": "sPksa4XSoHc",
+      "title": "Protocolo actuación: Alerta médica internacional en ascendencia venezolana. Dra Romero Vidal",
+      "publishedAt": "2026-06-30T16:27:35Z",
+      "addedAt": "2026-06-30T16:24:43Z",
+      "duration": "26:06",
+      "categories": [
+        "gestion"
+      ]
+    },
+    {
+      "videoId": "AFzUxOyHC_w",
+      "title": "Guías DAS 2025  Maximizando el éxito en el primer intento. Dra Sánchez Losa",
+      "publishedAt": "2026-06-30T16:20:31Z",
+      "addedAt": "2026-06-30T16:17:00Z",
+      "duration": "21:30",
+      "categories": [
+        "uncategorised"
+      ]
+    },
     {
       "videoId": "9AGG5JzR4MU",
       "title": "Maquina de anestesia. Dr. Alfonso",
-      "publishedAt": "2026-06-24T21:49:06Z",
+      "publishedAt": "2024-05-27T19:23:13Z",
+      "addedAt": "2026-06-24T21:49:06Z",
       "duration": "30:04",
       "categories": [
         "uncategorised",
@@ -19,7 +61,8 @@
     {
       "videoId": "lV6kqTRoGDQ",
       "title": "Formación enfermería Clearsight",
-      "publishedAt": "2026-06-24T21:48:51Z",
+      "publishedAt": "2024-04-09T16:30:51Z",
+      "addedAt": "2026-06-24T21:48:51Z",
       "duration": "10:27",
       "categories": [
         "gestion"
@@ -28,7 +71,8 @@
     {
       "videoId": "ugguCfQ41yk",
       "title": "Ventilación mecánica en Renimación. Dra. Bárcena",
-      "publishedAt": "2026-06-05T12:04:34Z",
+      "publishedAt": "2026-06-05T13:57:26Z",
+      "addedAt": "2026-06-05T12:04:34Z",
       "duration": "13:38",
       "categories": [
         "uci",
@@ -38,7 +82,8 @@
     {
       "videoId": "6-i5Hicr_vQ",
       "title": "Manejo anestésico Feocromocitoma  Dr Muñoz Ramis",
-      "publishedAt": "2026-06-04T19:40:42Z",
+      "publishedAt": "2026-06-04T19:20:56Z",
+      "addedAt": "2026-06-04T19:40:42Z",
       "duration": "20:31",
       "categories": [
         "endocrino",
@@ -48,7 +93,8 @@
     {
       "videoId": "DfLcRgMUWNQ",
       "title": "Preoperatorio I: Generalidades, criterios derivación y optimización y VA  Dr. Valenzuela Cano",
-      "publishedAt": "2026-06-04T19:40:24Z",
+      "publishedAt": "2026-06-04T19:20:43Z",
+      "addedAt": "2026-06-04T19:40:24Z",
       "duration": "29:35",
       "categories": [
         "preoperatorio",
@@ -58,7 +104,8 @@
     {
       "videoId": "6lENtxYBqUM",
       "title": "Preoperatorio II: agonistas GLP 1, del ayuno al POCUS gástrico. Dra Vázquez Pérez",
-      "publishedAt": "2026-06-04T19:40:12Z",
+      "publishedAt": "2026-06-04T19:20:28Z",
+      "addedAt": "2026-06-04T19:40:12Z",
       "duration": "15:28",
       "categories": [
         "preoperatorio",
@@ -69,7 +116,8 @@
     {
       "videoId": "EUZKnTBrGmc",
       "title": "Prilocaína y sufentanilo:  aplicaciones, consideraciones e implantación en HUSE. Dr. Barturen.",
-      "publishedAt": "2026-06-04T19:39:47Z",
+      "publishedAt": "2026-06-04T19:20:07Z",
+      "addedAt": "2026-06-04T19:39:47Z",
       "duration": "52:42",
       "categories": [
         "dolor",
@@ -80,7 +128,8 @@
     {
       "videoId": "uM_AYVhd7CE",
       "title": "Valoración funcional de la coagulación: ROTEM y TEG",
-      "publishedAt": "2026-06-04T19:39:33Z",
+      "publishedAt": "2026-06-04T19:08:29Z",
+      "addedAt": "2026-06-04T19:39:33Z",
       "duration": "43:58",
       "categories": [
         "hematologia"
@@ -89,7 +138,8 @@
     {
       "videoId": "1-10HF1lKgE",
       "title": "Actualización DAP HUSE  Dra Sansaloni Perellló",
-      "publishedAt": "2026-06-04T19:39:10Z",
+      "publishedAt": "2026-06-04T19:21:34Z",
+      "addedAt": "2026-06-04T19:39:10Z",
       "duration": "17:45",
       "categories": [
         "dolor"
@@ -98,7 +148,8 @@
     {
       "videoId": "-UQ008nikc0",
       "title": "Ecocardiografía en el paciente en Shock - Dr. Soriano",
-      "publishedAt": "2026-03-09T09:11:38Z",
+      "publishedAt": "2026-03-09T10:24:14Z",
+      "addedAt": "2026-03-09T09:11:38Z",
       "duration": "40:55",
       "categories": [
         "uci",
@@ -111,7 +162,8 @@
     {
       "videoId": "jNViX_wIl_Y",
       "title": "Prevención y manejo laringoespasmo. Dr. Galdos",
-      "publishedAt": "2026-02-24T12:36:38Z",
+      "publishedAt": "2026-02-24T12:38:39Z",
+      "addedAt": "2026-02-24T12:36:38Z",
       "duration": "18:32",
       "categories": [
         "viaarea",
@@ -123,7 +175,8 @@
     {
       "videoId": "983586OYayc",
       "title": "Optimización de la oxemia perioperatoria. Dra. Barceló",
-      "publishedAt": "2026-02-09T14:30:19Z",
+      "publishedAt": "2026-02-09T14:32:33Z",
+      "addedAt": "2026-02-09T14:30:19Z",
       "duration": "20:50",
       "categories": [
         "preoperatorio",
@@ -135,7 +188,8 @@
     {
       "videoId": "HFVUMETrAPE",
       "title": "Preoperatorio. Dra. Verger",
-      "publishedAt": "2026-02-09T14:17:32Z",
+      "publishedAt": "2026-02-05T06:55:14Z",
+      "addedAt": "2026-02-09T14:17:32Z",
       "duration": "55:34",
       "categories": [
         "preoperatorio"
@@ -144,7 +198,8 @@
     {
       "videoId": "0_0NMz6RmkM",
       "title": "Guías RCP ERC 2025. Dra. Sanchez",
-      "publishedAt": "2026-02-09T14:13:47Z",
+      "publishedAt": "2026-02-09T14:21:07Z",
+      "addedAt": "2026-02-09T14:13:47Z",
       "duration": "23:13",
       "categories": [
         "uci",
@@ -155,7 +210,8 @@
     {
       "videoId": "Ie80KQV3848",
       "title": "Angiotensina II en shock séptico. Dra. Canibe",
-      "publishedAt": "2026-02-09T14:13:23Z",
+      "publishedAt": "2026-02-09T14:21:23Z",
+      "addedAt": "2026-02-09T14:13:23Z",
       "duration": "21:49",
       "categories": [
         "uci",
@@ -167,7 +223,8 @@
     {
       "videoId": "ZM223Ux9Nmo",
       "title": "Manejo de drenajes pleurales. Dra. Camino",
-      "publishedAt": "2025-10-19T07:20:56Z",
+      "publishedAt": "2025-10-19T07:22:53Z",
+      "addedAt": "2025-10-19T07:20:56Z",
       "duration": "11:58",
       "categories": [
         "toracica",
@@ -177,7 +234,8 @@
     {
       "videoId": "8Ip0bWHJ9NE",
       "title": "Opioides cirugía columna",
-      "publishedAt": "2025-10-02T15:40:35Z",
+      "publishedAt": "2025-10-02T15:41:29Z",
+      "addedAt": "2025-10-02T15:40:35Z",
       "duration": "21:16",
       "categories": [
         "neuro",
@@ -189,7 +247,8 @@
     {
       "videoId": "0fkX477Asoc",
       "title": "Dolor neuropático pediatria. Dr. Arnau",
-      "publishedAt": "2025-10-02T07:32:30Z",
+      "publishedAt": "2025-10-02T07:33:53Z",
+      "addedAt": "2025-10-02T07:32:30Z",
       "duration": "16:55",
       "categories": [
         "pediatria",
@@ -200,7 +259,8 @@
     {
       "videoId": "vBVM0FuSzPI",
       "title": "TEP Masivo. Dr. Ramón",
-      "publishedAt": "2025-10-02T07:24:10Z",
+      "publishedAt": "2025-10-02T07:25:37Z",
+      "addedAt": "2025-10-02T07:24:10Z",
       "duration": "24:05",
       "categories": [
         "uci",
@@ -210,7 +270,8 @@
     {
       "videoId": "JKv0pkRCArY",
       "title": "Atresia esofágica. Dra. Canibe. Dra. Sánchez",
-      "publishedAt": "2025-07-13T18:50:37Z",
+      "publishedAt": "2025-07-13T18:54:33Z",
+      "addedAt": "2025-07-13T18:50:37Z",
       "duration": "30:29",
       "categories": [
         "pediatria"
@@ -219,7 +280,8 @@
     {
       "videoId": "7ENCqyRr5iU",
       "title": "Ventilación protección pulmonar. Dra. Romero",
-      "publishedAt": "2025-07-13T18:43:15Z",
+      "publishedAt": "2025-07-13T19:17:45Z",
+      "addedAt": "2025-07-13T18:43:15Z",
       "duration": "49:40",
       "categories": [
         "toracica",
@@ -234,7 +296,8 @@
     {
       "videoId": "lfvDG54naxc",
       "title": "Anafilaxia en anestesia. Dra. Martínez",
-      "publishedAt": "2025-07-13T18:33:06Z",
+      "publishedAt": "2025-07-13T18:37:13Z",
+      "addedAt": "2025-07-13T18:33:06Z",
       "duration": "29:02",
       "categories": [
         "anafilaxia",
@@ -244,7 +307,8 @@
     {
       "videoId": "hSMyEKaZy1g",
       "title": "TEC",
-      "publishedAt": "2025-07-04T10:03:03Z",
+      "publishedAt": "2025-07-04T10:10:35Z",
+      "addedAt": "2025-07-04T10:03:03Z",
       "duration": "52:04",
       "categories": [
         "neurologia"
@@ -253,7 +317,8 @@
     {
       "videoId": "UJoZ5m2ea_A",
       "title": "SENSAR HUSE",
-      "publishedAt": "2025-06-20T14:24:01Z",
+      "publishedAt": "2025-06-20T19:44:08Z",
+      "addedAt": "2025-06-20T14:24:01Z",
       "duration": "1:58",
       "categories": [
         "seguridad"
@@ -262,7 +327,8 @@
     {
       "videoId": "K6y_ZcGdmOE",
       "title": "Control hemodinámico avanzado asistido con IA en curugía HIPEC",
-      "publishedAt": "2025-05-15T09:13:06Z",
+      "publishedAt": "2025-05-15T09:17:28Z",
+      "addedAt": "2025-05-15T09:13:06Z",
       "duration": "43:44",
       "categories": [
         "hemodinamica",
@@ -273,7 +339,8 @@
     {
       "videoId": "ZBOWz4pvRqo",
       "title": "PBM pediatria. Dr. Galdos",
-      "publishedAt": "2025-04-01T16:10:03Z",
+      "publishedAt": "2025-04-01T16:13:32Z",
+      "addedAt": "2025-04-01T16:10:03Z",
       "duration": "30:07",
       "categories": [
         "pediatria",
@@ -284,7 +351,8 @@
     {
       "videoId": "ci_M5nufoxk",
       "title": "Shock séptico: ANDROMEDA-SHOCK-2. Dr. Romero",
-      "publishedAt": "2025-04-01T15:35:22Z",
+      "publishedAt": "2025-04-01T15:40:15Z",
+      "addedAt": "2025-04-01T15:35:22Z",
       "duration": "25:03",
       "categories": [
         "uci",
@@ -295,7 +363,8 @@
     {
       "videoId": "c1Nq5-R7HUc",
       "title": "Recuperación intensificada en cirugía general. Dra. Vich",
-      "publishedAt": "2025-03-31T10:49:40Z",
+      "publishedAt": "2025-03-31T10:53:04Z",
+      "addedAt": "2025-03-31T10:49:40Z",
       "duration": "22:34",
       "categories": [
         "cirugia_general",
@@ -305,7 +374,8 @@
     {
       "videoId": "LFiAy0luc5U",
       "title": "Novedades en anestesia. Dr. Soriano",
-      "publishedAt": "2025-03-02T16:33:35Z",
+      "publishedAt": "2025-03-02T16:36:22Z",
+      "addedAt": "2025-03-02T16:33:35Z",
       "duration": "33:30",
       "categories": [
         "gestion"
@@ -314,7 +384,8 @@
     {
       "videoId": "iqry-fDYf-E",
       "title": "Revisión protocolo Hemorragia Masiva. Dr. Orcera.",
-      "publishedAt": "2025-01-14T10:17:59Z",
+      "publishedAt": "2025-01-14T10:20:38Z",
+      "addedAt": "2025-01-14T10:17:59Z",
       "duration": "26:34",
       "categories": [
         "emergencias",
@@ -325,7 +396,8 @@
     {
       "videoId": "CdLxroRG-J0",
       "title": "Dynamed: base de datos de evidencia clínica.",
-      "publishedAt": "2024-12-12T11:49:18Z",
+      "publishedAt": "2024-12-12T11:55:42Z",
+      "addedAt": "2024-12-12T11:49:18Z",
       "duration": "39:26",
       "categories": [
         "gestion"
@@ -334,7 +406,8 @@
     {
       "videoId": "ZD7qr8iu3W0",
       "title": "Amigdalectomía en pediatría. Dra. Gallego.",
-      "publishedAt": "2024-12-12T10:49:24Z",
+      "publishedAt": "2024-12-12T10:53:13Z",
+      "addedAt": "2024-12-12T10:49:24Z",
       "duration": "30:52",
       "categories": [
         "orl_cmf",
@@ -344,7 +417,8 @@
     {
       "videoId": "EX_itbnKDAw",
       "title": "Cuidados postrombectomía mecánica. Dra. Toro.",
-      "publishedAt": "2024-12-12T10:18:01Z",
+      "publishedAt": "2024-12-12T10:22:18Z",
+      "addedAt": "2024-12-12T10:18:01Z",
       "duration": "27:16",
       "categories": [
         "uci",
@@ -354,7 +428,8 @@
     {
       "videoId": "YPCKQLN3rFg",
       "title": "Grupos de trabajo y comisiones ANR HUSE",
-      "publishedAt": "2024-12-11T17:56:35Z",
+      "publishedAt": "2024-12-11T17:59:26Z",
+      "addedAt": "2024-12-11T17:56:35Z",
       "duration": "43:25",
       "categories": [
         "gestion"
@@ -363,7 +438,8 @@
     {
       "videoId": "bK1xhN3C2ZU",
       "title": "Seguridad del paciente en anestesia. Dra. Barceló",
-      "publishedAt": "2024-12-11T17:42:29Z",
+      "publishedAt": "2024-12-11T17:45:10Z",
+      "addedAt": "2024-12-11T17:42:29Z",
       "duration": "31:40",
       "categories": [
         "seguridad"
@@ -372,7 +448,8 @@
     {
       "videoId": "ho_UijcKCPM",
       "title": "Manejo perioperatorio del usuario de sustancias de abuso. De. Galdós.",
-      "publishedAt": "2024-12-11T11:31:30Z",
+      "publishedAt": "2024-12-11T11:44:28Z",
+      "addedAt": "2024-12-11T11:31:30Z",
       "duration": "26:44",
       "categories": [
         "farmaco",
@@ -382,7 +459,8 @@
     {
       "videoId": "gCgWVIO_IKY",
       "title": "Actualizacion de guías sobre NVPO Dr. Soriano",
-      "publishedAt": "2024-10-07T09:07:41Z",
+      "publishedAt": "2024-10-07T09:07:40Z",
+      "addedAt": "2024-10-07T09:07:41Z",
       "duration": "25:31",
       "categories": [
         "farmaco"
@@ -391,7 +469,8 @@
     {
       "videoId": "mqgFSQ_bEG4",
       "title": "Tromboelastometría. Dra. Solé.",
-      "publishedAt": "2024-09-12T15:11:51Z",
+      "publishedAt": "2024-09-12T15:15:17Z",
+      "addedAt": "2024-09-12T15:11:51Z",
       "duration": "51:41",
       "categories": [
         "hematologia"
@@ -400,7 +479,8 @@
     {
       "videoId": "CYYPWPwgg9M",
       "title": "Hipertermia maligna. Dr. Romero",
-      "publishedAt": "2024-09-12T14:41:47Z",
+      "publishedAt": "2024-09-12T15:12:31Z",
+      "addedAt": "2024-09-12T14:41:47Z",
       "duration": "25:35",
       "categories": [
         "farmaco",
@@ -410,7 +490,8 @@
     {
       "videoId": "7aYMl5u_92g",
       "title": "Manejo anestesico S. Brugada. Dr. Orcera",
-      "publishedAt": "2024-06-17T16:48:31Z",
+      "publishedAt": "2024-06-17T16:51:39Z",
+      "addedAt": "2024-06-17T16:48:31Z",
       "duration": "23:13",
       "categories": [
         "casos",
@@ -420,7 +501,8 @@
     {
       "videoId": "RmXuNiazYdg",
       "title": "Recuperación intensificada en CTO. Dra. Toro.",
-      "publishedAt": "2024-05-27T18:04:12Z",
+      "publishedAt": "2024-05-27T18:07:51Z",
+      "addedAt": "2024-05-27T18:04:12Z",
       "duration": "23:59",
       "categories": [
         "toracica",
@@ -430,7 +512,8 @@
     {
       "videoId": "58zWOjtrFVg",
       "title": "IDISBA: investigación para anestesistas",
-      "publishedAt": "2024-05-27T17:57:28Z",
+      "publishedAt": "2024-05-27T18:07:44Z",
+      "addedAt": "2024-05-27T17:57:28Z",
       "duration": "22:27",
       "categories": [
         "gestion"
@@ -439,7 +522,8 @@
     {
       "videoId": "aLeQO6Owi0s",
       "title": "Preeclampsia. Dr. Soriano",
-      "publishedAt": "2024-05-27T17:37:46Z",
+      "publishedAt": "2024-05-27T17:42:55Z",
+      "addedAt": "2024-05-27T17:37:46Z",
       "duration": "36:26",
       "categories": [
         "obstetricia"
@@ -448,7 +532,8 @@
     {
       "videoId": "yhl6nS1oKAo",
       "title": "Enfermedades autoinmunes. Dr. Ramón",
-      "publishedAt": "2024-05-05T10:02:09Z",
+      "publishedAt": "2024-05-05T10:12:33Z",
+      "addedAt": "2024-05-05T10:02:09Z",
       "duration": "56:27",
       "categories": [
         "preoperatorio",
@@ -458,7 +543,8 @@
     {
       "videoId": "G2xqbT_ZZbo",
       "title": "TAVI en hemodinámica. Dra. Gallego.",
-      "publishedAt": "2024-05-05T10:00:23Z",
+      "publishedAt": "2024-05-05T10:07:28Z",
+      "addedAt": "2024-05-05T10:00:23Z",
       "duration": "32:15",
       "categories": [
         "cardiaca",
@@ -468,7 +554,8 @@
     {
       "videoId": "5Fe3104Rm_M",
       "title": "Epidemiología y sensibilidad antibiótica en Reanimación",
-      "publishedAt": "2024-04-15T20:25:08Z",
+      "publishedAt": "2024-04-15T20:35:43Z",
+      "addedAt": "2024-04-15T20:25:08Z",
       "duration": "49:01",
       "categories": [
         "infecciosas",
@@ -478,7 +565,8 @@
     {
       "videoId": "_EzAxD6iELg",
       "title": "DAVI en cirugía no cardiaca",
-      "publishedAt": "2024-04-15T20:08:29Z",
+      "publishedAt": "2024-04-15T20:17:10Z",
+      "addedAt": "2024-04-15T20:08:29Z",
       "duration": "21:30",
       "categories": [
         "cardiaca",
@@ -488,7 +576,8 @@
     {
       "videoId": "CtSZ2vBnMD8",
       "title": "Anestesia locorregional en pediatria. Dr. Fernández",
-      "publishedAt": "2024-04-12T11:20:13Z",
+      "publishedAt": "2024-04-12T11:33:51Z",
+      "addedAt": "2024-04-12T11:20:13Z",
       "duration": "22:41",
       "categories": [
         "pediatria",
@@ -498,7 +587,8 @@
     {
       "videoId": "pAqJ2LYhiHY",
       "title": "Criterios para una valoración del ingreso en paciente frágil anciano en UCI. Dr. Galdós",
-      "publishedAt": "2024-04-09T16:14:43Z",
+      "publishedAt": "2024-04-09T16:19:43Z",
+      "addedAt": "2024-04-09T16:14:43Z",
       "duration": "34:52",
       "categories": [
         "uci",
@@ -508,7 +598,8 @@
     {
       "videoId": "u8W0WSMKa8w",
       "title": "Salón de actos Anestesia en niño cardiópata. Dra. jiménez",
-      "publishedAt": "2024-03-27T20:26:06Z",
+      "publishedAt": "2024-03-27T20:37:58Z",
+      "addedAt": "2024-03-27T20:26:06Z",
       "duration": "23:41",
       "categories": [
         "pediatria",
@@ -519,7 +610,8 @@
     {
       "videoId": "OI0iynasHsA",
       "title": "Reanimación Actualizacion en sepsis GTIPO. Dra. Terrasa",
-      "publishedAt": "2024-03-27T20:17:28Z",
+      "publishedAt": "2024-03-27T20:17:43Z",
+      "addedAt": "2024-03-27T20:17:28Z",
       "duration": "16:06",
       "categories": [
         "uci",
@@ -530,7 +622,8 @@
     {
       "videoId": "m5vXyBirlfk",
       "title": "Gestión de crisis en Anestesia Torácica. Dr. Gómez",
-      "publishedAt": "2024-03-27T19:55:59Z",
+      "publishedAt": "2024-03-27T19:56:01Z",
+      "addedAt": "2024-03-27T19:55:59Z",
       "duration": "21:13",
       "categories": [
         "emergencias",
@@ -540,7 +633,8 @@
     {
       "videoId": "kYXfjipp-vI",
       "title": "Complicaciones perioperatorias del paciente pediátrico. Dra. Jiménez",
-      "publishedAt": "2024-03-27T18:39:07Z",
+      "publishedAt": "2024-03-27T18:49:22Z",
+      "addedAt": "2024-03-27T18:39:07Z",
       "duration": "42:48",
       "categories": [
         "pediatria",
@@ -550,7 +644,8 @@
     {
       "videoId": "UTvQUkyXHxY",
       "title": "Protocolo manejo anestésico código ictus",
-      "publishedAt": "2024-03-27T08:36:40Z",
+      "publishedAt": "2024-03-27T08:38:50Z",
+      "addedAt": "2024-03-27T08:36:40Z",
       "duration": "25:33",
       "categories": [
         "neurologia"
@@ -559,7 +654,8 @@
     {
       "videoId": "0tM9I7XOmEs",
       "title": "Resecabilidad y operabilidad en Cirugía Torácica. Dr. Gigirey",
-      "publishedAt": "2024-02-29T18:57:57Z",
+      "publishedAt": "2024-02-29T18:56:59Z",
+      "addedAt": "2024-02-29T18:57:57Z",
       "duration": "21:01",
       "categories": [
         "toracica",
@@ -569,7 +665,8 @@
     {
       "videoId": "YzGiP1d_9R0",
       "title": "Impacto medioambiental de la actividad asistencial. Dra. Muñoz",
-      "publishedAt": "2024-02-29T18:21:36Z",
+      "publishedAt": "2024-02-29T18:25:29Z",
+      "addedAt": "2024-02-29T18:21:36Z",
       "duration": "32:52",
       "categories": [
         "gestion"
@@ -578,7 +675,8 @@
     {
       "videoId": "A5oALJnySK0",
       "title": "Hemorragia en politrauma. Dra. Barceló",
-      "publishedAt": "2024-02-29T18:18:29Z",
+      "publishedAt": "2024-02-29T18:20:30Z",
+      "addedAt": "2024-02-29T18:18:29Z",
       "duration": "24:12",
       "categories": [
         "politrauma",
@@ -591,7 +689,8 @@
     {
       "videoId": "yNzJA31vT9k",
       "title": "PBM Patient Blood Management. Dra. Seligmann",
-      "publishedAt": "2024-02-29T18:15:21Z",
+      "publishedAt": "2024-02-29T18:23:47Z",
+      "addedAt": "2024-02-29T18:15:21Z",
       "duration": "58:34",
       "categories": [
         "hematologia",
@@ -601,7 +700,8 @@
     {
       "videoId": "Lp1m_Tk0Sag",
       "title": "TCI. Dra. Palomera",
-      "publishedAt": "2024-02-29T18:11:53Z",
+      "publishedAt": "2024-02-29T18:17:09Z",
+      "addedAt": "2024-02-29T18:11:53Z",
       "duration": "33:41",
       "categories": [
         "farmaco"
@@ -610,7 +710,8 @@
     {
       "videoId": "WApX-9a3joA",
       "title": "Presentación nuevo desfibrilador de Rea Zoll M2",
-      "publishedAt": "2024-02-19T08:07:27Z",
+      "publishedAt": "2024-02-19T08:07:26Z",
+      "addedAt": "2024-02-19T08:07:27Z",
       "duration": "30:38",
       "categories": [
         "uci",
@@ -621,7 +722,8 @@
     {
       "videoId": "Vghgi5EfA0U",
       "title": "Vía aérea en politraumatizado. Dra. Carla Cugat",
-      "publishedAt": "2023-12-05T13:58:24Z",
+      "publishedAt": "2023-12-05T14:00:30Z",
+      "addedAt": "2023-12-05T13:58:24Z",
       "duration": "35:20",
       "categories": [
         "viaarea",
@@ -631,7 +733,8 @@
     {
       "videoId": "gXUMb_9or_U",
       "title": "Destete weaning protocolo Dr. Pablo García",
-      "publishedAt": "2023-12-05T13:45:52Z",
+      "publishedAt": "2023-12-05T13:49:49Z",
+      "addedAt": "2023-12-05T13:45:52Z",
       "duration": "35:49",
       "categories": [
         "ventilacion",
@@ -641,7 +744,8 @@
     {
       "videoId": "KW96cRUlK44",
       "title": "Anestesia en neonato. Dra. Toro",
-      "publishedAt": "2023-12-02T11:13:10Z",
+      "publishedAt": "2023-11-24T18:51:34Z",
+      "addedAt": "2023-12-02T11:13:10Z",
       "duration": "32:20",
       "categories": [
         "pediatria"
@@ -650,7 +754,8 @@
     {
       "videoId": "vzQCeXTWnsI",
       "title": "DM: Manejo perioperatorio del paciente diabético. Dr. Romero.",
-      "publishedAt": "2023-11-27T12:08:33Z",
+      "publishedAt": "2023-11-27T12:09:33Z",
+      "addedAt": "2023-11-27T12:08:33Z",
       "duration": "27:39",
       "categories": [
         "endocrino",
@@ -660,7 +765,8 @@
     {
       "videoId": "gJ8m_pRyIbQ",
       "title": "OFA Opiod Free Anestesia.  Dr. Orcera",
-      "publishedAt": "2023-11-13T09:38:53Z",
+      "publishedAt": "2023-11-13T09:41:41Z",
+      "addedAt": "2023-11-13T09:38:53Z",
       "duration": "46:18",
       "categories": [
         "farmaco",
@@ -670,7 +776,8 @@
     {
       "videoId": "UG7qSe8Gapg",
       "title": "Sepsis en pediatria: Actualización. Dr. Romero",
-      "publishedAt": "2023-11-03T20:17:04Z",
+      "publishedAt": "2023-11-03T20:24:46Z",
+      "addedAt": "2023-11-03T20:17:04Z",
       "duration": "13:35",
       "categories": [
         "pediatria",
@@ -680,7 +787,8 @@
     {
       "videoId": "-vs9sr67-1E",
       "title": "Ventilación mecánica.  Dr.  Román",
-      "publishedAt": "2023-11-01T21:24:22Z",
+      "publishedAt": "2023-11-01T21:27:20Z",
+      "addedAt": "2023-11-01T21:24:22Z",
       "duration": "29:45",
       "categories": [
         "uci",
@@ -690,7 +798,8 @@
     {
       "videoId": "W54r3MfZiD4",
       "title": "Preoperatorio en peditría. Dra. Gallego",
-      "publishedAt": "2023-11-01T21:10:53Z",
+      "publishedAt": "2023-11-01T21:15:05Z",
+      "addedAt": "2023-11-01T21:10:53Z",
       "duration": "42:27",
       "categories": [
         "pediatria",
@@ -700,7 +809,8 @@
     {
       "videoId": "sLHoiGvfqfs",
       "title": "Trombosis venosa cerebral postanalgesia epidural.  Dra.  Gómez",
-      "publishedAt": "2023-11-01T21:02:39Z",
+      "publishedAt": "2023-11-01T21:07:03Z",
+      "addedAt": "2023-11-01T21:02:39Z",
       "duration": "46:03",
       "categories": [
         "regional",
@@ -711,7 +821,8 @@
     {
       "videoId": "M7EcF4yHIio",
       "title": "Monitorizacion hemodinamica avanzada.  Dr  Tomé",
-      "publishedAt": "2023-11-01T20:54:39Z",
+      "publishedAt": "2023-11-01T20:53:18Z",
+      "addedAt": "2023-11-01T20:54:39Z",
       "duration": "38:10",
       "categories": [
         "hemodinamica",
@@ -721,7 +832,8 @@
     {
       "videoId": "FayzqzPGxf8",
       "title": "Actualización en fluidoterapia Dra Toro",
-      "publishedAt": "2023-11-01T20:43:13Z",
+      "publishedAt": "2023-11-01T20:45:12Z",
+      "addedAt": "2023-11-01T20:43:13Z",
       "duration": "31:25",
       "categories": [
         "fluidoterapia"
@@ -730,7 +842,8 @@
     {
       "videoId": "IGlDX2UsSLU",
       "title": "Manejo anestésico TCE - Dra. Rocío Seligmann",
-      "publishedAt": "2023-09-14T17:27:13Z",
+      "publishedAt": "2023-11-03T20:26:46Z",
+      "addedAt": "2023-09-14T17:27:13Z",
       "duration": "30:08",
       "categories": [
         "neuro",
@@ -740,7 +853,8 @@
     {
       "videoId": "dyg6vTkQjfA",
       "title": "Anestesia Cirugía de Esófago - Dra. Nuria Palomera",
-      "publishedAt": "2023-06-26T09:09:17Z",
+      "publishedAt": "2023-11-03T20:26:52Z",
+      "addedAt": "2023-06-26T09:09:17Z",
       "duration": "33:34",
       "categories": [
         "cirugia_general"
@@ -749,7 +863,8 @@
     {
       "videoId": "uCSLfsbcRG4",
       "title": "Ceftazidima/avibactam: revisión y actualización",
-      "publishedAt": "2023-06-23T17:00:04Z",
+      "publishedAt": "2023-06-23T17:00:02Z",
+      "addedAt": "2023-06-23T17:00:04Z",
       "duration": "30:38",
       "categories": [
         "infecciosas",
@@ -760,7 +875,8 @@
     {
       "videoId": "MSFmkW_y6o4",
       "title": "Preoperatorio en Pediatría - Dra. Maria Luisa Gallego",
-      "publishedAt": "2023-06-23T16:49:28Z",
+      "publishedAt": "2023-11-03T20:27:05Z",
+      "addedAt": "2023-06-23T16:49:28Z",
       "duration": "39:40",
       "categories": [
         "pediatria",
@@ -770,7 +886,8 @@
     {
       "videoId": "zTUGP2lN2F4",
       "title": "Anestesia torácica. Dra Julia Jiménez",
-      "publishedAt": "2023-06-12T18:02:05Z",
+      "publishedAt": "2023-11-03T20:27:21Z",
+      "addedAt": "2023-06-12T18:02:05Z",
       "duration": "36:04",
       "categories": [
         "toracica"
@@ -779,7 +896,8 @@
     {
       "videoId": "QsLYHPkP3AA",
       "title": "Pacientes prefrágiles y frágiles. Dra. Beatriz Solé",
-      "publishedAt": "2023-06-12T17:58:33Z",
+      "publishedAt": "2023-11-03T20:27:15Z",
+      "addedAt": "2023-06-12T17:58:33Z",
       "duration": "28:54",
       "categories": [
         "anciano",
@@ -789,7 +907,8 @@
     {
       "videoId": "Hn79MMGQu60",
       "title": "Monitorización pediátrica. Dr Manuel Gomez",
-      "publishedAt": "2023-06-12T17:57:02Z",
+      "publishedAt": "2023-11-03T20:27:09Z",
+      "addedAt": "2023-06-12T17:57:02Z",
       "duration": "28:17",
       "categories": [
         "pediatria",
@@ -799,7 +918,8 @@
     {
       "videoId": "fFzsV4tMe1k",
       "title": "Anafilaxia perioperatoria. Dra. Eva Martínez",
-      "publishedAt": "2023-05-08T11:00:00Z",
+      "publishedAt": "2023-11-03T20:27:48Z",
+      "addedAt": "2023-05-08T11:00:00Z",
       "duration": "37:35",
       "categories": [
         "anafilaxia",
@@ -809,7 +929,8 @@
     {
       "videoId": "ueXqEKPpY4A",
       "title": "ECMO para Donación en Asistolia Controlada - Dr. Luis Ramos",
-      "publishedAt": "2023-05-08T10:37:47Z",
+      "publishedAt": "2023-11-03T20:27:27Z",
+      "addedAt": "2023-05-08T10:37:47Z",
       "duration": "26:40",
       "categories": [
         "uci",
@@ -820,7 +941,8 @@
     {
       "videoId": "NmjzUpcxU6I",
       "title": "Anestesia Pediátrica para Cirugía Torácica - Dra. Palomera",
-      "publishedAt": "2023-04-25T09:11:29Z",
+      "publishedAt": "2023-11-03T20:27:34Z",
+      "addedAt": "2023-04-25T09:11:29Z",
       "duration": "29:23",
       "categories": [
         "pediatria",
@@ -830,7 +952,8 @@
     {
       "videoId": "NKlpsOTSDsE",
       "title": "Insuficiencia Renal Aguda - Dra. Teslev",
-      "publishedAt": "2023-04-25T09:07:57Z",
+      "publishedAt": "2023-11-03T20:27:40Z",
+      "addedAt": "2023-04-25T09:07:57Z",
       "duration": "41:02",
       "categories": [
         "nefrologia",
@@ -840,7 +963,8 @@
     {
       "videoId": "H0HVDWyy3Tg",
       "title": "Oximetria Cerebral y PulsiCooximetria no invasiva. D. Daniel Tellado",
-      "publishedAt": "2023-04-13T12:29:47Z",
+      "publishedAt": "2023-04-13T12:24:37Z",
+      "addedAt": "2023-04-13T12:29:47Z",
       "duration": "1:31:56",
       "categories": [
         "neuro",
@@ -851,7 +975,8 @@
     {
       "videoId": "siF_Mqyt6Z4",
       "title": "Bioconectores. D. Rafael García",
-      "publishedAt": "2023-04-04T16:43:09Z",
+      "publishedAt": "2023-04-04T16:42:24Z",
+      "addedAt": "2023-04-04T16:43:09Z",
       "duration": "20:49",
       "categories": [
         "gestion"
@@ -860,7 +985,8 @@
     {
       "videoId": "mdZnjUuxw14",
       "title": "Profundidad Anestésica SedLine. D. Daniel Tellado",
-      "publishedAt": "2023-04-04T16:31:49Z",
+      "publishedAt": "2023-04-04T16:31:02Z",
+      "addedAt": "2023-04-04T16:31:49Z",
       "duration": "1:11:26",
       "categories": [
         "monitorizacion",
@@ -871,7 +997,8 @@
     {
       "videoId": "Loclr7GADqc",
       "title": "Manejo del paciente con lumbalgia - Dra. Nerea Toro",
-      "publishedAt": "2023-03-29T08:40:21Z",
+      "publishedAt": "2023-11-03T20:27:57Z",
+      "addedAt": "2023-03-29T08:40:21Z",
       "duration": "30:47",
       "categories": [
         "dolor"
@@ -880,7 +1007,8 @@
     {
       "videoId": "8yMsCrUXT1w",
       "title": "Ecografía Pulmonar. Neumotórax y Derrame pleural - Dr. Vicente Torres",
-      "publishedAt": "2023-03-21T12:48:03Z",
+      "publishedAt": "2023-11-03T20:28:02Z",
+      "addedAt": "2023-03-21T12:48:03Z",
       "duration": "28:56",
       "categories": [
         "toracica",
@@ -891,7 +1019,8 @@
     {
       "videoId": "sTdddg5I5bM",
       "title": "Fisiopatología hepática y manejo anestésico del paciente cirrótico - Dr José Daniel Romero",
-      "publishedAt": "2023-03-13T10:26:27Z",
+      "publishedAt": "2023-11-03T20:28:19Z",
+      "addedAt": "2023-03-13T10:26:27Z",
       "duration": "30:15",
       "categories": [
         "hepatico",
@@ -902,7 +1031,8 @@
     {
       "videoId": "ClnBwzr7Wpk",
       "title": "Anestesia cirugía carótida -  Dr.  Aarón Alfonso",
-      "publishedAt": "2023-03-05T10:34:52Z",
+      "publishedAt": "2023-11-03T20:28:15Z",
+      "addedAt": "2023-03-05T10:34:52Z",
       "duration": "33:50",
       "categories": [
         "vascular"
@@ -911,7 +1041,8 @@
     {
       "videoId": "i0Srp9IPOeI",
       "title": "Infecciones Multiresistentes en nuestra Unidad de Reanimación - Dr. Luis Ramos",
-      "publishedAt": "2023-02-27T10:13:26Z",
+      "publishedAt": "2023-11-03T20:28:28Z",
+      "addedAt": "2023-02-27T10:13:26Z",
       "duration": "27:24",
       "categories": [
         "infecciosas",
@@ -921,7 +1052,8 @@
     {
       "videoId": "AbmIGWYCvJM",
       "title": "Asincronías Paciente-Ventilador - Dra. Beatriz Solé",
-      "publishedAt": "2023-02-20T23:04:52Z",
+      "publishedAt": "2023-11-03T20:28:45Z",
+      "addedAt": "2023-02-20T23:04:52Z",
       "duration": "41:05",
       "categories": [
         "ventilacion",
@@ -931,7 +1063,8 @@
     {
       "videoId": "UGwLlGeTkMo",
       "title": "Anestesia Regional en el paciente con tratamiento antitrombótico - Dra. Maria Luisa Gallego",
-      "publishedAt": "2023-02-20T23:02:35Z",
+      "publishedAt": "2023-11-03T20:28:40Z",
+      "addedAt": "2023-02-20T23:02:35Z",
       "duration": "24:06",
       "categories": [
         "regional",
@@ -942,7 +1075,8 @@
     {
       "videoId": "odlsD7YAQk8",
       "title": "Actualización Fármacos Vasoactivos en el Shock Séptico - Dr. Xabier Reparaz",
-      "publishedAt": "2023-02-20T13:22:29Z",
+      "publishedAt": "2023-11-03T20:28:51Z",
+      "addedAt": "2023-02-20T13:22:29Z",
       "duration": "31:11",
       "categories": [
         "uci",
@@ -953,7 +1087,8 @@
     {
       "videoId": "PiW0hQkJ5-c",
       "title": "Valoración ultrasonográfica de la congestión venosa: VExUS - Dra. Eva Martínez",
-      "publishedAt": "2023-01-23T08:28:19Z",
+      "publishedAt": "2023-11-03T20:28:55Z",
+      "addedAt": "2023-01-23T08:28:19Z",
       "duration": "32:10",
       "categories": [
         "monitorizacion",
@@ -964,7 +1099,8 @@
     {
       "videoId": "WdYosIZ7c98",
       "title": "Manejo de Hemoderivados en Pediatría - Dr. Luis Ramos",
-      "publishedAt": "2023-01-16T12:04:35Z",
+      "publishedAt": "2023-11-03T20:29:07Z",
+      "addedAt": "2023-01-16T12:04:35Z",
       "duration": "30:53",
       "categories": [
         "pediatria",
@@ -974,7 +1110,8 @@
     {
       "videoId": "aVus-BWOvLM",
       "title": "Riesgos de la Hipotermia Perioperatoria - Dra. Julia Jiménez",
-      "publishedAt": "2023-01-16T11:52:30Z",
+      "publishedAt": "2023-11-03T20:29:12Z",
+      "addedAt": "2023-01-16T11:52:30Z",
       "duration": "39:43",
       "categories": [
         "preoperatorio"
@@ -983,7 +1120,8 @@
     {
       "videoId": "zuSlYMFxXLg",
       "title": "Cirugía de Raquis. Actualización de protocolos de actuación - Dr. Manuel Gómez",
-      "publishedAt": "2023-01-16T11:38:05Z",
+      "publishedAt": "2023-11-03T20:29:16Z",
+      "addedAt": "2023-01-16T11:38:05Z",
       "duration": "39:26",
       "categories": [
         "traumatologia",
@@ -993,7 +1131,8 @@
     {
       "videoId": "NNfLra3XWxs",
       "title": "Drenaje lumbar de líquido cefalorraquídeo en la cirugía de la aorta torácia - Dr. José Valdivia",
-      "publishedAt": "2023-01-16T11:18:23Z",
+      "publishedAt": "2023-11-03T20:29:22Z",
+      "addedAt": "2023-01-16T11:18:23Z",
       "duration": "48:34",
       "categories": [
         "toracica",
@@ -1006,7 +1145,8 @@
     {
       "videoId": "PW8l0VuQu54",
       "title": "Tromboelastometría en politraumatismo, hemorragia obstétrica y cirugía cardiaca - Dra. Beatriz Solé",
-      "publishedAt": "2023-01-16T10:25:54Z",
+      "publishedAt": "2023-11-03T20:29:26Z",
+      "addedAt": "2023-01-16T10:25:54Z",
       "duration": "52:53",
       "categories": [
         "cardiaca",
@@ -1018,7 +1158,8 @@
     {
       "videoId": "ICvnRNE9GQc",
       "title": "Actualización guías “Surviving Sespsis Campaign 2021” - Dra. Miriam Abdul-Karim Polo",
-      "publishedAt": "2023-01-16T10:23:38Z",
+      "publishedAt": "2023-11-03T20:29:37Z",
+      "addedAt": "2023-01-16T10:23:38Z",
       "duration": "42:36",
       "categories": [
         "uci",
@@ -1029,7 +1170,8 @@
     {
       "videoId": "e30pMVANdlo",
       "title": "Hipotensión intraoperatoria: ¿Podemos prevenirla con inteligencia artificial? - Dr. Germán Gómez",
-      "publishedAt": "2023-01-16T10:17:59Z",
+      "publishedAt": "2023-11-03T20:29:32Z",
+      "addedAt": "2023-01-16T10:17:59Z",
       "duration": "42:10",
       "categories": [
         "hemodinamica",
@@ -1039,7 +1181,8 @@
     {
       "videoId": "O9Dv4kEdylA",
       "title": "Evidencia Científica - Curso ECOVAS HUSE 2023",
-      "publishedAt": "2022-12-27T10:38:35Z",
+      "publishedAt": "2022-12-27T10:29:22Z",
+      "addedAt": "2022-12-27T10:38:35Z",
       "duration": "23:01",
       "categories": [
         "uncategorised",
@@ -1049,7 +1192,8 @@
     {
       "videoId": "Yi1tEA24XKY",
       "title": "Acceso Vascular Subclavio - Curso ECOVAS HUSE 2023",
-      "publishedAt": "2022-12-27T10:38:35Z",
+      "publishedAt": "2022-12-27T10:23:17Z",
+      "addedAt": "2022-12-27T10:38:35Z",
       "duration": "17:55",
       "categories": [
         "ecografia"
@@ -1058,7 +1202,8 @@
     {
       "videoId": "3UDQwINcCgw",
       "title": "Accesos Vasculares Distales Ecoguiados - Curso ECOVAS HUSE 2023",
-      "publishedAt": "2022-12-27T10:38:35Z",
+      "publishedAt": "2022-12-27T10:21:52Z",
+      "addedAt": "2022-12-27T10:38:35Z",
       "duration": "25:38",
       "categories": [
         "ecografia"
@@ -1067,7 +1212,8 @@
     {
       "videoId": "t2e4gnZlK7w",
       "title": "Cateterización Femoral Ecoguiada - Curso ECOVAS HUSE 2023",
-      "publishedAt": "2022-12-27T10:38:35Z",
+      "publishedAt": "2022-12-27T10:33:31Z",
+      "addedAt": "2022-12-27T10:38:35Z",
       "duration": "20:06",
       "categories": [
         "ecografia"
@@ -1076,7 +1222,8 @@
     {
       "videoId": "E222AyBwzuw",
       "title": "Acceso Yugular Ecoguiado - Curso ECOVAS HUSE 2023",
-      "publishedAt": "2023-01-04T18:01:35Z",
+      "publishedAt": "2023-01-04T18:00:59Z",
+      "addedAt": "2023-01-04T18:01:35Z",
       "duration": "38:37",
       "categories": [
         "ecografia"
@@ -1085,7 +1232,8 @@
     {
       "videoId": "TJqcfmkFS8c",
       "title": "Acceso Venoso Pediátrico - Curso ECOVAS HUSE 2024",
-      "publishedAt": "2023-01-10T22:05:27Z",
+      "publishedAt": "2023-11-03T20:29:45Z",
+      "addedAt": "2023-01-10T22:05:27Z",
       "duration": "17:54",
       "categories": [
         "pediatria",
