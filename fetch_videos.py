@@ -18,6 +18,8 @@ PLAYLIST_IDS = [
 EXTRA_VIDEO_IDS = [
     "lV6kqTRoGDQ",   # video individual añadido manualmente
     "9AGG5JzR4MU",   # video individual añadido manualmente
+    "CRuhfZV3q5M",   # Hipnótico intravenosos
+    "_k__1E4qMms",   # Relajantes musculares
 ]
 OUTPUT_FILE = "videos.json"
 MANUAL_FILE = "manual_categories.json"
