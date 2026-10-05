@@ -2,7 +2,7 @@ name: Update videos.json
 
 on:
   schedule:
-    # Every day at 03:00 UTC (05:00 Madrid summer / 04:00 winter)
+    # Every day at 03:00 UTC (05:00 Madrid summer / 04:00 winter) — reactivated 2026-10-05
     - cron: "0 3 * * *"
   workflow_dispatch:   # allows manual trigger from GitHub Actions tab
 
