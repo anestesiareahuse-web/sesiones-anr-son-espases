@@ -14,6 +14,7 @@ API_KEY      = os.environ.get("YOUTUBE_API_KEY", "")
 PLAYLIST_IDS = [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",   # playlist principal
     "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4",   # playlist adicional
+    "PLPd-bzWNrSHXV-DiUGCUOYvxCLyRcW4U7",   # playlist adicional 2
 ]
 EXTRA_VIDEO_IDS = [
     "lV6kqTRoGDQ",   # video individual añadido manualmente
