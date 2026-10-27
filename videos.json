@@ -1,10 +1,11 @@
 {
-  "updatedAt": "2026-10-06T09:52:02.795847+00:00",
+  "updatedAt": "2026-10-27T13:07:50.195701+00:00",
   "playlistIds": [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
-    "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4"
+    "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4",
+    "PLPd-bzWNrSHXV-DiUGCUOYvxCLyRcW4U7"
   ],
-  "videoCount": 114,
+  "videoCount": 116,
   "videos": [
     {
       "videoId": "8FagIuO-VuU",
@@ -1268,6 +1269,27 @@
       "categories": [
         "pediatria",
         "ecografia"
+      ]
+    },
+    {
+      "videoId": "jCYmMO-7gOQ",
+      "title": "Farmacología cardiovascular. Parte 1. Dra. Canibe",
+      "publishedAt": "2026-10-05T14:29:45Z",
+      "addedAt": "2026-10-05T14:27:50Z",
+      "duration": "21:16",
+      "categories": [
+        "farmaco",
+        "vascular"
+      ]
+    },
+    {
+      "videoId": "kJL1Ehj5o_c",
+      "title": "Tecnicas neuroaxiales. Dr. Alfonso",
+      "publishedAt": "2026-10-27T07:49:47Z",
+      "addedAt": "2026-10-27T07:44:22Z",
+      "duration": "44:56",
+      "categories": [
+        "neuro"
       ]
     }
   ]
