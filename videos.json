@@ -1,12 +1,22 @@
 {
-  "updatedAt": "2026-10-27T13:07:50.195701+00:00",
+  "updatedAt": "2026-11-05T11:46:47.507792+00:00",
   "playlistIds": [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
     "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4",
     "PLPd-bzWNrSHXV-DiUGCUOYvxCLyRcW4U7"
   ],
-  "videoCount": 116,
+  "videoCount": 117,
   "videos": [
+    {
+      "videoId": "4D-CFGjCYbc",
+      "title": "Acceso venoso: Tecnicas de punción. Dr. Alfonso",
+      "publishedAt": "2026-11-05T11:06:05Z",
+      "addedAt": "2026-11-05T11:04:58Z",
+      "duration": "8:44",
+      "categories": [
+        "neuro"
+      ]
+    },
     {
       "videoId": "8FagIuO-VuU",
       "title": "Complicaciones de accesos vasculares. Dr. Rodriguez",
