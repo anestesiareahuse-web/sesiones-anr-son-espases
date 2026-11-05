@@ -1,20 +1,21 @@
 {
-  "updatedAt": "2026-11-05T11:46:47.507792+00:00",
+  "updatedAt": "2026-11-05T16:31:28.435792+00:00",
   "playlistIds": [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
     "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4",
     "PLPd-bzWNrSHXV-DiUGCUOYvxCLyRcW4U7"
   ],
-  "videoCount": 117,
+  "videoCount": 122,
   "videos": [
     {
       "videoId": "4D-CFGjCYbc",
-      "title": "Acceso venoso: Tecnicas de punción. Dr. Alfonso",
+      "title": "Acceso venoso: Tecnicas ecoguiadas de punción. Dr. Alfonso",
       "publishedAt": "2026-11-05T11:06:05Z",
       "addedAt": "2026-11-05T11:04:58Z",
       "duration": "8:44",
       "categories": [
-        "neuro"
+        "neuro",
+        "ecografia"
       ]
     },
     {
@@ -24,6 +25,7 @@
       "addedAt": "2026-10-05T14:05:51Z",
       "duration": "18:59",
       "categories": [
+        "accesos_vasculares",
         "vascular"
       ]
     },
@@ -1300,6 +1302,60 @@
       "duration": "44:56",
       "categories": [
         "neuro"
+      ]
+    },
+    {
+      "videoId": "RfN79YilWrk",
+      "title": "Ventilación mecánica: NAVA. Dra. Bárcena",
+      "publishedAt": "2026-11-05T12:02:09Z",
+      "addedAt": "2026-11-05T11:59:37Z",
+      "duration": "17:40",
+      "categories": [
+        "uci",
+        "ventilacion"
+      ]
+    },
+    {
+      "videoId": "rDtIQ4ZXLrs",
+      "title": "Ventilación mecánica: Soporte. Dra. Bárcena",
+      "publishedAt": "2026-11-05T12:18:28Z",
+      "addedAt": "2026-11-05T12:11:02Z",
+      "duration": "30:24",
+      "categories": [
+        "uci",
+        "ventilacion"
+      ]
+    },
+    {
+      "videoId": "qBJGp5J6H6E",
+      "title": "Ventilación mecánica. Modos controlados por presión y volumen. Dra. Bárcena",
+      "publishedAt": "2026-11-05T12:25:35Z",
+      "addedAt": "2026-11-05T12:20:23Z",
+      "duration": "39:44",
+      "categories": [
+        "uci",
+        "fluidoterapia",
+        "ventilacion"
+      ]
+    },
+    {
+      "videoId": "XgJ1Qy5FEIk",
+      "title": "Anestesicos inhalatorios. Dra. Popiel.",
+      "publishedAt": "2026-11-05T14:26:44Z",
+      "addedAt": "2026-11-05T14:24:24Z",
+      "duration": "33:57",
+      "categories": [
+        "uncategorised"
+      ]
+    },
+    {
+      "videoId": "dr-jm1gEwuQ",
+      "title": "SDRA. Dra. Romero",
+      "publishedAt": "2026-11-05T16:28:50Z",
+      "addedAt": "2026-11-05T16:28:52Z",
+      "duration": "",
+      "categories": [
+        "uncategorised"
       ]
     }
   ]
