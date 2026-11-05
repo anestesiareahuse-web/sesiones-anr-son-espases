@@ -29,6 +29,7 @@ MAX_RESULTS = 50
 
 # ── Keyword map ────────────────────────────────────────────────────────────────
 CATEGORIES = {
+    "accesos_vasculares": ["acceso vascular","accesos vasculares","vía venosa","vía arterial","catéter venoso","cvc","picc","vía central","puerto implantable","acceso intraóseo","intraóseo"],
     "pediatria":      ["pediatr","pediátr","neonat","infant","niño","niña","recién nacido","neonatal","pediátrico","cardiópata pediát","pediátric"],
     "toracica":       ["torác","tórax","toraci","lobectom","neumonectom","toracoscop","mediastin","pleural","neumotórax","ventilación protección","resecabilidad","operabilidad torác","cto","esófago","esofag"],
     "cardiaca":       ["cardíac","cardiac","cardiaca","corazón","heart","valvul","valv","bypass","coronar","aorta","cec","extracorpórea","tavi","teer","miocardi","pericardi","arritmia","fibrilación","brugada","cardiópata"],
