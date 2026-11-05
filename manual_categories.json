@@ -1,5 +1,5 @@
 {
-  "_note": "Clasificación manual. Edita las categorías de cada vídeo. IDs válidos: accesos_vasculares, emergencias, anafilaxia, anciano, cardiaca, cardiologia, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, ginecologia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, urologia, vascular, ventilacion, viaarea, casos",
+  "_note": "Clasificación manual. Edita las categorías de cada vídeo. IDs válidos: accesos_vasculares, anestesia, emergencias, anafilaxia, anciano, cardiaca, cardiologia, cirugia_general, dolor, ecmo, ecografia, endocrino, farmaco, fluidoterapia, ginecologia, gestion, hematologia, hemodinamica, hepatico, infecciosas, monitorizacion, nefrologia, neuro, neurologia, obesidad, obstetricia, orl_cmf, pediatria, politrauma, preoperatorio, rcp, regional, seguridad, toracica, trasplante, traumatologia, uci, urologia, vascular, ventilacion, viaarea, casos",
   "overrides": {
     "ugguCfQ41yk": [
       "uci",
@@ -419,24 +419,29 @@
       "monitorizacion"
     ],
     "O9Dv4kEdylA": [
-      "uncategorised",
-      "ecografia"
+      "ecografia",
+      "accesos_vasculares"
     ],
     "Yi1tEA24XKY": [
-      "ecografia"
+      "ecografia",
+      "accesos_vasculares"
     ],
     "3UDQwINcCgw": [
-      "ecografia"
+      "ecografia",
+      "accesos_vasculares"
     ],
     "t2e4gnZlK7w": [
-      "ecografia"
+      "ecografia",
+      "accesos_vasculares"
     ],
     "E222AyBwzuw": [
-      "ecografia"
+      "ecografia",
+      "accesos_vasculares"
     ],
     "TJqcfmkFS8c": [
       "pediatria",
-      "ecografia"
+      "ecografia",
+      "accesos_vasculares"
     ],
     "lV6kqTRoGDQ": [
       "gestion"
@@ -453,6 +458,21 @@
     ],
     "_k__1E4qMms": [
       "farmaco"
+    ],
+    "4D-CFGjCYbc": [
+      "ecografia",
+      "accesos_vasculares"
+    ],
+    "kJL1Ehj5o_c": [
+      "obstetricia",
+      "anestesia"
+    ],
+    "jCYmMO-7gOQ": [
+      "farmaco",
+      "emergencias"
+    ],
+    "8FagIuO-VuU": [
+      "accesos_vasculares"
     ]
   }
 }

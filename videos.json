@@ -1,21 +1,21 @@
 {
-  "updatedAt": "2026-11-05T16:31:28.435792+00:00",
+  "updatedAt": "2026-11-05T11:46:47.507792+00:00",
   "playlistIds": [
     "PLPd-bzWNrSHVDwJDIV3VoZOnwnjU3D0EV",
     "PLPd-bzWNrSHXOJXi6Csf_uPc8KVgWv3-4",
     "PLPd-bzWNrSHXV-DiUGCUOYvxCLyRcW4U7"
   ],
-  "videoCount": 122,
+  "videoCount": 117,
   "videos": [
     {
       "videoId": "4D-CFGjCYbc",
-      "title": "Acceso venoso: Tecnicas ecoguiadas de punción. Dr. Alfonso",
+      "title": "Acceso venoso: Tecnicas de punción. Dr. Alfonso",
       "publishedAt": "2026-11-05T11:06:05Z",
       "addedAt": "2026-11-05T11:04:58Z",
       "duration": "8:44",
       "categories": [
-        "neuro",
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -25,8 +25,7 @@
       "addedAt": "2026-10-05T14:05:51Z",
       "duration": "18:59",
       "categories": [
-        "accesos_vasculares",
-        "vascular"
+        "accesos_vasculares"
       ]
     },
     {
@@ -1228,8 +1227,8 @@
       "addedAt": "2022-12-27T10:38:35Z",
       "duration": "23:01",
       "categories": [
-        "uncategorised",
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -1239,7 +1238,8 @@
       "addedAt": "2022-12-27T10:38:35Z",
       "duration": "17:55",
       "categories": [
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -1249,7 +1249,8 @@
       "addedAt": "2022-12-27T10:38:35Z",
       "duration": "25:38",
       "categories": [
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -1259,7 +1260,8 @@
       "addedAt": "2022-12-27T10:38:35Z",
       "duration": "20:06",
       "categories": [
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -1269,7 +1271,8 @@
       "addedAt": "2023-01-04T18:01:35Z",
       "duration": "38:37",
       "categories": [
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -1280,7 +1283,8 @@
       "duration": "17:54",
       "categories": [
         "pediatria",
-        "ecografia"
+        "ecografia",
+        "accesos_vasculares"
       ]
     },
     {
@@ -1291,7 +1295,7 @@
       "duration": "21:16",
       "categories": [
         "farmaco",
-        "vascular"
+        "emergencias"
       ]
     },
     {
@@ -1301,61 +1305,8 @@
       "addedAt": "2026-10-27T07:44:22Z",
       "duration": "44:56",
       "categories": [
-        "neuro"
-      ]
-    },
-    {
-      "videoId": "RfN79YilWrk",
-      "title": "Ventilación mecánica: NAVA. Dra. Bárcena",
-      "publishedAt": "2026-11-05T12:02:09Z",
-      "addedAt": "2026-11-05T11:59:37Z",
-      "duration": "17:40",
-      "categories": [
-        "uci",
-        "ventilacion"
-      ]
-    },
-    {
-      "videoId": "rDtIQ4ZXLrs",
-      "title": "Ventilación mecánica: Soporte. Dra. Bárcena",
-      "publishedAt": "2026-11-05T12:18:28Z",
-      "addedAt": "2026-11-05T12:11:02Z",
-      "duration": "30:24",
-      "categories": [
-        "uci",
-        "ventilacion"
-      ]
-    },
-    {
-      "videoId": "qBJGp5J6H6E",
-      "title": "Ventilación mecánica. Modos controlados por presión y volumen. Dra. Bárcena",
-      "publishedAt": "2026-11-05T12:25:35Z",
-      "addedAt": "2026-11-05T12:20:23Z",
-      "duration": "39:44",
-      "categories": [
-        "uci",
-        "fluidoterapia",
-        "ventilacion"
-      ]
-    },
-    {
-      "videoId": "XgJ1Qy5FEIk",
-      "title": "Anestesicos inhalatorios. Dra. Popiel.",
-      "publishedAt": "2026-11-05T14:26:44Z",
-      "addedAt": "2026-11-05T14:24:24Z",
-      "duration": "33:57",
-      "categories": [
-        "uncategorised"
-      ]
-    },
-    {
-      "videoId": "dr-jm1gEwuQ",
-      "title": "SDRA. Dra. Romero",
-      "publishedAt": "2026-11-05T16:28:50Z",
-      "addedAt": "2026-11-05T16:28:52Z",
-      "duration": "",
-      "categories": [
-        "uncategorised"
+        "obstetricia",
+        "anestesia"
       ]
     }
   ]
